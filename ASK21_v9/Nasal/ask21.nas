@@ -85,15 +85,7 @@ var rtimer = maketimer(0.1, func {
 );
 rtimer.start();
 
-# Vibrating yaw string
-io.include("Aircraft/Generic/soaring-instrumentation-sdk.nas");
-
-var yawstring = YawString.new(
-	on_update: update_prop("instrumentation/yawstring"));
-
-var string_instrument = Instrument.new(
-	components: [yawstring],
-	enable: 1);
+# Yaw strings: see yawstring.nas (the airflow at each string, and the quiver of the wool)
 
 #	Properties available to other scripts e.g. electrical-*.nas
 var com_ptt		= props.globals.getNode("/instrumentation/comm[0]/ptt", 1);

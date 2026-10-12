@@ -58,6 +58,7 @@ def SQ(a): return tag('sqrt', a)
 def SIN(a): return tag('sin', a)
 def COS(a): return tag('cos', a)
 def ATAN2(y, x): return tag('atan2', y, x)
+def EXP(a): return tag('exp', a)
 def ABS(a): return tag('abs', a)
 def MAX(*a): return tag('max', *a)
 def MIN(*a): return tag('min', *a)
@@ -107,13 +108,52 @@ class Gen:
         hbt = np.array([0.0, 0.035, 0.047, 0.059, 0.088, 0.118, 0.176, 0.235, 0.353, 0.5, 0.706, 1.0, 2.0])
         rt = np.array([0.15, 0.21, 0.27, 0.33, 0.455, 0.555, 0.70, 0.79, 0.89, 0.94, 0.97, 0.985, 1.0])
         s.get = s.fn('aero/v9/ge-tail', T1('aero/h_b-mac-ft', hbt, rt), 'ground effect on the tail downwash (image vortices, ge_tail.py)')
+        # wake of an aircraft ahead (the tug): written by Nasal/propwash.nas, declared in the FCS system files.
+        # Positions in the structural frame (ft: y right, z up); all zero = no wake.
+        s.wsh = {k: p('aero/v9/wash/' + k) for k in (
+            'y-ft', 'z-ft', 'r-ft', 'u-fps', 'swirl-fps', 'turb-u-fps', 'turb-v-fps', 'turb-w-fps', 'turb-roll-fps',
+            'vr-y-ft', 'vr-z-ft', 'vl-y-ft', 'vl-z-ft', 'gamma-ft2_sec', 'core-ft')}
+        s.wcache = {}
+
+    def wash(s, ys, zs):
+        """air velocity (body axes: x forward, y right; and up) of the wake ahead at structural point (ft).
+        Slipstream: a Gaussian jet of radius r (extra speed aft, swirl turning clockwise seen from behind,
+        turbulence); wing wake: the tug's two trailing vortices (Lamb-Oseen cores), the right one turning
+        anticlockwise seen from behind, the left one clockwise, with the downwash between them."""
+        key = (round(ys, 3), round(zs, 3))
+        if key in s.wcache:
+            return s.wcache[key]
+        W = s.wsh; nm = 'aero/v9/wash/p%d' % len(s.wcache)
+        dy = s.fn(nm + '/dy', D(v(ys), W['y-ft'])); dz = s.fn(nm + '/dz', D(v(zs), W['z-ft']))
+        R2 = S(M(W['r-ft'], W['r-ft']), v(1e-3))
+        g = s.fn(nm + '/g', EXP(Q(M(v(-1), S(M(dy, dy), M(dz, dz))), R2)), 'slipstream profile at this station')
+
+        def vortex(side):
+            vy = s.fn(nm + '/v%s-dy' % side, D(v(ys), W['v%s-y-ft' % side]))
+            vz = s.fn(nm + '/v%s-dz' % side, D(v(zs), W['v%s-z-ft' % side]))
+            r2 = S(M(vy, vy), M(vz, vz), v(0.01))
+            k = s.fn(nm + '/v%s-k' % side, Q(M(v(1 / (2 * np.pi)), W['gamma-ft2_sec'],
+                     D(v(1), EXP(Q(M(v(-1), r2), S(M(W['core-ft'], W['core-ft']), v(1e-3)))))), r2),
+                     'vortex induced speed / distance (1/s)')
+            return vy, vz, k
+        ry_, rz_, kr = vortex('r'); ly_, lz_, kl = vortex('l')
+        rr = S(W['r-ft'], v(1e-3))
+        ax = s.fn(nm + '/ax', M(v(-1), g, S(W['u-fps'], W['turb-u-fps'])))
+        ay = s.fn(nm + '/ay', S(M(g, S(Q(M(W['swirl-fps'], dz), rr), W['turb-v-fps'])),
+                                M(v(-1), kr, rz_), M(kl, lz_)))
+        az = s.fn(nm + '/az-up', S(M(g, S(Q(M(v(-1), W['swirl-fps'], dy), rr), W['turb-w-fps'],
+                                          Q(M(W['turb-roll-fps'], dy), rr))),
+                                   M(kr, ry_), M(v(-1), kl, ly_)))
+        s.wcache[key] = (ax, ay, az)
+        return s.wcache[key]
 
     def vel(s, xs, ys, zs):
-        """local air velocity (u,v,w) body axes at structural point (ft)"""
+        """local air velocity (u,v,w) body axes at structural point (ft), including the wake of an aircraft ahead"""
         rx = D(s.cgx, v(xs)); ry = D(v(ys), s.cgy); rz = D(s.cgz, v(zs))
-        u = S(s.U, M(s.Qq, rz), M(v(-1), s.Rr, ry))
-        vv = S(s.V, M(s.Rr, rx), M(v(-1), s.Pp, rz))
-        w = S(s.W, M(s.Pp, ry), M(v(-1), s.Qq, rx))
+        ax, ay, az = s.wash(ys, zs)
+        u = S(s.U, M(s.Qq, rz), M(v(-1), s.Rr, ry), M(v(-1), ax))
+        vv = S(s.V, M(s.Rr, rx), M(v(-1), s.Pp, rz), M(v(-1), ay))
+        w = S(s.W, M(s.Pp, ry), M(v(-1), s.Qq, rx), az)
         return u, vv, w
 
     def arms(s, xs, ys, zs):

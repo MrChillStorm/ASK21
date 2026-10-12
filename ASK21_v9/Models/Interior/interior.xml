@@ -2,25 +2,30 @@
 <PropertyList>
 	<path>interior.ac</path>
 
-	<!-- Yaw Strings -->
+	<!-- Yaw Strings: taped on the outside of the canopy, lying along it (offsets from Panel/src/make_yawstring.py) -->
 	<model>
 		<name>yawstring.F</name>
-		<path>Aircraft/Instruments-3d/glider/wool-thread/wool-thread.xml</path>
+		<path>yawstring/yawstring.xml</path>
 		<offsets>
-			<x-m>-3.43276</x-m>
+			<x-m>-3.4328</x-m>
 			<y-m> 0</y-m>
-			<z-m>0.88</z-m>
-			<pitch-deg>22</pitch-deg>
+			<z-m>0.8786</z-m>
+			<pitch-deg>-19.5</pitch-deg>
 		</offsets>
 	</model>
 	<model>
 		<name>yawstring.R</name>
-		<path>Aircraft/Instruments-3d/glider/wool-thread/wool-thread.xml</path>
+		<path>yawstring/yawstring.xml</path>
+		<overlay>
+			<params>
+				<use-prop>instrumentation/yawstring[1]</use-prop>
+			</params>
+		</overlay>
 		<offsets>
 			<x-m>-2.22</x-m>
 			<y-m> 0</y-m>
-			<z-m>1.18</z-m>
-			<pitch-deg>40</pitch-deg>
+			<z-m>1.1772</z-m>
+			<pitch-deg>-5.6</pitch-deg>
 		</offsets>
 	</model>
 

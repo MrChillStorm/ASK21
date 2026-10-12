@@ -16,7 +16,9 @@ The ILEC script (`ilec-sc7.nas`) is still loaded: it only provides the `ilec-sc7
 
 ## Behaviour
 * Vario, netto, relative, average, thermal detection, MacCready speed to fly and the audio modes are ported from the
-  FG9070 trainer (`js/flight/*.js`, `js/audio/vario-audio.js`). The ASK 21 polar is approximate (three points).
+  FG9070 trainer (`js/flight/*.js`, `js/audio/vario-audio.js`). The polar is the ASK 21 flight manual's (fitted at
+  470 and 570 kg, 0.02 m/s rms), scaled with the glider's actual mass, the load factor and the air density, so netto
+  reads zero in still air at any speed, loading and height. Total energy uses the true airspeed, like a TE probe.
 * Audio: `lxv8-tone.wav` (500 Hz triangle) is pitched and gated from Nasal (`/instrumentation/lxv8/audio/*`,
   `Sounds/ask21-sound.xml`). Speed-to-fly audio is muted below 72 km/h and behind the tug.
 * Voice: on macOS run `python3 tools/lxv8-speak.py` while FlightGear runs with `--telnet=5401`. The instrument then sends the

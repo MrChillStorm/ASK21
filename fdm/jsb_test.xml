@@ -448,59 +448,6 @@
 				<z>0.0</z>
 			</direction>
 		</force>
-		<!-- prop wash of other aircraft, driven by Nasal/propwash.nas -->
-		<force name="wash_lw" frame="BODY" unit="LBS">
-			<location unit="M">
-				<x> -0.99095</x>
-				<!--left wing-->
-				<y> -4</y>
-				<z> 1.3</z>
-			</location>
-			<direction>
-				<x> 0</x>
-				<y> 0</y>
-				<z> 1</z>
-			</direction>
-		</force>
-		<force name="wash_rw" frame="BODY" unit="LBS">
-			<location unit="M">
-				<x> -0.99095</x>
-				<!--right wing-->
-				<y> 4</y>
-				<z> 1.3</z>
-			</location>
-			<direction>
-				<x> 0</x>
-				<y> 0</y>
-				<z> 1</z>
-			</direction>
-		</force>
-		<force name="wash_tz" frame="BODY" unit="LBS">
-			<location unit="M">
-				<x> 3.2</x>
-				<!--tail, vertical-->
-				<y> 0</y>
-				<z> 1.3</z>
-			</location>
-			<direction>
-				<x> 0</x>
-				<y> 0</y>
-				<z> 1</z>
-			</direction>
-		</force>
-		<force name="wash_ty" frame="BODY" unit="LBS">
-			<location unit="M">
-				<x> 3.2</x>
-				<!--tail, sideways-->
-				<y> 0</y>
-				<z> 1.3</z>
-			</location>
-			<direction>
-				<x> 0</x>
-				<y> 1</y>
-				<z> 0</z>
-			</direction>
-		</force>
 	</external_reactions>
 	<system file="ask21-fcs"/>
 </fdm_config>

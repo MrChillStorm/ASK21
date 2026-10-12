@@ -1,4 +1,22 @@
 <system name="ASK21: FCS">
+	<!-- the wake of an aircraft ahead (the tug), written by Nasal/propwash.nas and read by the aerodynamics
+	     (aero/v9/wash/*): slipstream centre, radius, speed, swirl and turbulence; trailing vortex positions,
+	     circulation and core. All zero: no wake. -->
+	<property value="0">aero/v9/wash/y-ft</property>
+	<property value="0">aero/v9/wash/z-ft</property>
+	<property value="0">aero/v9/wash/r-ft</property>
+	<property value="0">aero/v9/wash/u-fps</property>
+	<property value="0">aero/v9/wash/swirl-fps</property>
+	<property value="0">aero/v9/wash/turb-u-fps</property>
+	<property value="0">aero/v9/wash/turb-v-fps</property>
+	<property value="0">aero/v9/wash/turb-w-fps</property>
+	<property value="0">aero/v9/wash/turb-roll-fps</property>
+	<property value="0">aero/v9/wash/vr-y-ft</property>
+	<property value="0">aero/v9/wash/vr-z-ft</property>
+	<property value="0">aero/v9/wash/vl-y-ft</property>
+	<property value="0">aero/v9/wash/vl-z-ft</property>
+	<property value="0">aero/v9/wash/gamma-ft2_sec</property>
+	<property value="0">aero/v9/wash/core-ft</property>
 
 	<channel name="Speed Brake">
 

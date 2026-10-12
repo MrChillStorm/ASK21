@@ -20,6 +20,8 @@ The cockpit is reworked too, around a new LXNAV V8 vario, and the drag
 robot tows like a real tug: it reacts to the pull of the rope, keeps
 clear of hills and can take you around a landing pattern.
 
+What changed in each update: [CHANGELOG.md](CHANGELOG.md).
+
 ## Install
 
 Get the files:
@@ -40,7 +42,7 @@ Add-ons → Additional aircraft folders (or start FlightGear with
 - The YASim variants (**ASK 21 Glider (YASim)** and the YASim
   motorglider) keep their original flight model, apart from the nose
   wheel (see below). The cockpit and the tow work the same in them;
-  only the prop wash needs JSBSim.
+  only the tug's wake needs JSBSim.
 
 ## Flying it
 
@@ -69,21 +71,33 @@ The front panel of the glider:
   average), MacCready speed to fly, horizon, wind, FLARM radar, thermal
   assistant and G-meter, the vario and speed-to-fly audio, and the setup
   menu. Click the screen, or use ASK21 → LXNAV V8 close-up, for a larger
-  view. It powers from the battery like the real unit.
+  view. It powers from the battery like the real unit. Netto and speed to
+  fly use the flight manual's polar, scaled with the glider's mass, the
+  g-load and the air density, so netto reads zero in still air at any
+  speed, loading and height.
 - **Spoken messages** like "Thermal average 2.1" or "Traffic 2 o'clock,
   high, 400 meters" play as recorded clips. The buttons and menus are
   described in
   [the V8's README](ASK21_v9/Models/Interior/Panel/Instruments/lx-v8/README.md).
 - **Take-off check placard** at the bottom right: loading, canopy,
   straps, controls, trim, airbrakes, instruments, radio, rope, wind.
-- **Transponder** (BXP 6401) in place of the turn indicator. The turn
-  indicator comes back with the option in ASK21 → Simulation Options.
+- **Transponder** (BXP 6401) in place of the turn indicator. To get the
+  turn indicator back, untick "Enable transponder" under ASK21 →
+  Simulation Options.
 - The altimeter sits under the airspeed indicator and the mechanical
   vario at the top right. The FLARM display at the top of the panel is
   gone; its traffic is on the V8's FLARM page.
 - Black leather panels and glare shields, and all instruments' screws in
   one style. The scripts in `ASK21_v9/Models/Interior/Panel/src` make
   these from copies of the original meshes.
+- **Yaw strings** of red wool taped on the outside of both canopies,
+  lying along the glass. Each shows the airflow where it is taped: the
+  sideslip, plus the swing of the nose when the glider yaws or rolls,
+  so in a turn the front string reads a little differently from the
+  glider as a whole, and gusts reach it straight from the wind field.
+  The wool quivers like the real thing: a little in smooth air, more in
+  turbulence, and a lot on the take-off run. They show on macOS too,
+  and keep their length when they point straight back.
 
 The motorglider's front panel gets the same changes, with the V8 at the
 bottom right and no placard. The rear panel gets the leather and the
@@ -114,10 +128,18 @@ The drag robot (ASK21 → Drag Robot) is the AI tug that tows you up.
   off at 100 km/h, stays low in ground effect until 115 km/h and then
   builds up its climb to at most 2.5 m/s. All of these can be changed
   under Advanced Drag Robot Configuration.
-- **Prop wash.** Flying in the tug's slipstream shakes the glider; high
-  tow is calm. The strength is set under Aerotow Settings.
-- **Rope.** 50 m long instead of 60 m, because the rope stretches under
-  the tug's pull: at 50 m it tows at about 60 m.
+- **The tug's wake.** The tug leaves a real wake where it flew,
+  drifting with the wind and sinking: its propeller slipstream (faster
+  air, swirling and turbulent) and the two trailing vortices of its
+  wing. Every part of the glider feels the air of the wake where it is.
+  In high tow you are above it and calm; drop into it and it gets rough
+  and you sink, slide sideways and it rolls you. On the take-off run the
+  slipstream blows straight back at you. The strength is set under
+  Aerotow Settings.
+- **Rope.** 50 m long, instead of FlightGear's default of 60 m.
+  FlightGear treats the tow rope as a soft spring, so under the tug's
+  pull it stretches far more than a real rope does: the 50 m rope tows
+  at about 60 m. A real rope stays close to its own length.
 - If the chosen tug model isn't installed, the robot uses the next one it
   finds (DR400, PA28, Ercoupe, Staggerwing).
 
@@ -198,19 +220,24 @@ revision 8166). Changed in 2026, all inside `ASK21_v9`:
   generated aerodynamics (also used by the JSBSim motorglider).
   `ask21-jsb.xml` gets the mass properties and inertias from the AFFTC
   report, a cockpit ballast station, the control travels from the
-  rigging data and the pitch control without a stick map. Both JSBSim
-  files get the prop wash forces.
+  rigging data and the pitch control without a stick map. The
+  aerodynamics read the tug's wake as airflow at every station; the
+  system files `Systems/ask21-fcs.xml` and `Systems/ask21mi-fcs.xml`
+  declare its inputs.
 - **Nose wheel.** 5.4 cm lower in all four flight models (`ask21-jsb.xml`,
   `ask21mi-jsb.xml`, `ask21.xml`, `ask21mi.xml`) and in the 3-D model
   (`Models/ask21.xml`), so the glider sits as the rigging drawing shows.
 - **Cockpit.** New: the V8 (`Models/Interior/Panel/Instruments/lx-v8`,
   with `Sounds/lxv8-tone.wav`, `Sounds/lxv8-voice/` and
-  `tools/lxv8-speak.py`), the placard (`Instruments/placard`) and the
-  scripts in `Models/Interior/Panel/src`. Changed: the panels
+  `tools/lxv8-speak.py`), the placard (`Instruments/placard`), the yaw
+  strings (`Models/Interior/yawstring` and `Nasal/yawstring.nas`, in
+  place of FlightGear's standard yaw string script in `Nasal/ask21.nas`)
+  and the scripts in `Models/Interior/Panel/src`. Changed: the panels
   (`Models/Interior/Panel/panel*.xml` and `panel*.ac`), the glare
-  shields in `Models/Interior/interior.ac`, the screws and textures of
-  the airspeed indicator, altimeter, varios and compass, the V8's sounds
-  in `Sounds/ask21-sound.xml`, the V8 and transponder loads in
+  shields in `Models/Interior/interior.ac`, the yaw strings' places in
+  `Models/Interior/interior.xml`, the screws and textures of the
+  airspeed indicator, altimeter, varios, compass and turn indicator, the
+  V8's sounds in `Sounds/ask21-sound.xml`, the V8 and transponder loads in
   `Nasal/electrical.nas` and `Nasal/electrical-mi.nas`, the transponder
   in `Nasal/ask21.nas` and `Systems/ask21-instrumentation.xml`, its
   option in `gui/dialogs/options.xml`, and the menu entry, settings and
@@ -218,8 +245,28 @@ revision 8166). Changed in 2026, all inside `ASK21_v9`:
 - **Aerotow.** `Nasal/dragrobot.nas` (tow types, terrain, the tug's
   reaction to the rope, take-off run) with its dialogs
   `gui/dialogs/dragrobot.xml` and `dragrobot_advanced.xml`, the new
-  `Nasal/propwash.nas` with its strength slider in
+  `Nasal/propwash.nas` (the tug's wake) with its strength slider in
   `gui/dialogs/aerotow.xml`, and the 50 m rope in `ask21-main.xml`.
+- **Fixes** to bugs of the original aircraft:
+  - `ask21-main.xml` loaded `immat.nas` and `te-vario.nas` under the
+    same index, so the registration letters never followed the
+    callsign or the Immatriculation dialog.
+  - `Nasal/electrical.nas` and `electrical-mi.nas`: the low-battery
+    warning used an undefined variable, which stopped the battery at
+    10 %; the glider's ammeter always showed charging.
+  - `Systems/instruments.xml`: a blocked pitot gave zero total pressure
+    instead of the slowly leaking one; the airspeed indicator now drops
+    to zero in a full slip, as the flight manual says.
+  - `Nasal/limits.nas`: the g, VNE and weight warnings stopped after a
+    replay, the weight warning never worked with JSBSim, and the airbrake
+    limit of +3.5 g / 0 g (flight manual II.5) was missing.
+  - `Nasal/groundhandling.nas`: the tutorial's altimeter check took QFE
+    for a wrong setting (a misspelled property, a copy-paste error and
+    mixed-up logic).
+  - `Nasal/jsoverride.nas`: joystick button 1 still releases the cable,
+    but its own bindings are replaced instead of added to, and the new
+    option "Joystick button 1 releases the cable" in Simulation Options
+    switches this off.
 
 Everything else is as its authors made it; they are credited in
 [ASK21_v9/README.md](ASK21_v9/README.md).

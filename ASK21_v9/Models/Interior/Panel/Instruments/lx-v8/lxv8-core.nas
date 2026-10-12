@@ -10,8 +10,8 @@
 # plays with a looped triangle wave (lxv8-tone.wav, 500 Hz). Voice messages are pre-rendered
 # clips (Sounds/lxv8-voice/, made with tools/make_voice.sh) played one after the other.
 #
-# Approximations (like in FG9070): the polar of the ASK 21 is taken from three published
-# points and not from the flight model; the audio cadence is not given in the manual.
+# The polar is the flight manual's, scaled with the mass, load factor and air density from the
+# flight model (see below). Approximation: the audio cadence is not given in the manual.
 # ####################################################################################
 
 var G = 9.80665;
@@ -94,48 +94,44 @@ var setting_set = func(key, val) {
 	if (key == "volume") setprop("/instrumentation/ilec-sc7/volume", val / 100);
 };
 
-# ---- polar: w(v) = a v^2 + b v + c (v in m/s, sink positive), through three points
-var fit_polar = func(pts) {
-	var v = [pts[0][0] / 3.6, pts[1][0] / 3.6, pts[2][0] / 3.6];
-	var w = [pts[0][1], pts[1][1], pts[2][1]];
-	var det = func(m) {
-		return m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1])
-		     - m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0])
-		     + m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0]);
-	};
-	var M = [[v[0]*v[0], v[0], 1], [v[1]*v[1], v[1], 1], [v[2]*v[2], v[2], 1]];
-	var D = det(M);
-	var col = func(i) {
-		var r = [];
-		for (var k = 0; k < 3; k += 1) {
-			var row = [M[k][0], M[k][1], M[k][2]];
-			row[i] = w[k];
-			append(r, row);
-		}
-		return r;
-	};
-	return [det(col(0)) / D, det(col(1)) / D, det(col(2)) / D];
-};
-
-# ASK 21 (approximate, as in FG9070)
-var polar_abc = fit_polar([[75, 0.65], [98, 0.80], [150, 1.75]]);
-var polar_min_speed = 60 / 3.6;
+# ---- polar of the ASK 21: the flight manual's polar at 470 and 570 kg, fitted as
+# w = a v^3 + b / v (parasite plus induced drag; v equivalent airspeed in m/s, sink in m/s at
+# sea level and 470 kg; rms error 0.02 m/s at both masses). It scales with the mass (v and w
+# with sqrt(m / 470 kg)), with the load factor (the induced part with n^2) and with the air
+# density (true sink = w / sqrt(sigma)). Mass and density come from the flight model.
+var polar_a = 2.649237e-05;
+var polar_b = 8.748496;
+var polar_m0 = 470;
+var polar = { m: 520, sigma: 1 };
+var polar_min_speed = 60 / 3.6;                # search range of the speed to fly (indicated)
 var polar_max_speed = 250 / 3.6;
-var sink_at = func(v) {
-	return math.max(0.05, polar_abc[0] * v * v + polar_abc[1] * v + polar_abc[2]);
+# sink in still air (true, m/s) at indicated airspeed v (m/s) and load factor n
+var sink_at = func(v, n = 1) {
+	v = math.max(v, 5);
+	var r = polar.m / polar_m0;
+	return (polar_a * v * v * v / r + polar_b * r * n * n / v) / math.sqrt(polar.sigma);
 };
-var min_sink = 9;
-for (var v = polar_min_speed; v <= polar_max_speed; v += 0.1) {
-	var w = sink_at(v);
-	if (w < min_sink) min_sink = w;
-}
+var min_sink_at = func {
+	var r = polar.m / polar_m0;
+	return sink_at(math.pow(polar_b * r * r / (3 * polar_a), 0.25));   # where d(sink)/dv = 0
+};
+var min_sink = min_sink_at();
+var update_polar = func {
+	var lbs = getprop("/fdm/jsbsim/inertia/weight-lbs");
+	if (lbs == nil) lbs = getprop("/fdm/yasim/gross-weight-lbs");
+	if (lbs != nil and lbs > 0) polar.m = lbs * 0.45359237;
+	var rho = getprop("/environment/density-slugft3");
+	if (rho != nil and rho > 0) polar.sigma = rho / 0.0023769;
+	min_sink = min_sink_at();
+};
 
-# MacCready speed to fly, m/s. air: vertical air movement (+ lift), headwind: m/s (+ head)
+# MacCready speed to fly (indicated, m/s). air: vertical air movement (+ lift), headwind: m/s (+ head)
 var speed_to_fly = func(mc, air, headwind) {
 	var best = polar_min_speed;
 	var best_score = -1e9;
+	var tas_per_ias = 1 / math.sqrt(polar.sigma);
 	for (var v = polar_min_speed; v <= polar_max_speed; v += 0.5) {
-		var gs = v - headwind;
+		var gs = v * tas_per_ias - headwind;
 		var denom = sink_at(v) - air + math.max(0, mc);
 		if (denom <= 0.01) continue;
 		var score = gs / denom;
@@ -305,8 +301,10 @@ var update_circling = func(t) {
 var update = func {
 	var t = getprop("/sim/time/elapsed-sec") or 0;
 	read_inputs();
-	var sink_now = sink_at(f.ias);
-	te_update(t, f.vs, f.ias, sink_now, S.needleTau, S.teComp, S.nettoFilter);
+	update_polar();
+	var sink_now = sink_at(f.ias, f.gload);
+	# total energy with the true airspeed: h + v^2 / 2g is what a TE probe measures
+	te_update(t, f.vs, f.tas, sink_now, S.needleTau, S.teComp, S.nettoFilter);
 	var o = te_out;
 	f.teRaw = o.raw;
 	f.te = o.te;

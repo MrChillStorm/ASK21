@@ -59,6 +59,7 @@ See AUTHORS.txt for credits
 			<path>/sim/model/instruments-light</path>
 			<path>/sim/model/windcompass</path>
 			<path>/sim/model/transponder</path>
+			<path>/sim/model/joystick-release</path>
 			<path>/instrumentation/lxv8/settings</path>
 			<path>/sim/weight[0]/weight-lb</path>
 			<path>/sim/weight[1]/weight-lb</path>
@@ -481,6 +482,8 @@ See AUTHORS.txt for credits
 		<max-negative-g-vmo>-4.0</max-negative-g-vmo>
 		<max-positive-g-vne>5.3</max-positive-g-vne>
 		<max-negative-g-vne>-3.0</max-negative-g-vne>
+		<max-positive-g-airbrakes>3.5</max-positive-g-airbrakes> <!-- flight manual II.5 -->
+		<max-negative-g-airbrakes>0.0</max-negative-g-airbrakes>
 		<mtow-lbs>1322.77</mtow-lbs>
 	</limits>
 	<controls>
@@ -713,7 +716,7 @@ See AUTHORS.txt for credits
 			<file n="3">Aircraft/ASK21_v9/Nasal/groundhandling.nas</file>
 			<file n="4">Aircraft/ASK21_v9/Nasal/jsoverride.nas</file>
 			<file n="5">Aircraft/ASK21_v9/Nasal/immat.nas</file>
-			<file n="5">Aircraft/ASK21_v9/Nasal/te-vario.nas</file>
+			<file n="6">Aircraft/ASK21_v9/Nasal/te-vario.nas</file>
 		</ask21>
 		<dragrobot>
 			<file>Aircraft/ASK21_v9/Nasal/dragrobot.nas</file>
@@ -721,6 +724,9 @@ See AUTHORS.txt for credits
 		<propwash>
 			<file>Aircraft/ASK21_v9/Nasal/propwash.nas</file>
 		</propwash>
+		<yawstring>
+			<file>Aircraft/ASK21_v9/Nasal/yawstring.nas</file>
+		</yawstring>
 		<dual_control_tools>
 			<file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
 		</dual_control_tools>

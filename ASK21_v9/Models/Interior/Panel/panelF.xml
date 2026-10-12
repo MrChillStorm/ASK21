@@ -160,7 +160,7 @@
 		</offsets>
 	</model>
 
-	<!--57mm turnslip-->
+	<!--57mm turnslip (without its own screws, see src/make_tsi_screws.py: it has the 57 mm screws below)-->
 	<model>
 		<name>turnslip</name>
 		<path>Instruments/tsi-5550/tsi-5550.xml</path>
@@ -173,7 +173,8 @@
 			<z-m>-0.025</z-m>
 		</offsets>
 	</model>
-	<!-- Transponder: stock BXP 6401 at its real size; the hole of the panel is patched (see src/make_panels.py) -->
+	<!-- Transponder: stock BXP 6401 at its real size; the hole of the panel is patched for it (transponder_patch, see
+	     src/make_panels.py and the animation at the end) -->
 	<model>
 		<name>transponder</name>
 		<path>Aircraft/Instruments-3d/bxp6401/bxp6401.xml</path>
@@ -186,12 +187,10 @@
 			<z-m>-0.025</z-m>
 		</offsets>
 	</model>
+	<!-- the screws of the 57 mm hole, for the turn indicator and the transponder alike -->
 	<model>
-		<name>transponder_screws</name>
+		<name>hole57_screws</name>
 		<path>Instruments/GMeter/57mm_screws.xml</path>
-		<condition>
-			<property>/sim/model/transponder</property>
-		</condition>
 		<offsets>
 			<x-m> 0.0 </x-m>
 			<y-m> 0.0</y-m>
@@ -221,5 +220,14 @@
 			<z-m> 0.033</z-m>
 		</offsets>
 	</model>
+
+	<!-- the patch over the 57 mm hole is for the smaller transponder; the turn indicator fills the hole itself -->
+	<animation>
+		<type>select</type>
+		<object-name>transponder_patch</object-name>
+		<condition>
+			<property>/sim/model/transponder</property>
+		</condition>
+	</animation>
 
 </PropertyList>

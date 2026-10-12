@@ -56,7 +56,7 @@ var BatteryClass = {
 
 		var new_charge = std.max(0.0, std.min(old_charge - fraction_used, 1.0));
 
-		if (new_charge < 0.1 and old_charge_percent >= 0.1)
+		if (new_charge < 0.1 and old_charge >= 0.1)
 			gui.popupTip("Warning: Low battery! Recharge your battery!", 10);
 		me.charge = new_charge;
 		me.charge_prop.setDoubleValue( new_charge );
@@ -147,9 +147,10 @@ var update_virtual_bus = func (dt) {
 	}
 
 	# determine power source
+	var power_source = nil;
 	if ( electrical_switches.battery.getBoolValue() ){
 		var bus_volts = battery_volts;
-		var power_source = battery;
+		power_source = "battery";
 	}else{
 		var bus_volts = 0.0;
 	}

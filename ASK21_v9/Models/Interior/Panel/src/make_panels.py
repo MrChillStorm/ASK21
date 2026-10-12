@@ -6,8 +6,10 @@ Reads the original meshes from src/orig/ and writes panelF.ac, panelF-mi.ac, pan
 * The panels use a 64 x 64 swatch sheet (panels.png): the UV coordinates point at flat colours. The faces that use the
   dark swatches (the big panel surface) are moved into a second object with the leather texture (leather.png) and a
   planar, tiling UV mapping; the faces with the other swatches (grey hole walls, orange screws) stay as they were.
-* Patches: a disc at the front plane over the round hole of the V8 (80 mm hole, left-middle) and over the
-  57 mm hole of the transponder / turn indicator, so that the instruments do not have to cover the rim.
+* Patches: a disc at the front plane over the 80 mm hole at the bottom right (the V8 in the motorglider, the placard
+  in the glider), so that the instruments do not have to cover the rim. The 57 mm hole of the turn indicator gets a
+  disc for the smaller transponder too, as a separate object 'transponder_patch' that panelF.xml and panelF-mi.xml
+  only show with the transponder: the turn indicator sits behind the front plane and fills the hole itself.
 
 File frame: x towards the pilot, y up, z = -right (like all AC files of the aircraft).
 """
@@ -142,10 +144,12 @@ def disc_faces(cy, cz, r, base, n=48):
 LEATHER_SWATCHES = {'panelF.ac': ('LT',), 'panelF-mi.ac': ('LT',), 'panelR.ac': ('LT', 'RT'), 'panelR-mi.ac': ('LT', 'RT')}
 # (centre up, centre -right, radius of the front rim of the hole), measured in the meshes
 PATCHES = {
-    'panelF.ac':    [(0.035, -0.085, 0.0396), (-0.025, 0.0, 0.0282)],
-    'panelF-mi.ac': [(0.035, -0.085, 0.0396), (0.060, 0.0, 0.0282)],
+    'panelF.ac':    [(0.035, -0.085, 0.0396)],
+    'panelF-mi.ac': [(0.035, -0.085, 0.0396)],
     'panelR.ac': [], 'panelR-mi.ac': [],
 }
+# the 57 mm hole of the transponder / turn indicator, patched only for the transponder
+TRANSPONDER_PATCH = {'panelF.ac': (-0.025, 0.0, 0.0282), 'panelF-mi.ac': (0.060, 0.0, 0.0282)}
 
 def build(name):
     head, verts, faces = parse(os.path.join(HERE, 'orig', name))
@@ -169,9 +173,9 @@ def build(name):
         lv += pv; lf += pf
     head = [l for l in head]
     head.insert(2, 'MATERIAL "leather" rgb 1.000 1.000 1.000  amb 0.900 0.900 0.900  emis 0.000 0.000 0.000  spec 0.100 0.100 0.100  shi 10 trans 0.000')
-    head = [('kids 1' if l == 'kids 1' else l) for l in head]
-    # kids 2
-    head = ['kids 2' if l.startswith('kids') else l for l in head]
+    # kids: hole walls, leather and the transponder patch where there is one
+    tp = TRANSPONDER_PATCH.get(name)
+    head = [('kids %d' % (3 if tp else 2)) if l.startswith('kids') else l for l in head]
     # the original object keeps only its remaining faces, with vertices re-indexed
     kv, kf, kremap = [], [], {}
     for f in keep:
@@ -182,8 +186,11 @@ def build(name):
             nf.append((kremap[a], u, w))
         kf.append(nf)
     text = '\n'.join(head) + '\n' + object_text('panel_hole_walls', kv, kf, 0, 'panels.png') + '\n' + object_text('panel_leather', lv, lf, 1, 'leather.png') + '\n'
+    if tp:
+        pv, pf = disc_faces(*tp, 0)
+        text += object_text('transponder_patch', pv, pf, 1, 'leather.png') + '\n'
     open(os.path.join(PANEL, name), 'w').write(text)
-    print(name, 'leather faces', len(leather), 'other faces', len(keep), 'patch discs', len(PATCHES[name]))
+    print(name, 'leather faces', len(leather), 'other faces', len(keep), 'patch discs', len(PATCHES[name]) + (1 if tp else 0))
 
 if __name__ == '__main__':
     make_leather(os.path.join(PANEL, 'leather.png'))

@@ -119,7 +119,7 @@
 	<hrule/>
 	<checkbox>
 		<halign>left</halign>
-		<label>Transponder instead of turn indicator</label>
+		<label>Enable transponder</label>
 		<property>/sim/model/transponder</property>
 		<live>true</live>
 		<binding>
@@ -127,6 +127,23 @@
 			<property>/sim/model/transponder</property>
 		</binding>
 	</checkbox>
+	<text>
+		<label>(instead of turn indicator)</label>
+	</text>
+	<hrule/>
+	<checkbox>
+		<halign>left</halign>
+		<label>Joystick button 1 releases</label>
+		<property>/sim/model/joystick-release</property>
+		<live>true</live>
+		<binding>
+			<command>property-toggle</command>
+			<property>/sim/model/joystick-release</property>
+		</binding>
+	</checkbox>
+	<text>
+		<label>the cable (from next start)</label>
+	</text>
 	<hrule/>
 	<checkbox>
 		<halign>left</halign>

@@ -26,20 +26,21 @@ var update_systems = func {
     
    
     
-    #Altimeter code for tutorial
+    #Altimeter code for tutorial: the setting is right if it is either QNH or QFE (the
+    #pressure where the glider stands, which gliding pilots often set to read zero there)
     var setting=getprop("/instrumentation/altimeter/setting-inhg") or 0;
     var qnh=getprop("/environment/pressure-sea-level-inhg") or 0;
-    var qfe=getprop("/environmet/pressure-inhg") or 0;
-    
+    var qfe=getprop("/environment/pressure-inhg") or 0;
+
     var diff1=setting-qnh;
-    var diff2=setting-qnh;
-	
-	if(diff1>0.05 or diff1<-0.05 and diff2>0.05 or diff2<-0.05){
+    var diff2=setting-qfe;
+
+	if(math.abs(diff1) > 0.05 and math.abs(diff2) > 0.05){
 		setprop("/instrumentation/altimeter/setting-mismatch", 1);
 	}else{
 		setprop("/instrumentation/altimeter/setting-mismatch", 0);
 	}
-	
-	
-    settimer(update_systems,0);
+
+
+    settimer(update_systems,0.5);
 }

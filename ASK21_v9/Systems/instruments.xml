@@ -16,6 +16,9 @@
 					<property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
 					<table>
 						<property>/fdm/jsbsim/aero/beta-deg</property>
+						<!-- in a full slip the indication goes to zero (flight manual IV.8) -->
+						<entry><ind>-40</ind><dep>0</dep></entry>
+						<entry><ind>-35</ind><dep>0.05</dep></entry>
 						<entry><ind>-25</ind><dep>0.2</dep></entry>
 						<entry><ind>-8</ind><dep>0.9</dep></entry>
 						<entry><ind>-3</ind><dep>1</dep></entry>
@@ -23,6 +26,8 @@
 						<entry><ind>3</ind><dep>1</dep></entry>
 						<entry><ind>8</ind><dep>0.9</dep></entry>
 						<entry><ind>25</ind><dep>0.2</dep></entry>
+						<entry><ind>35</ind><dep>0.05</dep></entry>
+						<entry><ind>40</ind><dep>0</dep></entry>
 					</table>
 					<sum>
 						<product>
@@ -73,6 +78,9 @@
 					<property>/instrumentation/airspeed-indicator[1]/indicated-speed-kt</property>
 					<table>
 						<property>/fdm/jsbsim/aero/beta-deg</property>
+						<!-- in a full slip the indication goes to zero (flight manual IV.8) -->
+						<entry><ind>-40</ind><dep>0</dep></entry>
+						<entry><ind>-35</ind><dep>0.05</dep></entry>
 						<entry><ind>-25</ind><dep>0.2</dep></entry>
 						<entry><ind>-8</ind><dep>0.9</dep></entry>
 						<entry><ind>-3</ind><dep>1</dep></entry>
@@ -80,6 +88,8 @@
 						<entry><ind>3</ind><dep>1</dep></entry>
 						<entry><ind>8</ind><dep>0.9</dep></entry>
 						<entry><ind>25</ind><dep>0.2</dep></entry>
+						<entry><ind>35</ind><dep>0.05</dep></entry>
+						<entry><ind>40</ind><dep>0</dep></entry>
 					</table>
 					<sum>
 						<product>
@@ -342,6 +352,7 @@
 					</greater-than>
 				</or>
 			</condition>
+			<property>/systems/pitot/total-pressure-inhg-blockage</property>
 		</input>
 		<input>/systems/pitot/total-pressure-inhg</input>
 		<output>/systems/pitot/total-pressure-inhg-custom</output>

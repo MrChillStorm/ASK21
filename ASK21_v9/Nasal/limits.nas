@@ -33,8 +33,10 @@ var checkSpoiler = func(n) {
 setlistener("controls/engines/engine/throttle", checkSpoiler);
 
 var checkG = func{
-  if (getprop("/sim/freeze/replay-state"))
+  if (getprop("/sim/freeze/replay-state")) {
+    settimer(checkG, 1);     # keep checking after the replay
     return;
+  }
 
   var airspeed = getprop("velocities/airspeed-kt");
   var vne      = getprop("limits/vne");
@@ -59,6 +61,17 @@ var checkG = func{
   }else if ((max_negative_vne != nil) and airspeed > vmo  and (g < max_negative_vne)){
     msg = "Airframe structural negative-g load above manoeuvering speed limit exceeded!";
     }
+
+  # with the airbrakes extended the wing takes less: +3.5 g / 0 g (flight manual II.5)
+  var brakes = getprop("/surface-positions/speedbrake-pos-norm") or 0;
+  var max_positive_brakes = getprop("limits/max-positive-g-airbrakes");
+  var max_negative_brakes = getprop("limits/max-negative-g-airbrakes");
+  if (msg == "" and brakes > 0.05) {
+    if ((max_positive_brakes != nil) and (g > max_positive_brakes))
+      msg = "Airframe structural positive-g load with airbrakes extended exceeded!";
+    else if ((max_negative_brakes != nil) and (g < max_negative_brakes))
+      msg = "Airframe structural negative-g load with airbrakes extended exceeded!";
+  }
   
   
   if (msg != ""){
@@ -73,8 +86,10 @@ var checkG = func{
 }
 
 var checkVNE = func {
-  if (getprop("/sim/freeze/replay-state"))
+  if (getprop("/sim/freeze/replay-state")) {
+    settimer(checkVNE, 1);
     return;
+  }
 
   var airspeed = getprop("velocities/airspeed-kt");
   var vne      = getprop("limits/vne");
@@ -106,10 +121,14 @@ var checkVNE = func {
 }
 
 var checkMTOW = func{
-  if (getprop("/sim/freeze/replay-state"))
+  if (getprop("/sim/freeze/replay-state")) {
+    settimer(checkMTOW, 1);
     return;
+  }
 
-  var gw = getprop("fdm/yasim/gross-weight-lbs");
+  var gw = getprop("fdm/jsbsim/inertia/weight-lbs");
+  if (gw == nil)
+    gw = getprop("fdm/yasim/gross-weight-lbs");
   var mtow = getprop("limits/mtow-lbs");
   var msg = "";
   

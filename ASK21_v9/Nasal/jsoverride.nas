@@ -1,55 +1,32 @@
-var jsoverride = func {
+# Button 1 of the first joystick releases the tow cable (see the help). The button's own
+# bindings are replaced, not added to, and the option "Joystick button 1 releases the
+# cable" (Simulation Options, kept between sessions) switches this off from the next
+# start: FlightGear reads the joystick bindings when it starts.
 
-    var button = props.globals.getNode("/input/joysticks/js/button");
-    if (button == nil) return;
+var enabled = props.globals.initNode("/sim/model/joystick-release", 1, "BOOL");
 
-    print('Overriding buttons on joystick "' ~ props.globals.getNode("/input/joysticks/js/name").getValue() ~ '".');
-
-    binding = button.getNode("binding");
-    if (binding == nil) {
-        binding = button.addChild("binding");
-    }
-
-    binding.addChild("command");
-    binding.addChild("property");
-    binding.addChild("value");
-
-    if (button.getNode("binding[1]") == nil) {
-        b = button.addChild("binding");
-        b.addChild("command");
-        b.addChild("property");
-        b.addChild("value");
-    }
-
-    if (button.getNode("binding[2]") == nil) {
-        b = button.addChild("binding");
-        b.addChild("command");
-        b.addChild("property");
-        b.addChild("value");
-    }
-
-    b = button.getNode("mod-up/binding");
-    if (b == nil) {
-        m = button.addChild("mod-up");
-        b = m.addChild("binding");
-    }
-
-    b.addChild("command");
-    b.addChild("property");
-    b.addChild("value");
-
-    button.getNode("binding/command").setValue("property-assign");
-    button.getNode("binding/property").setValue("/sim/hitches/hook-open");
-    button.getNode("binding/value").setValue("true");
-    button.getNode("binding[1]/command").setValue("property-assign");
-    button.getNode("binding[1]/property").setValue("/sim/hitches/aerotow/open");
-    button.getNode("binding[1]/value").setValue("true");
-    button.getNode("binding[2]/command").setValue("property-assign");
-    button.getNode("binding[2]/property").setValue("/sim/hitches/winch/open");
-    button.getNode("binding[2]/value").setValue("true");
-    button.getNode("mod-up/binding/command").setValue("property-assign");
-    button.getNode("mod-up/binding/property").setValue("/sim/hitches/hook-open");
-    button.getNode("mod-up/binding/value").setValue("false");
+var set_binding = func(node, prop, value) {
+	node.getNode("command", 1).setValue("property-assign");
+	node.getNode("property", 1).setValue(prop);
+	node.getNode("value", 1).setValue(value);
 }
 
-jsoverride()
+var jsoverride = func {
+	if (!enabled.getBoolValue()) return;
+
+	var button = props.globals.getNode("/input/joysticks/js/button");
+	if (button == nil) return;
+
+	print('Overriding button 1 on joystick "' ~ (getprop("/input/joysticks/js/name") or "") ~ '": tow release.');
+
+	foreach (var b; button.getChildren("binding")) b.remove();
+	var up = button.getNode("mod-up");
+	if (up != nil) up.remove();
+
+	set_binding(button.getChild("binding", 0, 1), "/sim/hitches/hook-open", "true");
+	set_binding(button.getChild("binding", 1, 1), "/sim/hitches/aerotow/open", "true");
+	set_binding(button.getChild("binding", 2, 1), "/sim/hitches/winch/open", "true");
+	set_binding(button.getNode("mod-up", 1).getChild("binding", 0, 1), "/sim/hitches/hook-open", "false");
+}
+
+jsoverride();
