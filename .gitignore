@@ -1,0 +1,11 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# made when rebuilding the model and the report in fdm/
+fdm/*_noadot.xml
+fdm/root_p*/
+fdm/*.out
+fdm/ask21-aero-v9.xml
+fdm/ask21-jsb-v9.xml
+fdm/ask21_report.pdf

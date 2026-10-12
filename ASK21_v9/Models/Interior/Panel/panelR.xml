@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<PropertyList>
+
+	<path>panelR.ac</path>
+
+	<!-- FLARM -->
+	<model>
+		<name>flarm-main</name>
+		<path>Aircraft/Instruments-3d/glider/flarm/traditional/flarm_traditional.xml</path>
+		<offsets>
+			<x-m>-0.0 </x-m>
+			<y-m> 0.0 </y-m>
+			<z-m> 0.206 </z-m>
+		</offsets>
+	</model>
+
+	<!-- Variometer -->
+	<model>
+		<name>vario-rear</name>
+		<overlay>
+			<params>
+				<te-reading-mps type="string">instrumentation/variometer[1]/te-reading-mps</te-reading-mps>
+				<mc-cready type="string">instrumentation/mc-cready[1]/rot</mc-cready>
+			</params>
+		</overlay>
+		<path>Instruments/vario-5stv5/winter-vario-5stv5.xml</path>
+		<condition>
+			<not-equals>
+				<property>/sim/model/livery/instruments/vsi</property>
+				<value>1</value>
+			</not-equals>
+		</condition>
+		<offsets>
+			<y-m>-0.08 </y-m>
+			<z-m> 0.125</z-m>
+		</offsets>
+	</model>
+	<model>
+		<name>vario-kts-rear</name>
+		<overlay>
+			<params>
+				<te-reading-mps type="string">instrumentation/variometer[1]/te-reading-mps</te-reading-mps>
+				<mc-cready type="string">instrumentation/mc-cready[1]/rot</mc-cready>
+			</params>
+		</overlay>
+		<path>Instruments/vario-knots/winter-vario-5stv5-knots.xml</path>
+		<condition>
+			<equals>
+				<property>/sim/model/livery/instruments/vsi</property>
+				<value>1</value>
+			</equals>
+		</condition>
+		<offsets>
+			<y-m>-0.08 </y-m>
+			<z-m> 0.125</z-m>
+		</offsets>
+	</model>
+
+	<!-- ILEC RAZ Round Indicator -->
+	<model>
+		<name>ilec-raz-rear</name>
+		<path>Instruments/ilec-raz/ilec-raz.xml</path>
+		<offsets>
+			<y-m>-0.08 </y-m>
+			<z-m> 0.035</z-m>
+		</offsets>
+	</model>
+
+	<!-- Altimeter -->
+	<model>
+		<name>winter-alt-rear</name>
+		<overlay>
+			<params>
+				<altitude-ft type="string">instrumentation/altimeter[1]/indicated-altitude-ft</altitude-ft>
+				<setting-hpa type="string">instrumentation/altimeter[1]/setting-hpa</setting-hpa>
+			</params>
+		</overlay>
+		<path>Instruments/winter-alt/winter-alt.xml</path>
+		<offsets>
+			<y-m> 0.08 </y-m>
+			<z-m> 0.035</z-m>
+		</offsets>
+	</model>
+
+	<!-- ASI -->
+	<model>
+		<name>winter-asi-rear</name>
+		<overlay>
+			<params>
+				<airspeed-kt type="string">instrumentation/airspeed-indicator[1]/indicated-corr-speed-kt</airspeed-kt>
+			</params>
+		</overlay>
+		<path>Instruments/winter-asi/winter-asi.xml</path>
+		<offsets>
+			<y-m> 0.08 </y-m>
+			<z-m> 0.125</z-m>
+		</offsets>
+	</model>
+
+	<!-- Compass -->
+	<model>
+		<name>compass-rear</name>
+		<overlay>
+			<params>
+				<heading-deg type="string">instrumentation/magnetic-compass[1]/indicated-heading-deg</heading-deg>
+			</params>
+		</overlay>
+		<path>Instruments/57mm_compass/57mm_compass.xml</path>
+		<offsets>
+			<y-m> 0.22 </y-m>
+			<z-m> 0.055</z-m>
+		</offsets>
+	</model>
+	<model>
+		<name>compass_screws_rear</name>
+		<path>Instruments/GMeter/57mm_screws.xml</path>
+		<offsets>
+			<x-m> 0.0 </x-m>
+			<y-m> 0.22</y-m>
+			<z-m> 0.055</z-m>
+		</offsets>
+	</model>
+
+
+	<!-- PTT Switch -->
+	<model>
+		<name>ptt-rear</name>
+		<path>Instruments/switches/ptt-switch.xml</path>
+		<offsets>
+			<y-m>-0.24</y-m>
+			<z-m> 0.04</z-m>
+		</offsets>
+	</model>
+</PropertyList>

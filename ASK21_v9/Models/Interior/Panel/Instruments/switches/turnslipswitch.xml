@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PropertyList>
+	<path>lever-switch.ac</path>
+	<animation>
+		<type>rotate</type>
+		<object-name>lever</object-name>
+		<property>controls/electric/turn-slip-switch-pos</property>
+		<factor>-30</factor>
+		<axis>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>lever</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/turn-slip-switch</property>
+			</binding>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/sound/switch</property>
+			</binding>
+		</action>
+	</animation>
+</PropertyList>

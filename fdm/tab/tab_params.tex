@@ -1,0 +1,24 @@
+\begin{tabular}{llccc}
+\toprule
+Parameter & Meaning & bounds & fitted \\
+\midrule
+\texttt{CN90\_wing} & wing section normal force at 90$^\circ$ (flat plate, AR-corrected) & 1.1--1.9 & 1.2 \\
+\texttt{stall\_drop} & lift drop after $c_{l,\max}$ & 0.03--0.35 & 0.0553 \\
+\texttt{boff} & onset of the flat-plate blend beyond the peak (deg) & 3--12 & 7.73 \\
+\texttt{dstall} & width of the flat-plate blend (deg) & 8--25 & 11.2 \\
+\texttt{w\_ca} & width of the leading-edge-suction collapse (deg) & 4--18 & 5.6 \\
+\texttt{xcp90} & section centre of pressure at 90$^\circ$ ($x/c$) & 0.42--0.56 & 0.442 \\
+\texttt{CN90\_ht} & tailplane $c_{N,90}$ & 0.9--1.5 & 0.975 \\
+\texttt{CN90\_vt} & fin $c_{N,90}$ & 0.9--1.4 & 1.05 \\
+\texttt{wake\_k} & wing-wake $q$-deficit at the tailplane (scale) & 0.3--1.8 & 0.356 \\
+\texttt{wake\_kv} & wing-wake $q$-deficit at the fin (scale) & 0--1 & 0.47 \\
+\texttt{fin\_blank} & fin $q$ loss in the fuselage cross-flow wake & 0.25--0.45 & 0.279 \\
+\texttt{cdc} & fuselage cross-flow drag coefficient & 0.6--1.3 & 1.25 \\
+\texttt{kpot\_aft} & aft-body share of the Munk potential load & 0.2--1 & 0.502 \\
+\texttt{wing\_clmax\_k} & inner-wing $c_{l,\max}$ / NeuralFoil & 0.8--0.9 & 0.818 \\
+\texttt{a\_peak\_root} & inner-wing stall angle (deg) & 12--17 & 12.5 \\
+\texttt{tip\_clmax\_k} & outer-wing $c_{l,\max}$ / NeuralFoil & 0.85--1 & 0.913 \\
+\texttt{a\_peak\_tip} & outer-wing stall angle (deg) & 15--19 & 18.8 \\
+\texttt{flap\_eff} & plain-flap effectiveness / NeuralFoil & 0.85--1.05 & 1.04 \\
+\bottomrule
+\end{tabular}

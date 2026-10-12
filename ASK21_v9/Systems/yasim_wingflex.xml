@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	
+	<filter>
+		<type>gain</type>
+		<gain>1</gain>
+		<input>
+			<expression>
+				<product>
+					<property>/yasim/gross-weight-lbs</property>
+					<property>/accelerations/pilot-g</property>
+				</product>
+			</expression>
+		</input>
+		<output>/sim/model/wingflex-lift</output>
+	</filter>
+  
+</PropertyList>

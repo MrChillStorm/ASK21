@@ -1,0 +1,3532 @@
+<aerodynamics>
+<function name="aero/tail/eta"><table><independentVar lookup="row">aero/alpha-deg</independentVar><description>dynamic pressure ratio at the T-tail: blanked by the stalled wing wake between a_in and a_out</description><tableData>
+0 0.97
+12.6893 0.97
+17.6893 0.293805
+37.0292 0.293805
+45.0292 0.916453
+90 0.916453
+</tableData></table></function>
+<function name="aero/tail/alpha_eff_deg"><description>tailplane angle of attack: local flow at the tail (includes pitch rate), downwash with lag lt/V, setting angle, elevator</description><product><sum><property>aero/comp/ht/a</property><product><value>-0.20882060493418095</value><sum><property>aero/alpha-rad</property><value>0.05235987755982989</value><product><value>-15.713000000000001</value><quotient><property>aero/alphadot-rad_sec</property><property>velocities/vt-fps</property></quotient></product></sum></product><value>0.07546655157490954</value><product><value>0.55</value><property>fcs/elevator-pos-rad</property></product></sum><value>57.29578</value></product></function>
+<function name="aero/tail/CL"><table><independentVar lookup="row">aero/tail/alpha_eff_deg</independentVar><description>tailplane lift coefficient</description><tableData>
+-90 -0
+-75 -0.4
+-60 -0.8
+-45 -1
+-35 -0.95
+-25 -0.75
+-20 -0.85
+-15 -0.897538
+-12 -0.846734
+0 0
+12 0.846734
+15 0.897538
+20 0.85
+25 0.75
+35 0.95
+45 1
+60 0.8
+75 0.4
+90 0
+</tableData></table></function>
+
+<function name="aero/pitch/new_w"><table><independentVar lookup="row">aero/alpha-deg</independentVar><tableData>
+-180 0
+-30 0
+-14.4453 0
+-9.89282 1
+9.89282 1
+14.4453 0
+180 0
+</tableData></table></function>
+<function name="aero/pitch/old_w"><table><independentVar lookup="row">aero/alpha-deg</independentVar><tableData>
+-180 1
+-30 1
+-14.4453 1
+-9.89282 0
+9.89282 0
+14.4453 1
+180 1
+</tableData></table></function>
+<function name="aero/gate/fwd"><description>strip / fuselage / fin terms fade out when the flow comes from behind the aircraft (ground tail wind)</description><table><independentVar lookup="row">aero/alpha-deg</independentVar><tableData>
+-180 0
+-135 0
+-100 1
+100 1
+135 0
+180 0
+</tableData></table></function>
+
+<function name="aero/comp/ht/xc"><quotient><difference><property>inertia/cg-x-in</property><value>135.8</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/ht/zc"><quotient><difference><property>inertia/cg-z-in</property><value>80.0</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/ht/u"><sum><property>velocities/u-fps</property><product><property>velocities/q-rad_sec</property><property>aero/comp/ht/zc</property></product></sum></function>
+<function name="aero/comp/ht/v"><sum><property>velocities/v-fps</property><product><property>velocities/r-rad_sec</property><property>aero/comp/ht/xc</property></product><product><value>-1</value><property>velocities/p-rad_sec</property><property>aero/comp/ht/zc</property></product></sum></function>
+<function name="aero/comp/ht/w"><sum><property>velocities/w-fps</property><product><value>-1</value><property>velocities/q-rad_sec</property><property>aero/comp/ht/xc</property></product></sum></function>
+<function name="aero/comp/vt/xc"><quotient><difference><property>inertia/cg-x-in</property><value>135.0</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/vt/zc"><quotient><difference><property>inertia/cg-z-in</property><value>54.7</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/vt/u"><sum><property>velocities/u-fps</property><product><property>velocities/q-rad_sec</property><property>aero/comp/vt/zc</property></product></sum></function>
+<function name="aero/comp/vt/v"><sum><property>velocities/v-fps</property><product><property>velocities/r-rad_sec</property><property>aero/comp/vt/xc</property></product><product><value>-1</value><property>velocities/p-rad_sec</property><property>aero/comp/vt/zc</property></product></sum></function>
+<function name="aero/comp/vt/w"><sum><property>velocities/w-fps</property><product><value>-1</value><property>velocities/q-rad_sec</property><property>aero/comp/vt/xc</property></product></sum></function>
+<function name="aero/comp/ht/a"><atan2><property>aero/comp/ht/w</property><property>aero/comp/ht/u</property></atan2></function>
+<function name="aero/comp/ht/ae"><product><difference><property>aero/comp/ht/a</property><product><value>0.8</value><property>aero/alpha-rad</property></product></difference><value>57.29578</value></product></function>
+<function name="aero/comp/vt/b"><atan2><property>aero/comp/vt/v</property><property>aero/comp/vt/u</property></atan2></function>
+<function name="aero/comp/vt/bdeg"><product><property>aero/comp/vt/b</property><value>57.29578</value></product></function>
+<function name="aero/comp/fu0/xc"><quotient><difference><property>inertia/cg-x-in</property><value>-135.3902383711332</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu0/zc"><quotient><difference><property>inertia/cg-z-in</property><value>21.066734014973928</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu0/v"><sum><property>velocities/v-fps</property><product><property>velocities/r-rad_sec</property><property>aero/comp/fu0/xc</property></product><product><value>-1</value><property>velocities/p-rad_sec</property><property>aero/comp/fu0/zc</property></product></sum></function>
+<function name="aero/comp/fu0/w"><sum><property>velocities/w-fps</property><product><value>-1</value><property>velocities/q-rad_sec</property><property>aero/comp/fu0/xc</property></product></sum></function>
+<function name="aero/comp/fu0/Y"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>7.1437053761091605</value><property>aero/comp/fu0/v</property><abs><property>aero/comp/fu0/v</property></abs></product></function>
+<function name="aero/comp/fu0/Z"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>8.057126712328767</value><difference><product><property>aero/comp/fu0/w</property><abs><property>aero/comp/fu0/w</property></abs></product><product><property>velocities/w-fps</property><abs><property>velocities/w-fps</property></abs></product></difference></product></function>
+<function name="aero/comp/fu1/xc"><quotient><difference><property>inertia/cg-x-in</property><value>-97.98147353762164</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu1/zc"><quotient><difference><property>inertia/cg-z-in</property><value>25.707589112809853</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu1/v"><sum><property>velocities/v-fps</property><product><property>velocities/r-rad_sec</property><property>aero/comp/fu1/xc</property></product><product><value>-1</value><property>velocities/p-rad_sec</property><property>aero/comp/fu1/zc</property></product></sum></function>
+<function name="aero/comp/fu1/w"><sum><property>velocities/w-fps</property><product><value>-1</value><property>velocities/q-rad_sec</property><property>aero/comp/fu1/xc</property></product></sum></function>
+<function name="aero/comp/fu1/Y"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>10.626983980162453</value><property>aero/comp/fu1/v</property><abs><property>aero/comp/fu1/v</property></abs></product></function>
+<function name="aero/comp/fu1/Z"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>11.366762657534245</value><difference><product><property>aero/comp/fu1/w</property><abs><property>aero/comp/fu1/w</property></abs></product><product><property>velocities/w-fps</property><abs><property>velocities/w-fps</property></abs></product></difference></product></function>
+<function name="aero/comp/fu2/xc"><quotient><difference><property>inertia/cg-x-in</property><value>-58.80172395995326</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu2/zc"><quotient><difference><property>inertia/cg-z-in</property><value>26.808843655080175</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu2/v"><sum><property>velocities/v-fps</property><product><property>velocities/r-rad_sec</property><property>aero/comp/fu2/xc</property></product><product><value>-1</value><property>velocities/p-rad_sec</property><property>aero/comp/fu2/zc</property></product></sum></function>
+<function name="aero/comp/fu2/w"><sum><property>velocities/w-fps</property><product><value>-1</value><property>velocities/q-rad_sec</property><property>aero/comp/fu2/xc</property></product></sum></function>
+<function name="aero/comp/fu2/Y"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>11.414322408090502</value><property>aero/comp/fu2/v</property><abs><property>aero/comp/fu2/v</property></abs></product></function>
+<function name="aero/comp/fu2/Z"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>11.625011999999998</value><difference><product><property>aero/comp/fu2/w</property><abs><property>aero/comp/fu2/w</property></abs></product><product><property>velocities/w-fps</property><abs><property>velocities/w-fps</property></abs></product></difference></product></function>
+<function name="aero/comp/fu3/xc"><quotient><difference><property>inertia/cg-x-in</property><value>-21.404260176516875</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu3/zc"><quotient><difference><property>inertia/cg-z-in</property><value>27.184463613276773</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu3/v"><sum><property>velocities/v-fps</property><product><property>velocities/r-rad_sec</property><property>aero/comp/fu3/xc</property></product><product><value>-1</value><property>velocities/p-rad_sec</property><property>aero/comp/fu3/zc</property></product></sum></function>
+<function name="aero/comp/fu3/w"><sum><property>velocities/w-fps</property><product><value>-1</value><property>velocities/q-rad_sec</property><property>aero/comp/fu3/xc</property></product></sum></function>
+<function name="aero/comp/fu3/Y"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>8.780449612953383</value><property>aero/comp/fu3/v</property><abs><property>aero/comp/fu3/v</property></abs></product></function>
+<function name="aero/comp/fu3/Z"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>10.766954335616438</value><difference><product><property>aero/comp/fu3/w</property><abs><property>aero/comp/fu3/w</property></abs></product><product><property>velocities/w-fps</property><abs><property>velocities/w-fps</property></abs></product></difference></product></function>
+<function name="aero/comp/fu4/xc"><quotient><difference><property>inertia/cg-x-in</property><value>19.082756372071305</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu4/zc"><quotient><difference><property>inertia/cg-z-in</property><value>28.74904982155934</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu4/v"><sum><property>velocities/v-fps</property><product><property>velocities/r-rad_sec</property><property>aero/comp/fu4/xc</property></product><product><value>-1</value><property>velocities/p-rad_sec</property><property>aero/comp/fu4/zc</property></product></sum></function>
+<function name="aero/comp/fu4/w"><sum><property>velocities/w-fps</property><product><value>-1</value><property>velocities/q-rad_sec</property><property>aero/comp/fu4/xc</property></product></sum></function>
+<function name="aero/comp/fu4/Y"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>5.867690562742943</value><property>aero/comp/fu4/v</property><abs><property>aero/comp/fu4/v</property></abs></product></function>
+<function name="aero/comp/fu4/Z"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>8.280935787671234</value><difference><product><property>aero/comp/fu4/w</property><abs><property>aero/comp/fu4/w</property></abs></product><product><property>velocities/w-fps</property><abs><property>velocities/w-fps</property></abs></product></difference></product></function>
+<function name="aero/comp/fu5/xc"><quotient><difference><property>inertia/cg-x-in</property><value>58.422691232073014</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu5/zc"><quotient><difference><property>inertia/cg-z-in</property><value>28.660640011623304</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu5/v"><sum><property>velocities/v-fps</property><product><property>velocities/r-rad_sec</property><property>aero/comp/fu5/xc</property></product><product><value>-1</value><property>velocities/p-rad_sec</property><property>aero/comp/fu5/zc</property></product></sum></function>
+<function name="aero/comp/fu5/w"><sum><property>velocities/w-fps</property><product><value>-1</value><property>velocities/q-rad_sec</property><property>aero/comp/fu5/xc</property></product></sum></function>
+<function name="aero/comp/fu5/Y"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>4.477309749859261</value><property>aero/comp/fu5/v</property><abs><property>aero/comp/fu5/v</property></abs></product></function>
+<function name="aero/comp/fu5/Z"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>6.767986438356164</value><difference><product><property>aero/comp/fu5/w</property><abs><property>aero/comp/fu5/w</property></abs></product><product><property>velocities/w-fps</property><abs><property>velocities/w-fps</property></abs></product></difference></product></function>
+<function name="aero/comp/fu6/xc"><quotient><difference><property>inertia/cg-x-in</property><value>97.45099716255442</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu6/zc"><quotient><difference><property>inertia/cg-z-in</property><value>28.38544186655612</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu6/v"><sum><property>velocities/v-fps</property><product><property>velocities/r-rad_sec</property><property>aero/comp/fu6/xc</property></product><product><value>-1</value><property>velocities/p-rad_sec</property><property>aero/comp/fu6/zc</property></product></sum></function>
+<function name="aero/comp/fu6/w"><sum><property>velocities/w-fps</property><product><value>-1</value><property>velocities/q-rad_sec</property><property>aero/comp/fu6/xc</property></product></sum></function>
+<function name="aero/comp/fu6/Y"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>3.283257236147227</value><property>aero/comp/fu6/v</property><abs><property>aero/comp/fu6/v</property></abs></product></function>
+<function name="aero/comp/fu6/Z"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>5.22818</value><difference><product><property>aero/comp/fu6/w</property><abs><property>aero/comp/fu6/w</property></abs></product><product><property>velocities/w-fps</property><abs><property>velocities/w-fps</property></abs></product></difference></product></function>
+<function name="aero/comp/fu7/xc"><quotient><difference><property>inertia/cg-x-in</property><value>137.44307378593578</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu7/zc"><quotient><difference><property>inertia/cg-z-in</property><value>27.385445753242767</value></difference><value>12</value></quotient></function>
+<function name="aero/comp/fu7/v"><sum><property>velocities/v-fps</property><product><property>velocities/r-rad_sec</property><property>aero/comp/fu7/xc</property></product><product><value>-1</value><property>velocities/p-rad_sec</property><property>aero/comp/fu7/zc</property></product></sum></function>
+<function name="aero/comp/fu7/w"><sum><property>velocities/w-fps</property><product><value>-1</value><property>velocities/q-rad_sec</property><property>aero/comp/fu7/xc</property></product></sum></function>
+<function name="aero/comp/fu7/Y"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>2.2667102841862583</value><property>aero/comp/fu7/v</property><abs><property>aero/comp/fu7/v</property></abs></product></function>
+<function name="aero/comp/fu7/Z"><product><value>-0.517094</value><property>atmosphere/rho-slugs_ft3</property><value>2.828946712328767</value><difference><product><property>aero/comp/fu7/w</property><abs><property>aero/comp/fu7/w</property></abs></product><product><property>velocities/w-fps</property><abs><property>velocities/w-fps</property></abs></product></difference></product></function>
+<function name="aero/comp/dZ"><sum><property>aero/comp/fu0/Z</property><property>aero/comp/fu1/Z</property><property>aero/comp/fu2/Z</property><property>aero/comp/fu3/Z</property><property>aero/comp/fu4/Z</property><property>aero/comp/fu5/Z</property><property>aero/comp/fu6/Z</property><property>aero/comp/fu7/Z</property></sum></function>
+<function name="aero/comp/dYf"><sum><property>aero/comp/fu0/Y</property><property>aero/comp/fu1/Y</property><property>aero/comp/fu2/Y</property><property>aero/comp/fu3/Y</property><property>aero/comp/fu4/Y</property><property>aero/comp/fu5/Y</property><property>aero/comp/fu6/Y</property><property>aero/comp/fu7/Y</property></sum></function>
+
+<function name="aero/strip/rx"><description>wing AC ahead of cg (ft)</description><quotient><difference><property>inertia/cg-x-in</property><property>metrics/aero-rp-x-in</property></difference><value>12</value></quotient></function>
+<function name="aero/strip/sL0/u"><sum><property>velocities/u-fps</property><product><property>velocities/r-rad_sec</property><value>4.64833</value></product></sum></function>
+<function name="aero/strip/sL0/w"><sum><property>velocities/w-fps</property><product><property>velocities/p-rad_sec</property><value>-4.64833</value></product><product><property>velocities/q-rad_sec</property><property>aero/strip/rx</property><value>-1</value></product></sum></function>
+<function name="aero/strip/sL0/a"><description>local flow angle (rad)</description><atan2><property>aero/strip/sL0/w</property><property>aero/strip/sL0/u</property></atan2></function>
+<function name="aero/strip/sL0/ae"><description>effective section alpha incl. washout (deg)</description><product><difference><property>aero/strip/sL0/a</property><value>0.000460</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sL0/are"><description>same, for the aircraft (cg) alpha</description><product><difference><property>aero/alpha-rad</property><value>0.000460</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sL0/q"><product><value>0.5</value><property>atmosphere/rho-slugs_ft3</property><sum><product><property>aero/strip/sL0/u</property><property>aero/strip/sL0/u</property></product><product><property>aero/strip/sL0/w</property><property>aero/strip/sL0/w</property></product></sum></product></function>
+<function name="aero/strip/sL0/CLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL0/are</independentVar><tableData>
+-90 0
+-60 -0.855727
+-45 -0.957598
+-30 -0.753857
+-20 -0.550116
+-14 -0.448245
+-10 -0.448245
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11661
+14 1.22578
+20 1.04131
+30 1.16457
+45 0.939058
+60 0.841854
+90 0
+</tableData></table></product></function>
+<function name="aero/strip/sL0/CDr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL0/are</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table></product></function>
+<function name="aero/strip/sL0/NLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL0/are</independentVar><tableData>
+-90 7.1933
+-60 3.99872
+-45 2.66524
+-30 1.63736
+-20 1.02003
+-14 0.629254
+-10 0.300824
+-7.5 0
+7.5 0
+8 0
+10 -0.333104
+14 -0.552371
+20 -1.22948
+30 -1.9273
+45 -3.38442
+60 -4.71324
+90 -7.8947
+</tableData></table></product></function>
+<function name="aero/strip/sL0/X"><product><value>31.96290</value><difference>
+  <product><property>aero/strip/sL0/q</property><difference><product><table><independentVar lookup="row">aero/strip/sL0/ae</independentVar><tableData>
+-90 0
+-60 -0.855727
+-45 -0.957598
+-30 -0.753857
+-20 -0.550116
+-14 -0.448245
+-10 -0.448245
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11661
+14 1.22578
+20 1.04131
+30 1.16457
+45 0.939058
+60 0.841854
+90 0
+</tableData></table><sin><property>aero/strip/sL0/a</property></sin></product><product><table><independentVar lookup="row">aero/strip/sL0/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><cos><property>aero/strip/sL0/a</property></cos></product></difference></product>
+  <product><property>aero/qbar-psf</property><difference><product><property>aero/strip/sL0/CLr</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/sL0/CDr</property><cos><property>aero/alpha-rad</property></cos></product></difference></product>
+</difference></product></function>
+<function name="aero/strip/sL0/Z"><product><value>31.96290</value><difference>
+  <product><property>aero/strip/sL0/q</property><sum><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL0/ae</independentVar><tableData>
+-90 0
+-60 -0.855727
+-45 -0.957598
+-30 -0.753857
+-20 -0.550116
+-14 -0.448245
+-10 -0.448245
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11661
+14 1.22578
+20 1.04131
+30 1.16457
+45 0.939058
+60 0.841854
+90 0
+</tableData></table><cos><property>aero/strip/sL0/a</property></cos></product><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL0/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><sin><property>aero/strip/sL0/a</property></sin></product></sum></product>
+  <product><property>aero/qbar-psf</property><sum><product><value>-1</value><property>aero/strip/sL0/CLr</property><cos><property>aero/alpha-rad</property></cos></product><product><value>-1</value><property>aero/strip/sL0/CDr</property><sin><property>aero/alpha-rad</property></sin></product></sum></product>
+</difference></product></function>
+<function name="aero/strip/sL0/ZN"><description>stall-residual normal force (for roll moment; the linear part is the lumped Roll_damp)</description><product><value>31.96290</value><difference>
+  <product><property>aero/strip/sL0/q</property><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL0/ae</independentVar><tableData>
+-90 7.1933
+-60 3.99872
+-45 2.66524
+-30 1.63736
+-20 1.02003
+-14 0.629254
+-10 0.300824
+-7.5 0
+7.5 0
+8 0
+10 -0.333104
+14 -0.552371
+20 -1.22948
+30 -1.9273
+45 -3.38442
+60 -4.71324
+90 -7.8947
+</tableData></table><cos><property>aero/strip/sL0/a</property></cos></product></product>
+  <product><property>aero/qbar-psf</property><product><value>-1</value><property>aero/strip/sL0/NLr</property><cos><property>aero/alpha-rad</property></cos></product></product>
+</difference></product></function>
+<function name="aero/strip/sL1/u"><sum><property>velocities/u-fps</property><product><property>velocities/r-rad_sec</property><value>9.29667</value></product></sum></function>
+<function name="aero/strip/sL1/w"><sum><property>velocities/w-fps</property><product><property>velocities/p-rad_sec</property><value>-9.29667</value></product><product><property>velocities/q-rad_sec</property><property>aero/strip/rx</property><value>-1</value></product></sum></function>
+<function name="aero/strip/sL1/a"><description>local flow angle (rad)</description><atan2><property>aero/strip/sL1/w</property><property>aero/strip/sL1/u</property></atan2></function>
+<function name="aero/strip/sL1/ae"><description>effective section alpha incl. washout (deg)</description><product><difference><property>aero/strip/sL1/a</property><value>0.000919</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sL1/are"><description>same, for the aircraft (cg) alpha</description><product><difference><property>aero/alpha-rad</property><value>0.000919</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sL1/q"><product><value>0.5</value><property>atmosphere/rho-slugs_ft3</property><sum><product><property>aero/strip/sL1/u</property><property>aero/strip/sL1/u</property></product><product><property>aero/strip/sL1/w</property><property>aero/strip/sL1/w</property></product></sum></product></function>
+<function name="aero/strip/sL1/CLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL1/are</independentVar><tableData>
+-90 0
+-60 -0.861455
+-45 -0.965196
+-30 -0.757714
+-20 -0.550232
+-14 -0.446491
+-10 -0.446491
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11351
+14 1.22468
+20 1.03683
+30 1.16235
+45 0.932697
+60 0.833708
+90 0
+</tableData></table></product></function>
+<function name="aero/strip/sL1/CDr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL1/are</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table></product></function>
+<function name="aero/strip/sL1/NLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL1/are</independentVar><tableData>
+-90 7.1933
+-60 4.07215
+-45 2.71418
+-30 1.66743
+-20 1.03876
+-14 0.640808
+-10 0.306347
+-7.5 0
+7.5 0
+8 0
+10 -0.339221
+14 -0.562513
+20 -1.25206
+30 -1.96269
+45 -3.44657
+60 -4.79978
+90 -7.8947
+</tableData></table></product></function>
+<function name="aero/strip/sL1/X"><product><value>18.70044</value><difference>
+  <product><property>aero/strip/sL1/q</property><difference><product><table><independentVar lookup="row">aero/strip/sL1/ae</independentVar><tableData>
+-90 0
+-60 -0.861455
+-45 -0.965196
+-30 -0.757714
+-20 -0.550232
+-14 -0.446491
+-10 -0.446491
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11351
+14 1.22468
+20 1.03683
+30 1.16235
+45 0.932697
+60 0.833708
+90 0
+</tableData></table><sin><property>aero/strip/sL1/a</property></sin></product><product><table><independentVar lookup="row">aero/strip/sL1/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><cos><property>aero/strip/sL1/a</property></cos></product></difference></product>
+  <product><property>aero/qbar-psf</property><difference><product><property>aero/strip/sL1/CLr</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/sL1/CDr</property><cos><property>aero/alpha-rad</property></cos></product></difference></product>
+</difference></product></function>
+<function name="aero/strip/sL1/Z"><product><value>18.70044</value><difference>
+  <product><property>aero/strip/sL1/q</property><sum><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL1/ae</independentVar><tableData>
+-90 0
+-60 -0.861455
+-45 -0.965196
+-30 -0.757714
+-20 -0.550232
+-14 -0.446491
+-10 -0.446491
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11351
+14 1.22468
+20 1.03683
+30 1.16235
+45 0.932697
+60 0.833708
+90 0
+</tableData></table><cos><property>aero/strip/sL1/a</property></cos></product><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL1/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><sin><property>aero/strip/sL1/a</property></sin></product></sum></product>
+  <product><property>aero/qbar-psf</property><sum><product><value>-1</value><property>aero/strip/sL1/CLr</property><cos><property>aero/alpha-rad</property></cos></product><product><value>-1</value><property>aero/strip/sL1/CDr</property><sin><property>aero/alpha-rad</property></sin></product></sum></product>
+</difference></product></function>
+<function name="aero/strip/sL1/ZN"><description>stall-residual normal force (for roll moment; the linear part is the lumped Roll_damp)</description><product><value>18.70044</value><difference>
+  <product><property>aero/strip/sL1/q</property><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL1/ae</independentVar><tableData>
+-90 7.1933
+-60 4.07215
+-45 2.71418
+-30 1.66743
+-20 1.03876
+-14 0.640808
+-10 0.306347
+-7.5 0
+7.5 0
+8 0
+10 -0.339221
+14 -0.562513
+20 -1.25206
+30 -1.96269
+45 -3.44657
+60 -4.79978
+90 -7.8947
+</tableData></table><cos><property>aero/strip/sL1/a</property></cos></product></product>
+  <product><property>aero/qbar-psf</property><product><value>-1</value><property>aero/strip/sL1/NLr</property><cos><property>aero/alpha-rad</property></cos></product></product>
+</difference></product></function>
+<function name="aero/strip/sL2/u"><sum><property>velocities/u-fps</property><product><property>velocities/r-rad_sec</property><value>13.94500</value></product></sum></function>
+<function name="aero/strip/sL2/w"><sum><property>velocities/w-fps</property><product><property>velocities/p-rad_sec</property><value>-13.94500</value></product><product><property>velocities/q-rad_sec</property><property>aero/strip/rx</property><value>-1</value></product></sum></function>
+<function name="aero/strip/sL2/a"><description>local flow angle (rad)</description><atan2><property>aero/strip/sL2/w</property><property>aero/strip/sL2/u</property></atan2></function>
+<function name="aero/strip/sL2/ae"><description>effective section alpha incl. washout (deg)</description><product><difference><property>aero/strip/sL2/a</property><value>0.001379</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sL2/are"><description>same, for the aircraft (cg) alpha</description><product><difference><property>aero/alpha-rad</property><value>0.001379</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sL2/q"><product><value>0.5</value><property>atmosphere/rho-slugs_ft3</property><sum><product><property>aero/strip/sL2/u</property><property>aero/strip/sL2/u</property></product><product><property>aero/strip/sL2/w</property><property>aero/strip/sL2/w</property></product></sum></product></function>
+<function name="aero/strip/sL2/CLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL2/are</independentVar><tableData>
+-90 0
+-60 -0.867182
+-45 -0.972794
+-30 -0.761571
+-20 -0.550348
+-14 -0.444736
+-10 -0.444736
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11041
+14 1.22358
+20 1.03234
+30 1.16013
+45 0.926336
+60 0.825562
+90 0
+</tableData></table></product></function>
+<function name="aero/strip/sL2/CDr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL2/are</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table></product></function>
+<function name="aero/strip/sL2/NLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL2/are</independentVar><tableData>
+-90 7.1933
+-60 4.14557
+-45 2.76311
+-30 1.69749
+-20 1.05749
+-14 0.652362
+-10 0.311871
+-7.5 0
+7.5 0
+8 0
+10 -0.345337
+14 -0.572655
+20 -1.27463
+30 -1.99808
+45 -3.50871
+60 -4.88633
+90 -7.8947
+</tableData></table></product></function>
+<function name="aero/strip/sL2/X"><product><value>16.43982</value><difference>
+  <product><property>aero/strip/sL2/q</property><difference><product><table><independentVar lookup="row">aero/strip/sL2/ae</independentVar><tableData>
+-90 0
+-60 -0.867182
+-45 -0.972794
+-30 -0.761571
+-20 -0.550348
+-14 -0.444736
+-10 -0.444736
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11041
+14 1.22358
+20 1.03234
+30 1.16013
+45 0.926336
+60 0.825562
+90 0
+</tableData></table><sin><property>aero/strip/sL2/a</property></sin></product><product><table><independentVar lookup="row">aero/strip/sL2/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><cos><property>aero/strip/sL2/a</property></cos></product></difference></product>
+  <product><property>aero/qbar-psf</property><difference><product><property>aero/strip/sL2/CLr</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/sL2/CDr</property><cos><property>aero/alpha-rad</property></cos></product></difference></product>
+</difference></product></function>
+<function name="aero/strip/sL2/Z"><product><value>16.43982</value><difference>
+  <product><property>aero/strip/sL2/q</property><sum><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL2/ae</independentVar><tableData>
+-90 0
+-60 -0.867182
+-45 -0.972794
+-30 -0.761571
+-20 -0.550348
+-14 -0.444736
+-10 -0.444736
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11041
+14 1.22358
+20 1.03234
+30 1.16013
+45 0.926336
+60 0.825562
+90 0
+</tableData></table><cos><property>aero/strip/sL2/a</property></cos></product><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL2/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><sin><property>aero/strip/sL2/a</property></sin></product></sum></product>
+  <product><property>aero/qbar-psf</property><sum><product><value>-1</value><property>aero/strip/sL2/CLr</property><cos><property>aero/alpha-rad</property></cos></product><product><value>-1</value><property>aero/strip/sL2/CDr</property><sin><property>aero/alpha-rad</property></sin></product></sum></product>
+</difference></product></function>
+<function name="aero/strip/sL2/ZN"><description>stall-residual normal force (for roll moment; the linear part is the lumped Roll_damp)</description><product><value>16.43982</value><difference>
+  <product><property>aero/strip/sL2/q</property><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL2/ae</independentVar><tableData>
+-90 7.1933
+-60 4.14557
+-45 2.76311
+-30 1.69749
+-20 1.05749
+-14 0.652362
+-10 0.311871
+-7.5 0
+7.5 0
+8 0
+10 -0.345337
+14 -0.572655
+20 -1.27463
+30 -1.99808
+45 -3.50871
+60 -4.88633
+90 -7.8947
+</tableData></table><cos><property>aero/strip/sL2/a</property></cos></product></product>
+  <product><property>aero/qbar-psf</property><product><value>-1</value><property>aero/strip/sL2/NLr</property><cos><property>aero/alpha-rad</property></cos></product></product>
+</difference></product></function>
+<function name="aero/strip/sL3/u"><sum><property>velocities/u-fps</property><product><property>velocities/r-rad_sec</property><value>18.59333</value></product></sum></function>
+<function name="aero/strip/sL3/w"><sum><property>velocities/w-fps</property><product><property>velocities/p-rad_sec</property><value>-18.59333</value></product><product><property>velocities/q-rad_sec</property><property>aero/strip/rx</property><value>-1</value></product></sum></function>
+<function name="aero/strip/sL3/a"><description>local flow angle (rad)</description><atan2><property>aero/strip/sL3/w</property><property>aero/strip/sL3/u</property></atan2></function>
+<function name="aero/strip/sL3/ae"><description>effective section alpha incl. washout (deg)</description><product><difference><property>aero/strip/sL3/a</property><value>0.001839</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sL3/are"><description>same, for the aircraft (cg) alpha</description><product><difference><property>aero/alpha-rad</property><value>0.001839</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sL3/q"><product><value>0.5</value><property>atmosphere/rho-slugs_ft3</property><sum><product><property>aero/strip/sL3/u</property><property>aero/strip/sL3/u</property></product><product><property>aero/strip/sL3/w</property><property>aero/strip/sL3/w</property></product></sum></product></function>
+<function name="aero/strip/sL3/CLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL3/are</independentVar><tableData>
+-90 0
+-60 -0.87291
+-45 -0.980392
+-30 -0.765428
+-20 -0.550464
+-14 -0.442982
+-10 -0.442982
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10731
+14 1.22249
+20 1.02786
+30 1.15791
+45 0.919975
+60 0.817416
+90 0
+</tableData></table></product></function>
+<function name="aero/strip/sL3/CDr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL3/are</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table></product></function>
+<function name="aero/strip/sL3/NLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL3/are</independentVar><tableData>
+-90 7.1933
+-60 4.21899
+-45 2.81205
+-30 1.72756
+-20 1.07622
+-14 0.663916
+-10 0.317394
+-7.5 0
+7.5 0
+8 0
+10 -0.351453
+14 -0.582798
+20 -1.29721
+30 -2.03347
+45 -3.57085
+60 -4.97287
+90 -7.8947
+</tableData></table></product></function>
+<function name="aero/strip/sL3/X"><product><value>13.98886</value><difference>
+  <product><property>aero/strip/sL3/q</property><difference><product><table><independentVar lookup="row">aero/strip/sL3/ae</independentVar><tableData>
+-90 0
+-60 -0.87291
+-45 -0.980392
+-30 -0.765428
+-20 -0.550464
+-14 -0.442982
+-10 -0.442982
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10731
+14 1.22249
+20 1.02786
+30 1.15791
+45 0.919975
+60 0.817416
+90 0
+</tableData></table><sin><property>aero/strip/sL3/a</property></sin></product><product><table><independentVar lookup="row">aero/strip/sL3/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><cos><property>aero/strip/sL3/a</property></cos></product></difference></product>
+  <product><property>aero/qbar-psf</property><difference><product><property>aero/strip/sL3/CLr</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/sL3/CDr</property><cos><property>aero/alpha-rad</property></cos></product></difference></product>
+</difference></product></function>
+<function name="aero/strip/sL3/Z"><product><value>13.98886</value><difference>
+  <product><property>aero/strip/sL3/q</property><sum><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL3/ae</independentVar><tableData>
+-90 0
+-60 -0.87291
+-45 -0.980392
+-30 -0.765428
+-20 -0.550464
+-14 -0.442982
+-10 -0.442982
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10731
+14 1.22249
+20 1.02786
+30 1.15791
+45 0.919975
+60 0.817416
+90 0
+</tableData></table><cos><property>aero/strip/sL3/a</property></cos></product><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL3/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><sin><property>aero/strip/sL3/a</property></sin></product></sum></product>
+  <product><property>aero/qbar-psf</property><sum><product><value>-1</value><property>aero/strip/sL3/CLr</property><cos><property>aero/alpha-rad</property></cos></product><product><value>-1</value><property>aero/strip/sL3/CDr</property><sin><property>aero/alpha-rad</property></sin></product></sum></product>
+</difference></product></function>
+<function name="aero/strip/sL3/ZN"><description>stall-residual normal force (for roll moment; the linear part is the lumped Roll_damp)</description><product><value>13.98886</value><difference>
+  <product><property>aero/strip/sL3/q</property><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL3/ae</independentVar><tableData>
+-90 7.1933
+-60 4.21899
+-45 2.81205
+-30 1.72756
+-20 1.07622
+-14 0.663916
+-10 0.317394
+-7.5 0
+7.5 0
+8 0
+10 -0.351453
+14 -0.582798
+20 -1.29721
+30 -2.03347
+45 -3.57085
+60 -4.97287
+90 -7.8947
+</tableData></table><cos><property>aero/strip/sL3/a</property></cos></product></product>
+  <product><property>aero/qbar-psf</property><product><value>-1</value><property>aero/strip/sL3/NLr</property><cos><property>aero/alpha-rad</property></cos></product></product>
+</difference></product></function>
+<function name="aero/strip/sL4/u"><sum><property>velocities/u-fps</property><product><property>velocities/r-rad_sec</property><value>23.24167</value></product></sum></function>
+<function name="aero/strip/sL4/w"><sum><property>velocities/w-fps</property><product><property>velocities/p-rad_sec</property><value>-23.24167</value></product><product><property>velocities/q-rad_sec</property><property>aero/strip/rx</property><value>-1</value></product></sum></function>
+<function name="aero/strip/sL4/a"><description>local flow angle (rad)</description><atan2><property>aero/strip/sL4/w</property><property>aero/strip/sL4/u</property></atan2></function>
+<function name="aero/strip/sL4/ae"><description>effective section alpha incl. washout (deg)</description><product><difference><property>aero/strip/sL4/a</property><value>0.002298</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sL4/are"><description>same, for the aircraft (cg) alpha</description><product><difference><property>aero/alpha-rad</property><value>0.002298</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sL4/q"><product><value>0.5</value><property>atmosphere/rho-slugs_ft3</property><sum><product><property>aero/strip/sL4/u</property><property>aero/strip/sL4/u</property></product><product><property>aero/strip/sL4/w</property><property>aero/strip/sL4/w</property></product></sum></product></function>
+<function name="aero/strip/sL4/CLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL4/are</independentVar><tableData>
+-90 0
+-60 -0.878637
+-45 -0.98799
+-30 -0.769285
+-20 -0.55058
+-14 -0.441227
+-10 -0.441227
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10421
+14 1.22139
+20 1.02338
+30 1.15568
+45 0.913613
+60 0.80927
+90 0
+</tableData></table></product></function>
+<function name="aero/strip/sL4/CDr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL4/are</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table></product></function>
+<function name="aero/strip/sL4/NLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL4/are</independentVar><tableData>
+-90 7.1933
+-60 4.29241
+-45 2.86099
+-30 1.75762
+-20 1.09495
+-14 0.67547
+-10 0.322918
+-7.5 0
+7.5 0
+8 0
+10 -0.35757
+14 -0.59294
+20 -1.31978
+30 -2.06885
+45 -3.633
+60 -5.05941
+90 -7.8947
+</tableData></table></product></function>
+<function name="aero/strip/sL4/X"><product><value>11.05484</value><difference>
+  <product><property>aero/strip/sL4/q</property><difference><product><table><independentVar lookup="row">aero/strip/sL4/ae</independentVar><tableData>
+-90 0
+-60 -0.878637
+-45 -0.98799
+-30 -0.769285
+-20 -0.55058
+-14 -0.441227
+-10 -0.441227
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10421
+14 1.22139
+20 1.02338
+30 1.15568
+45 0.913613
+60 0.80927
+90 0
+</tableData></table><sin><property>aero/strip/sL4/a</property></sin></product><product><table><independentVar lookup="row">aero/strip/sL4/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><cos><property>aero/strip/sL4/a</property></cos></product></difference></product>
+  <product><property>aero/qbar-psf</property><difference><product><property>aero/strip/sL4/CLr</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/sL4/CDr</property><cos><property>aero/alpha-rad</property></cos></product></difference></product>
+</difference></product></function>
+<function name="aero/strip/sL4/Z"><product><value>11.05484</value><difference>
+  <product><property>aero/strip/sL4/q</property><sum><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL4/ae</independentVar><tableData>
+-90 0
+-60 -0.878637
+-45 -0.98799
+-30 -0.769285
+-20 -0.55058
+-14 -0.441227
+-10 -0.441227
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10421
+14 1.22139
+20 1.02338
+30 1.15568
+45 0.913613
+60 0.80927
+90 0
+</tableData></table><cos><property>aero/strip/sL4/a</property></cos></product><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL4/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><sin><property>aero/strip/sL4/a</property></sin></product></sum></product>
+  <product><property>aero/qbar-psf</property><sum><product><value>-1</value><property>aero/strip/sL4/CLr</property><cos><property>aero/alpha-rad</property></cos></product><product><value>-1</value><property>aero/strip/sL4/CDr</property><sin><property>aero/alpha-rad</property></sin></product></sum></product>
+</difference></product></function>
+<function name="aero/strip/sL4/ZN"><description>stall-residual normal force (for roll moment; the linear part is the lumped Roll_damp)</description><product><value>11.05484</value><difference>
+  <product><property>aero/strip/sL4/q</property><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL4/ae</independentVar><tableData>
+-90 7.1933
+-60 4.29241
+-45 2.86099
+-30 1.75762
+-20 1.09495
+-14 0.67547
+-10 0.322918
+-7.5 0
+7.5 0
+8 0
+10 -0.35757
+14 -0.59294
+20 -1.31978
+30 -2.06885
+45 -3.633
+60 -5.05941
+90 -7.8947
+</tableData></table><cos><property>aero/strip/sL4/a</property></cos></product></product>
+  <product><property>aero/qbar-psf</property><product><value>-1</value><property>aero/strip/sL4/NLr</property><cos><property>aero/alpha-rad</property></cos></product></product>
+</difference></product></function>
+<function name="aero/strip/sL5/u"><sum><property>velocities/u-fps</property><product><property>velocities/r-rad_sec</property><value>27.89000</value></product></sum></function>
+<function name="aero/strip/sL5/w"><sum><property>velocities/w-fps</property><product><property>velocities/p-rad_sec</property><value>-27.89000</value></product><product><property>velocities/q-rad_sec</property><property>aero/strip/rx</property><value>-1</value></product></sum></function>
+<function name="aero/strip/sL5/a"><description>local flow angle (rad)</description><atan2><property>aero/strip/sL5/w</property><property>aero/strip/sL5/u</property></atan2></function>
+<function name="aero/strip/sL5/ae"><description>effective section alpha incl. washout (deg)</description><product><difference><property>aero/strip/sL5/a</property><value>0.002758</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sL5/are"><description>same, for the aircraft (cg) alpha</description><product><difference><property>aero/alpha-rad</property><value>0.002758</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sL5/q"><product><value>0.5</value><property>atmosphere/rho-slugs_ft3</property><sum><product><property>aero/strip/sL5/u</property><property>aero/strip/sL5/u</property></product><product><property>aero/strip/sL5/w</property><property>aero/strip/sL5/w</property></product></sum></product></function>
+<function name="aero/strip/sL5/CLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL5/are</independentVar><tableData>
+-90 0
+-60 -0.884365
+-45 -0.995588
+-30 -0.773142
+-20 -0.550696
+-14 -0.439473
+-10 -0.439473
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10111
+14 1.22029
+20 1.01889
+30 1.15346
+45 0.907252
+60 0.801124
+90 0
+</tableData></table></product></function>
+<function name="aero/strip/sL5/CDr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL5/are</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table></product></function>
+<function name="aero/strip/sL5/NLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sL5/are</independentVar><tableData>
+-90 7.1933
+-60 4.36584
+-45 2.90993
+-30 1.78769
+-20 1.11368
+-14 0.687024
+-10 0.328441
+-7.5 0
+7.5 0
+8 0
+10 -0.363686
+14 -0.603082
+20 -1.34236
+30 -2.10424
+45 -3.69514
+60 -5.14595
+90 -7.8947
+</tableData></table></product></function>
+<function name="aero/strip/sL5/X"><product><value>4.34081</value><difference>
+  <product><property>aero/strip/sL5/q</property><difference><product><table><independentVar lookup="row">aero/strip/sL5/ae</independentVar><tableData>
+-90 0
+-60 -0.884365
+-45 -0.995588
+-30 -0.773142
+-20 -0.550696
+-14 -0.439473
+-10 -0.439473
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10111
+14 1.22029
+20 1.01889
+30 1.15346
+45 0.907252
+60 0.801124
+90 0
+</tableData></table><sin><property>aero/strip/sL5/a</property></sin></product><product><table><independentVar lookup="row">aero/strip/sL5/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><cos><property>aero/strip/sL5/a</property></cos></product></difference></product>
+  <product><property>aero/qbar-psf</property><difference><product><property>aero/strip/sL5/CLr</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/sL5/CDr</property><cos><property>aero/alpha-rad</property></cos></product></difference></product>
+</difference></product></function>
+<function name="aero/strip/sL5/Z"><product><value>4.34081</value><difference>
+  <product><property>aero/strip/sL5/q</property><sum><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL5/ae</independentVar><tableData>
+-90 0
+-60 -0.884365
+-45 -0.995588
+-30 -0.773142
+-20 -0.550696
+-14 -0.439473
+-10 -0.439473
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10111
+14 1.22029
+20 1.01889
+30 1.15346
+45 0.907252
+60 0.801124
+90 0
+</tableData></table><cos><property>aero/strip/sL5/a</property></cos></product><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL5/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><sin><property>aero/strip/sL5/a</property></sin></product></sum></product>
+  <product><property>aero/qbar-psf</property><sum><product><value>-1</value><property>aero/strip/sL5/CLr</property><cos><property>aero/alpha-rad</property></cos></product><product><value>-1</value><property>aero/strip/sL5/CDr</property><sin><property>aero/alpha-rad</property></sin></product></sum></product>
+</difference></product></function>
+<function name="aero/strip/sL5/ZN"><description>stall-residual normal force (for roll moment; the linear part is the lumped Roll_damp)</description><product><value>4.34081</value><difference>
+  <product><property>aero/strip/sL5/q</property><product><value>-1</value><table><independentVar lookup="row">aero/strip/sL5/ae</independentVar><tableData>
+-90 7.1933
+-60 4.36584
+-45 2.90993
+-30 1.78769
+-20 1.11368
+-14 0.687024
+-10 0.328441
+-7.5 0
+7.5 0
+8 0
+10 -0.363686
+14 -0.603082
+20 -1.34236
+30 -2.10424
+45 -3.69514
+60 -5.14595
+90 -7.8947
+</tableData></table><cos><property>aero/strip/sL5/a</property></cos></product></product>
+  <product><property>aero/qbar-psf</property><product><value>-1</value><property>aero/strip/sL5/NLr</property><cos><property>aero/alpha-rad</property></cos></product></product>
+</difference></product></function>
+<function name="aero/strip/sR0/u"><sum><property>velocities/u-fps</property><product><property>velocities/r-rad_sec</property><value>-4.64833</value></product></sum></function>
+<function name="aero/strip/sR0/w"><sum><property>velocities/w-fps</property><product><property>velocities/p-rad_sec</property><value>4.64833</value></product><product><property>velocities/q-rad_sec</property><property>aero/strip/rx</property><value>-1</value></product></sum></function>
+<function name="aero/strip/sR0/a"><description>local flow angle (rad)</description><atan2><property>aero/strip/sR0/w</property><property>aero/strip/sR0/u</property></atan2></function>
+<function name="aero/strip/sR0/ae"><description>effective section alpha incl. washout (deg)</description><product><difference><property>aero/strip/sR0/a</property><value>0.000460</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sR0/are"><description>same, for the aircraft (cg) alpha</description><product><difference><property>aero/alpha-rad</property><value>0.000460</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sR0/q"><product><value>0.5</value><property>atmosphere/rho-slugs_ft3</property><sum><product><property>aero/strip/sR0/u</property><property>aero/strip/sR0/u</property></product><product><property>aero/strip/sR0/w</property><property>aero/strip/sR0/w</property></product></sum></product></function>
+<function name="aero/strip/sR0/CLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR0/are</independentVar><tableData>
+-90 0
+-60 -0.855727
+-45 -0.957598
+-30 -0.753857
+-20 -0.550116
+-14 -0.448245
+-10 -0.448245
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11661
+14 1.22578
+20 1.04131
+30 1.16457
+45 0.939058
+60 0.841854
+90 0
+</tableData></table></product></function>
+<function name="aero/strip/sR0/CDr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR0/are</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table></product></function>
+<function name="aero/strip/sR0/NLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR0/are</independentVar><tableData>
+-90 7.1933
+-60 3.99872
+-45 2.66524
+-30 1.63736
+-20 1.02003
+-14 0.629254
+-10 0.300824
+-7.5 0
+7.5 0
+8 0
+10 -0.333104
+14 -0.552371
+20 -1.22948
+30 -1.9273
+45 -3.38442
+60 -4.71324
+90 -7.8947
+</tableData></table></product></function>
+<function name="aero/strip/sR0/X"><product><value>31.96290</value><difference>
+  <product><property>aero/strip/sR0/q</property><difference><product><table><independentVar lookup="row">aero/strip/sR0/ae</independentVar><tableData>
+-90 0
+-60 -0.855727
+-45 -0.957598
+-30 -0.753857
+-20 -0.550116
+-14 -0.448245
+-10 -0.448245
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11661
+14 1.22578
+20 1.04131
+30 1.16457
+45 0.939058
+60 0.841854
+90 0
+</tableData></table><sin><property>aero/strip/sR0/a</property></sin></product><product><table><independentVar lookup="row">aero/strip/sR0/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><cos><property>aero/strip/sR0/a</property></cos></product></difference></product>
+  <product><property>aero/qbar-psf</property><difference><product><property>aero/strip/sR0/CLr</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/sR0/CDr</property><cos><property>aero/alpha-rad</property></cos></product></difference></product>
+</difference></product></function>
+<function name="aero/strip/sR0/Z"><product><value>31.96290</value><difference>
+  <product><property>aero/strip/sR0/q</property><sum><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR0/ae</independentVar><tableData>
+-90 0
+-60 -0.855727
+-45 -0.957598
+-30 -0.753857
+-20 -0.550116
+-14 -0.448245
+-10 -0.448245
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11661
+14 1.22578
+20 1.04131
+30 1.16457
+45 0.939058
+60 0.841854
+90 0
+</tableData></table><cos><property>aero/strip/sR0/a</property></cos></product><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR0/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><sin><property>aero/strip/sR0/a</property></sin></product></sum></product>
+  <product><property>aero/qbar-psf</property><sum><product><value>-1</value><property>aero/strip/sR0/CLr</property><cos><property>aero/alpha-rad</property></cos></product><product><value>-1</value><property>aero/strip/sR0/CDr</property><sin><property>aero/alpha-rad</property></sin></product></sum></product>
+</difference></product></function>
+<function name="aero/strip/sR0/ZN"><description>stall-residual normal force (for roll moment; the linear part is the lumped Roll_damp)</description><product><value>31.96290</value><difference>
+  <product><property>aero/strip/sR0/q</property><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR0/ae</independentVar><tableData>
+-90 7.1933
+-60 3.99872
+-45 2.66524
+-30 1.63736
+-20 1.02003
+-14 0.629254
+-10 0.300824
+-7.5 0
+7.5 0
+8 0
+10 -0.333104
+14 -0.552371
+20 -1.22948
+30 -1.9273
+45 -3.38442
+60 -4.71324
+90 -7.8947
+</tableData></table><cos><property>aero/strip/sR0/a</property></cos></product></product>
+  <product><property>aero/qbar-psf</property><product><value>-1</value><property>aero/strip/sR0/NLr</property><cos><property>aero/alpha-rad</property></cos></product></product>
+</difference></product></function>
+<function name="aero/strip/sR1/u"><sum><property>velocities/u-fps</property><product><property>velocities/r-rad_sec</property><value>-9.29667</value></product></sum></function>
+<function name="aero/strip/sR1/w"><sum><property>velocities/w-fps</property><product><property>velocities/p-rad_sec</property><value>9.29667</value></product><product><property>velocities/q-rad_sec</property><property>aero/strip/rx</property><value>-1</value></product></sum></function>
+<function name="aero/strip/sR1/a"><description>local flow angle (rad)</description><atan2><property>aero/strip/sR1/w</property><property>aero/strip/sR1/u</property></atan2></function>
+<function name="aero/strip/sR1/ae"><description>effective section alpha incl. washout (deg)</description><product><difference><property>aero/strip/sR1/a</property><value>0.000919</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sR1/are"><description>same, for the aircraft (cg) alpha</description><product><difference><property>aero/alpha-rad</property><value>0.000919</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sR1/q"><product><value>0.5</value><property>atmosphere/rho-slugs_ft3</property><sum><product><property>aero/strip/sR1/u</property><property>aero/strip/sR1/u</property></product><product><property>aero/strip/sR1/w</property><property>aero/strip/sR1/w</property></product></sum></product></function>
+<function name="aero/strip/sR1/CLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR1/are</independentVar><tableData>
+-90 0
+-60 -0.861455
+-45 -0.965196
+-30 -0.757714
+-20 -0.550232
+-14 -0.446491
+-10 -0.446491
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11351
+14 1.22468
+20 1.03683
+30 1.16235
+45 0.932697
+60 0.833708
+90 0
+</tableData></table></product></function>
+<function name="aero/strip/sR1/CDr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR1/are</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table></product></function>
+<function name="aero/strip/sR1/NLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR1/are</independentVar><tableData>
+-90 7.1933
+-60 4.07215
+-45 2.71418
+-30 1.66743
+-20 1.03876
+-14 0.640808
+-10 0.306347
+-7.5 0
+7.5 0
+8 0
+10 -0.339221
+14 -0.562513
+20 -1.25206
+30 -1.96269
+45 -3.44657
+60 -4.79978
+90 -7.8947
+</tableData></table></product></function>
+<function name="aero/strip/sR1/X"><product><value>18.70044</value><difference>
+  <product><property>aero/strip/sR1/q</property><difference><product><table><independentVar lookup="row">aero/strip/sR1/ae</independentVar><tableData>
+-90 0
+-60 -0.861455
+-45 -0.965196
+-30 -0.757714
+-20 -0.550232
+-14 -0.446491
+-10 -0.446491
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11351
+14 1.22468
+20 1.03683
+30 1.16235
+45 0.932697
+60 0.833708
+90 0
+</tableData></table><sin><property>aero/strip/sR1/a</property></sin></product><product><table><independentVar lookup="row">aero/strip/sR1/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><cos><property>aero/strip/sR1/a</property></cos></product></difference></product>
+  <product><property>aero/qbar-psf</property><difference><product><property>aero/strip/sR1/CLr</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/sR1/CDr</property><cos><property>aero/alpha-rad</property></cos></product></difference></product>
+</difference></product></function>
+<function name="aero/strip/sR1/Z"><product><value>18.70044</value><difference>
+  <product><property>aero/strip/sR1/q</property><sum><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR1/ae</independentVar><tableData>
+-90 0
+-60 -0.861455
+-45 -0.965196
+-30 -0.757714
+-20 -0.550232
+-14 -0.446491
+-10 -0.446491
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11351
+14 1.22468
+20 1.03683
+30 1.16235
+45 0.932697
+60 0.833708
+90 0
+</tableData></table><cos><property>aero/strip/sR1/a</property></cos></product><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR1/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><sin><property>aero/strip/sR1/a</property></sin></product></sum></product>
+  <product><property>aero/qbar-psf</property><sum><product><value>-1</value><property>aero/strip/sR1/CLr</property><cos><property>aero/alpha-rad</property></cos></product><product><value>-1</value><property>aero/strip/sR1/CDr</property><sin><property>aero/alpha-rad</property></sin></product></sum></product>
+</difference></product></function>
+<function name="aero/strip/sR1/ZN"><description>stall-residual normal force (for roll moment; the linear part is the lumped Roll_damp)</description><product><value>18.70044</value><difference>
+  <product><property>aero/strip/sR1/q</property><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR1/ae</independentVar><tableData>
+-90 7.1933
+-60 4.07215
+-45 2.71418
+-30 1.66743
+-20 1.03876
+-14 0.640808
+-10 0.306347
+-7.5 0
+7.5 0
+8 0
+10 -0.339221
+14 -0.562513
+20 -1.25206
+30 -1.96269
+45 -3.44657
+60 -4.79978
+90 -7.8947
+</tableData></table><cos><property>aero/strip/sR1/a</property></cos></product></product>
+  <product><property>aero/qbar-psf</property><product><value>-1</value><property>aero/strip/sR1/NLr</property><cos><property>aero/alpha-rad</property></cos></product></product>
+</difference></product></function>
+<function name="aero/strip/sR2/u"><sum><property>velocities/u-fps</property><product><property>velocities/r-rad_sec</property><value>-13.94500</value></product></sum></function>
+<function name="aero/strip/sR2/w"><sum><property>velocities/w-fps</property><product><property>velocities/p-rad_sec</property><value>13.94500</value></product><product><property>velocities/q-rad_sec</property><property>aero/strip/rx</property><value>-1</value></product></sum></function>
+<function name="aero/strip/sR2/a"><description>local flow angle (rad)</description><atan2><property>aero/strip/sR2/w</property><property>aero/strip/sR2/u</property></atan2></function>
+<function name="aero/strip/sR2/ae"><description>effective section alpha incl. washout (deg)</description><product><difference><property>aero/strip/sR2/a</property><value>0.001379</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sR2/are"><description>same, for the aircraft (cg) alpha</description><product><difference><property>aero/alpha-rad</property><value>0.001379</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sR2/q"><product><value>0.5</value><property>atmosphere/rho-slugs_ft3</property><sum><product><property>aero/strip/sR2/u</property><property>aero/strip/sR2/u</property></product><product><property>aero/strip/sR2/w</property><property>aero/strip/sR2/w</property></product></sum></product></function>
+<function name="aero/strip/sR2/CLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR2/are</independentVar><tableData>
+-90 0
+-60 -0.867182
+-45 -0.972794
+-30 -0.761571
+-20 -0.550348
+-14 -0.444736
+-10 -0.444736
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11041
+14 1.22358
+20 1.03234
+30 1.16013
+45 0.926336
+60 0.825562
+90 0
+</tableData></table></product></function>
+<function name="aero/strip/sR2/CDr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR2/are</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table></product></function>
+<function name="aero/strip/sR2/NLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR2/are</independentVar><tableData>
+-90 7.1933
+-60 4.14557
+-45 2.76311
+-30 1.69749
+-20 1.05749
+-14 0.652362
+-10 0.311871
+-7.5 0
+7.5 0
+8 0
+10 -0.345337
+14 -0.572655
+20 -1.27463
+30 -1.99808
+45 -3.50871
+60 -4.88633
+90 -7.8947
+</tableData></table></product></function>
+<function name="aero/strip/sR2/X"><product><value>16.43982</value><difference>
+  <product><property>aero/strip/sR2/q</property><difference><product><table><independentVar lookup="row">aero/strip/sR2/ae</independentVar><tableData>
+-90 0
+-60 -0.867182
+-45 -0.972794
+-30 -0.761571
+-20 -0.550348
+-14 -0.444736
+-10 -0.444736
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11041
+14 1.22358
+20 1.03234
+30 1.16013
+45 0.926336
+60 0.825562
+90 0
+</tableData></table><sin><property>aero/strip/sR2/a</property></sin></product><product><table><independentVar lookup="row">aero/strip/sR2/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><cos><property>aero/strip/sR2/a</property></cos></product></difference></product>
+  <product><property>aero/qbar-psf</property><difference><product><property>aero/strip/sR2/CLr</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/sR2/CDr</property><cos><property>aero/alpha-rad</property></cos></product></difference></product>
+</difference></product></function>
+<function name="aero/strip/sR2/Z"><product><value>16.43982</value><difference>
+  <product><property>aero/strip/sR2/q</property><sum><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR2/ae</independentVar><tableData>
+-90 0
+-60 -0.867182
+-45 -0.972794
+-30 -0.761571
+-20 -0.550348
+-14 -0.444736
+-10 -0.444736
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.11041
+14 1.22358
+20 1.03234
+30 1.16013
+45 0.926336
+60 0.825562
+90 0
+</tableData></table><cos><property>aero/strip/sR2/a</property></cos></product><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR2/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><sin><property>aero/strip/sR2/a</property></sin></product></sum></product>
+  <product><property>aero/qbar-psf</property><sum><product><value>-1</value><property>aero/strip/sR2/CLr</property><cos><property>aero/alpha-rad</property></cos></product><product><value>-1</value><property>aero/strip/sR2/CDr</property><sin><property>aero/alpha-rad</property></sin></product></sum></product>
+</difference></product></function>
+<function name="aero/strip/sR2/ZN"><description>stall-residual normal force (for roll moment; the linear part is the lumped Roll_damp)</description><product><value>16.43982</value><difference>
+  <product><property>aero/strip/sR2/q</property><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR2/ae</independentVar><tableData>
+-90 7.1933
+-60 4.14557
+-45 2.76311
+-30 1.69749
+-20 1.05749
+-14 0.652362
+-10 0.311871
+-7.5 0
+7.5 0
+8 0
+10 -0.345337
+14 -0.572655
+20 -1.27463
+30 -1.99808
+45 -3.50871
+60 -4.88633
+90 -7.8947
+</tableData></table><cos><property>aero/strip/sR2/a</property></cos></product></product>
+  <product><property>aero/qbar-psf</property><product><value>-1</value><property>aero/strip/sR2/NLr</property><cos><property>aero/alpha-rad</property></cos></product></product>
+</difference></product></function>
+<function name="aero/strip/sR3/u"><sum><property>velocities/u-fps</property><product><property>velocities/r-rad_sec</property><value>-18.59333</value></product></sum></function>
+<function name="aero/strip/sR3/w"><sum><property>velocities/w-fps</property><product><property>velocities/p-rad_sec</property><value>18.59333</value></product><product><property>velocities/q-rad_sec</property><property>aero/strip/rx</property><value>-1</value></product></sum></function>
+<function name="aero/strip/sR3/a"><description>local flow angle (rad)</description><atan2><property>aero/strip/sR3/w</property><property>aero/strip/sR3/u</property></atan2></function>
+<function name="aero/strip/sR3/ae"><description>effective section alpha incl. washout (deg)</description><product><difference><property>aero/strip/sR3/a</property><value>0.001839</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sR3/are"><description>same, for the aircraft (cg) alpha</description><product><difference><property>aero/alpha-rad</property><value>0.001839</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sR3/q"><product><value>0.5</value><property>atmosphere/rho-slugs_ft3</property><sum><product><property>aero/strip/sR3/u</property><property>aero/strip/sR3/u</property></product><product><property>aero/strip/sR3/w</property><property>aero/strip/sR3/w</property></product></sum></product></function>
+<function name="aero/strip/sR3/CLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR3/are</independentVar><tableData>
+-90 0
+-60 -0.87291
+-45 -0.980392
+-30 -0.765428
+-20 -0.550464
+-14 -0.442982
+-10 -0.442982
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10731
+14 1.22249
+20 1.02786
+30 1.15791
+45 0.919975
+60 0.817416
+90 0
+</tableData></table></product></function>
+<function name="aero/strip/sR3/CDr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR3/are</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table></product></function>
+<function name="aero/strip/sR3/NLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR3/are</independentVar><tableData>
+-90 7.1933
+-60 4.21899
+-45 2.81205
+-30 1.72756
+-20 1.07622
+-14 0.663916
+-10 0.317394
+-7.5 0
+7.5 0
+8 0
+10 -0.351453
+14 -0.582798
+20 -1.29721
+30 -2.03347
+45 -3.57085
+60 -4.97287
+90 -7.8947
+</tableData></table></product></function>
+<function name="aero/strip/sR3/X"><product><value>13.98886</value><difference>
+  <product><property>aero/strip/sR3/q</property><difference><product><table><independentVar lookup="row">aero/strip/sR3/ae</independentVar><tableData>
+-90 0
+-60 -0.87291
+-45 -0.980392
+-30 -0.765428
+-20 -0.550464
+-14 -0.442982
+-10 -0.442982
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10731
+14 1.22249
+20 1.02786
+30 1.15791
+45 0.919975
+60 0.817416
+90 0
+</tableData></table><sin><property>aero/strip/sR3/a</property></sin></product><product><table><independentVar lookup="row">aero/strip/sR3/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><cos><property>aero/strip/sR3/a</property></cos></product></difference></product>
+  <product><property>aero/qbar-psf</property><difference><product><property>aero/strip/sR3/CLr</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/sR3/CDr</property><cos><property>aero/alpha-rad</property></cos></product></difference></product>
+</difference></product></function>
+<function name="aero/strip/sR3/Z"><product><value>13.98886</value><difference>
+  <product><property>aero/strip/sR3/q</property><sum><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR3/ae</independentVar><tableData>
+-90 0
+-60 -0.87291
+-45 -0.980392
+-30 -0.765428
+-20 -0.550464
+-14 -0.442982
+-10 -0.442982
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10731
+14 1.22249
+20 1.02786
+30 1.15791
+45 0.919975
+60 0.817416
+90 0
+</tableData></table><cos><property>aero/strip/sR3/a</property></cos></product><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR3/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><sin><property>aero/strip/sR3/a</property></sin></product></sum></product>
+  <product><property>aero/qbar-psf</property><sum><product><value>-1</value><property>aero/strip/sR3/CLr</property><cos><property>aero/alpha-rad</property></cos></product><product><value>-1</value><property>aero/strip/sR3/CDr</property><sin><property>aero/alpha-rad</property></sin></product></sum></product>
+</difference></product></function>
+<function name="aero/strip/sR3/ZN"><description>stall-residual normal force (for roll moment; the linear part is the lumped Roll_damp)</description><product><value>13.98886</value><difference>
+  <product><property>aero/strip/sR3/q</property><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR3/ae</independentVar><tableData>
+-90 7.1933
+-60 4.21899
+-45 2.81205
+-30 1.72756
+-20 1.07622
+-14 0.663916
+-10 0.317394
+-7.5 0
+7.5 0
+8 0
+10 -0.351453
+14 -0.582798
+20 -1.29721
+30 -2.03347
+45 -3.57085
+60 -4.97287
+90 -7.8947
+</tableData></table><cos><property>aero/strip/sR3/a</property></cos></product></product>
+  <product><property>aero/qbar-psf</property><product><value>-1</value><property>aero/strip/sR3/NLr</property><cos><property>aero/alpha-rad</property></cos></product></product>
+</difference></product></function>
+<function name="aero/strip/sR4/u"><sum><property>velocities/u-fps</property><product><property>velocities/r-rad_sec</property><value>-23.24167</value></product></sum></function>
+<function name="aero/strip/sR4/w"><sum><property>velocities/w-fps</property><product><property>velocities/p-rad_sec</property><value>23.24167</value></product><product><property>velocities/q-rad_sec</property><property>aero/strip/rx</property><value>-1</value></product></sum></function>
+<function name="aero/strip/sR4/a"><description>local flow angle (rad)</description><atan2><property>aero/strip/sR4/w</property><property>aero/strip/sR4/u</property></atan2></function>
+<function name="aero/strip/sR4/ae"><description>effective section alpha incl. washout (deg)</description><product><difference><property>aero/strip/sR4/a</property><value>0.002298</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sR4/are"><description>same, for the aircraft (cg) alpha</description><product><difference><property>aero/alpha-rad</property><value>0.002298</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sR4/q"><product><value>0.5</value><property>atmosphere/rho-slugs_ft3</property><sum><product><property>aero/strip/sR4/u</property><property>aero/strip/sR4/u</property></product><product><property>aero/strip/sR4/w</property><property>aero/strip/sR4/w</property></product></sum></product></function>
+<function name="aero/strip/sR4/CLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR4/are</independentVar><tableData>
+-90 0
+-60 -0.878637
+-45 -0.98799
+-30 -0.769285
+-20 -0.55058
+-14 -0.441227
+-10 -0.441227
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10421
+14 1.22139
+20 1.02338
+30 1.15568
+45 0.913613
+60 0.80927
+90 0
+</tableData></table></product></function>
+<function name="aero/strip/sR4/CDr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR4/are</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table></product></function>
+<function name="aero/strip/sR4/NLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR4/are</independentVar><tableData>
+-90 7.1933
+-60 4.29241
+-45 2.86099
+-30 1.75762
+-20 1.09495
+-14 0.67547
+-10 0.322918
+-7.5 0
+7.5 0
+8 0
+10 -0.35757
+14 -0.59294
+20 -1.31978
+30 -2.06885
+45 -3.633
+60 -5.05941
+90 -7.8947
+</tableData></table></product></function>
+<function name="aero/strip/sR4/X"><product><value>11.05484</value><difference>
+  <product><property>aero/strip/sR4/q</property><difference><product><table><independentVar lookup="row">aero/strip/sR4/ae</independentVar><tableData>
+-90 0
+-60 -0.878637
+-45 -0.98799
+-30 -0.769285
+-20 -0.55058
+-14 -0.441227
+-10 -0.441227
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10421
+14 1.22139
+20 1.02338
+30 1.15568
+45 0.913613
+60 0.80927
+90 0
+</tableData></table><sin><property>aero/strip/sR4/a</property></sin></product><product><table><independentVar lookup="row">aero/strip/sR4/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><cos><property>aero/strip/sR4/a</property></cos></product></difference></product>
+  <product><property>aero/qbar-psf</property><difference><product><property>aero/strip/sR4/CLr</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/sR4/CDr</property><cos><property>aero/alpha-rad</property></cos></product></difference></product>
+</difference></product></function>
+<function name="aero/strip/sR4/Z"><product><value>11.05484</value><difference>
+  <product><property>aero/strip/sR4/q</property><sum><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR4/ae</independentVar><tableData>
+-90 0
+-60 -0.878637
+-45 -0.98799
+-30 -0.769285
+-20 -0.55058
+-14 -0.441227
+-10 -0.441227
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10421
+14 1.22139
+20 1.02338
+30 1.15568
+45 0.913613
+60 0.80927
+90 0
+</tableData></table><cos><property>aero/strip/sR4/a</property></cos></product><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR4/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><sin><property>aero/strip/sR4/a</property></sin></product></sum></product>
+  <product><property>aero/qbar-psf</property><sum><product><value>-1</value><property>aero/strip/sR4/CLr</property><cos><property>aero/alpha-rad</property></cos></product><product><value>-1</value><property>aero/strip/sR4/CDr</property><sin><property>aero/alpha-rad</property></sin></product></sum></product>
+</difference></product></function>
+<function name="aero/strip/sR4/ZN"><description>stall-residual normal force (for roll moment; the linear part is the lumped Roll_damp)</description><product><value>11.05484</value><difference>
+  <product><property>aero/strip/sR4/q</property><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR4/ae</independentVar><tableData>
+-90 7.1933
+-60 4.29241
+-45 2.86099
+-30 1.75762
+-20 1.09495
+-14 0.67547
+-10 0.322918
+-7.5 0
+7.5 0
+8 0
+10 -0.35757
+14 -0.59294
+20 -1.31978
+30 -2.06885
+45 -3.633
+60 -5.05941
+90 -7.8947
+</tableData></table><cos><property>aero/strip/sR4/a</property></cos></product></product>
+  <product><property>aero/qbar-psf</property><product><value>-1</value><property>aero/strip/sR4/NLr</property><cos><property>aero/alpha-rad</property></cos></product></product>
+</difference></product></function>
+<function name="aero/strip/sR5/u"><sum><property>velocities/u-fps</property><product><property>velocities/r-rad_sec</property><value>-27.89000</value></product></sum></function>
+<function name="aero/strip/sR5/w"><sum><property>velocities/w-fps</property><product><property>velocities/p-rad_sec</property><value>27.89000</value></product><product><property>velocities/q-rad_sec</property><property>aero/strip/rx</property><value>-1</value></product></sum></function>
+<function name="aero/strip/sR5/a"><description>local flow angle (rad)</description><atan2><property>aero/strip/sR5/w</property><property>aero/strip/sR5/u</property></atan2></function>
+<function name="aero/strip/sR5/ae"><description>effective section alpha incl. washout (deg)</description><product><difference><property>aero/strip/sR5/a</property><value>0.002758</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sR5/are"><description>same, for the aircraft (cg) alpha</description><product><difference><property>aero/alpha-rad</property><value>0.002758</value></difference><value>57.29578</value></product></function>
+<function name="aero/strip/sR5/q"><product><value>0.5</value><property>atmosphere/rho-slugs_ft3</property><sum><product><property>aero/strip/sR5/u</property><property>aero/strip/sR5/u</property></product><product><property>aero/strip/sR5/w</property><property>aero/strip/sR5/w</property></product></sum></product></function>
+<function name="aero/strip/sR5/CLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR5/are</independentVar><tableData>
+-90 0
+-60 -0.884365
+-45 -0.995588
+-30 -0.773142
+-20 -0.550696
+-14 -0.439473
+-10 -0.439473
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10111
+14 1.22029
+20 1.01889
+30 1.15346
+45 0.907252
+60 0.801124
+90 0
+</tableData></table></product></function>
+<function name="aero/strip/sR5/CDr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR5/are</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table></product></function>
+<function name="aero/strip/sR5/NLr"><product><value>1</value><table><independentVar lookup="row">aero/strip/sR5/are</independentVar><tableData>
+-90 7.1933
+-60 4.36584
+-45 2.90993
+-30 1.78769
+-20 1.11368
+-14 0.687024
+-10 0.328441
+-7.5 0
+7.5 0
+8 0
+10 -0.363686
+14 -0.603082
+20 -1.34236
+30 -2.10424
+45 -3.69514
+60 -5.14595
+90 -7.8947
+</tableData></table></product></function>
+<function name="aero/strip/sR5/X"><product><value>4.34081</value><difference>
+  <product><property>aero/strip/sR5/q</property><difference><product><table><independentVar lookup="row">aero/strip/sR5/ae</independentVar><tableData>
+-90 0
+-60 -0.884365
+-45 -0.995588
+-30 -0.773142
+-20 -0.550696
+-14 -0.439473
+-10 -0.439473
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10111
+14 1.22029
+20 1.01889
+30 1.15346
+45 0.907252
+60 0.801124
+90 0
+</tableData></table><sin><property>aero/strip/sR5/a</property></sin></product><product><table><independentVar lookup="row">aero/strip/sR5/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><cos><property>aero/strip/sR5/a</property></cos></product></difference></product>
+  <product><property>aero/qbar-psf</property><difference><product><property>aero/strip/sR5/CLr</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/sR5/CDr</property><cos><property>aero/alpha-rad</property></cos></product></difference></product>
+</difference></product></function>
+<function name="aero/strip/sR5/Z"><product><value>4.34081</value><difference>
+  <product><property>aero/strip/sR5/q</property><sum><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR5/ae</independentVar><tableData>
+-90 0
+-60 -0.884365
+-45 -0.995588
+-30 -0.773142
+-20 -0.550696
+-14 -0.439473
+-10 -0.439473
+-7.5 -0.5438
+-6 -0.419
+-5 -0.302
+-4 -0.1336
+-3 0.0207
+-2 0.1655
+-1 0.3136
+0 0.4491
+1 0.564
+2 0.675
+3 0.7768
+4 0.8996
+5 1.0145
+6 1.1165
+7 1.2102
+8 1.2855
+10 1.10111
+14 1.22029
+20 1.01889
+30 1.15346
+45 0.907252
+60 0.801124
+90 0
+</tableData></table><cos><property>aero/strip/sR5/a</property></cos></product><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR5/ae</independentVar><tableData>
+-90 3.05632
+-60 2.69161
+-45 1.96217
+-30 0.868011
+-20 0.211517
+-15 0.0899438
+-12 0.0413146
+-9 0.017
+-4 0.00655
+0 0.01168
+2 0.01182
+4 0.01054
+6 0.01023
+8 0.00959
+9 0.0098
+12 0.0341146
+15 0.0827438
+20 0.204317
+30 0.860811
+45 1.95497
+60 2.68441
+90 3.04912
+</tableData></table><sin><property>aero/strip/sR5/a</property></sin></product></sum></product>
+  <product><property>aero/qbar-psf</property><sum><product><value>-1</value><property>aero/strip/sR5/CLr</property><cos><property>aero/alpha-rad</property></cos></product><product><value>-1</value><property>aero/strip/sR5/CDr</property><sin><property>aero/alpha-rad</property></sin></product></sum></product>
+</difference></product></function>
+<function name="aero/strip/sR5/ZN"><description>stall-residual normal force (for roll moment; the linear part is the lumped Roll_damp)</description><product><value>4.34081</value><difference>
+  <product><property>aero/strip/sR5/q</property><product><value>-1</value><table><independentVar lookup="row">aero/strip/sR5/ae</independentVar><tableData>
+-90 7.1933
+-60 4.36584
+-45 2.90993
+-30 1.78769
+-20 1.11368
+-14 0.687024
+-10 0.328441
+-7.5 0
+7.5 0
+8 0
+10 -0.363686
+14 -0.603082
+20 -1.34236
+30 -2.10424
+45 -3.69514
+60 -5.14595
+90 -7.8947
+</tableData></table><cos><property>aero/strip/sR5/a</property></cos></product></product>
+  <product><property>aero/qbar-psf</property><product><value>-1</value><property>aero/strip/sR5/NLr</property><cos><property>aero/alpha-rad</property></cos></product></product>
+</difference></product></function>
+<function name="aero/strip/dX"><sum><property>aero/strip/sL0/X</property><property>aero/strip/sL1/X</property><property>aero/strip/sL2/X</property><property>aero/strip/sL3/X</property><property>aero/strip/sL4/X</property><property>aero/strip/sL5/X</property><property>aero/strip/sR0/X</property><property>aero/strip/sR1/X</property><property>aero/strip/sR2/X</property><property>aero/strip/sR3/X</property><property>aero/strip/sR4/X</property><property>aero/strip/sR5/X</property></sum></function>
+<function name="aero/strip/dZ"><sum><property>aero/strip/sL0/Z</property><property>aero/strip/sL1/Z</property><property>aero/strip/sL2/Z</property><property>aero/strip/sL3/Z</property><property>aero/strip/sL4/Z</property><property>aero/strip/sL5/Z</property><property>aero/strip/sR0/Z</property><property>aero/strip/sR1/Z</property><property>aero/strip/sR2/Z</property><property>aero/strip/sR3/Z</property><property>aero/strip/sR4/Z</property><property>aero/strip/sR5/Z</property></sum></function>
+
+  <function name="aero/pbar-aero">
+    <description>Non-dimensional roll rate p*b/2V (stability axes)</description>
+    <product><property>aero/bi2vel</property><property>velocities/p-aero-rad_sec</property></product>
+  </function>
+
+	
+	
+
+  <axis name="LIFT">
+
+    <function name="aero/force/Lift_alpha">
+      <description>Lift due to alpha</description>
+      <product>
+          <property>aero/qbar-psf</property>
+          <property>metrics/Sw-sqft</property>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <tableData>
+-90 0.0356
+-75 -0.4144
+-60 -0.8144
+-45 -0.9644
+-30 -0.8144
+-25.000 -0.7075
+-24.500 -0.6944
+-24.000 -0.6809
+-23.500 -0.6670
+-23.000 -0.6528
+-22.500 -0.6383
+-22.000 -0.6237
+-21.500 -0.6116
+-21.000 -0.6024
+-20.500 -0.5943
+-20.000 -0.5665
+-19.500 -0.5484
+-19.000 -0.5318
+-18.500 -0.5158
+-18.000 -0.5037
+-17.500 -0.5087
+-17.000 -0.4700
+-16.500 -0.4539
+-16.000 -0.4417
+-15.500 -0.4466
+-15.000 -0.4454
+-14.500 -0.4041
+-14.000 -0.3855
+-13.500 -0.3731
+-13.000 -0.3850
+-12.500 -0.3831
+-12.000 -0.3448
+-11.500 -0.3310
+-11.000 -0.3520
+-10.500 -0.3471
+-10.000 -0.3201
+-9.500 -0.3097
+-9.000 -0.3116
+-8.500 -0.4499
+-8.000 -0.4947
+-7.500 -0.5082
+-7.000 -0.4816
+-6.500 -0.4347
+-6.000 -0.3834
+-5.500 -0.3297
+-5.000 -0.2664
+-4.500 -0.1801
+-4.000 -0.0980
+-3.500 -0.0166
+-3.000 0.0563
+-2.500 0.1303
+-2.000 0.2011
+-1.500 0.2719
+-1.000 0.3417
+-0.500 0.4134
+0.000 0.4698
+0.500 0.5250
+1.000 0.5785
+1.500 0.6305
+2.000 0.6834
+2.500 0.7341
+3.000 0.7804
+3.500 0.8320
+4.000 0.8985
+4.500 0.9562
+5.000 1.0099
+5.500 1.0605
+6.000 1.1085
+6.500 1.1555
+7.000 1.2001
+7.500 1.2392
+8.000 1.2732
+8.500 1.2796
+9.000 1.2864
+9.500 1.2833
+10.000 1.2701
+10.500 1.2513
+11.000 1.2275
+11.500 1.2038
+12.000 1.1800
+12.500 1.1600
+13.000 1.1450
+13.500 1.1350
+14.000 1.1250
+14.500 1.1150
+15.000 1.1000
+17.000 1.0258
+17.500 1.0427
+18.500 1.0552
+19.000 1.0908
+19.500 1.0739
+20.000 1.0950
+20.500 1.1072
+21.000 1.0960
+21.500 1.1110
+22.000 1.1231
+22.500 1.1193
+23.000 1.1116
+23.500 1.1087
+24.000 1.1001
+24.500 0.9191
+25.000 0.9021
+30 0.9500
+35 1.0000
+45 1.0500
+60 0.8500
+75 0.4500
+90 0.0000
+            </tableData>
+          </table>
+	  <!--(ported from C172p:) ground effect-->
+                <table>
+                    <independentVar>aero/h_b-mac-ft</independentVar>
+                    <tableData>
+                          0.0000	1.2030
+                          0.1000	1.1270
+                          0.1500	1.0900
+                          0.2000	1.0730
+                          0.3000	1.0460
+                          0.4000	1.0550
+                          0.5000	1.0190
+                          0.6000	1.0130
+                          0.7000	1.0080
+                          0.8000	1.0060
+                          0.9000	1.0030
+                          1.0000	1.0020
+                          1.1000	1.0000
+                      </tableData>
+                </table>
+      </product>
+    </function>
+
+    <function name="aero/force/Lift_flap">
+       <description>Delta Lift due to flaps</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>fcs/flap-pos-deg</property>
+           <value> 0.00667 </value>
+       </product>
+    </function>
+
+    <function name="aero/force/Lift_speedbrake">
+       <description>Delta Lift due to speedbrake</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>fcs/speedbrake-pos-norm</property>
+           <value>-0.11000</value>
+       </product>
+    </function>
+
+    <function name="aero/force/Lift_elevator">
+       <description>Lift due to Elevator Deflection</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>fcs/elevator-pos-rad</property>
+           <value>0</value>
+       </product>
+    </function>
+
+
+  <function name="aero/force/Lift_strip"><description>strip-theory nonlinear lift correction</description><product><property>aero/gate/fwd</property><difference><product><property>aero/strip/dX</property><sin><property>aero/alpha-rad</property></sin></product><product><property>aero/strip/dZ</property><cos><property>aero/alpha-rad</property></cos></product></difference></product></function>
+  <function name="aero/force/Lift_comp"><description>fuselage normal cross-flow force (delta vs cg flow)</description><product><property>aero/gate/fwd</property><product><value>-1</value><property>aero/comp/dZ</property><cos><property>aero/alpha-rad</property></cos></product></product></function>
+  <function name="aero/force/Lift_tail"><description>Tailplane lift (up positive), including the elevator</description>
+       <product><property>aero/pitch/new_w</property><property>aero/gate/fwd</property><property>aero/qbar-psf</property><property>aero/tail/eta</property><value>20.4</value><property>aero/tail/CL</property></product></function>
+  </axis>
+
+  <axis name="DRAG">
+
+    <function name="aero/force/Drag_basic">
+       <description>Profile drag, fitted so the trimmed glide matches the flight manual polar (470 kg and 570 kg, ISA sea level; best L/D about 33.5)</description>
+       <product>
+          <property>aero/qbar-psf</property>
+          <property>metrics/Sw-sqft</property>
+          <table>
+            <independentVar lookup="row">aero/alpha-rad</independentVar>
+            <tableData>
+             -1.57 0.5
+             -0.35 0.040
+             -0.06981 0.00655
+             0.00000 0.01168
+             0.03491 0.01182
+             0.06981 0.01054
+             0.10472 0.01023
+             0.13963 0.00959
+             0.17453 0.01014
+             0.20944 0.01067
+             0.35 0.04
+             0.436 0.2
+             0.5236 0.738384
+             0.785 0.85
+             1.047 1
+             1.222 1.05
+             1.57 1.2
+            </tableData>
+          </table>
+	  <table>
+            <independentVar lookup="row">velocities/vt-fps</independentVar>
+            <description>Reynolds number effect on profile drag</description>
+            <tableData>
+             54.68 1.4957
+             68.35 1.1669
+             82.02 0.9998
+             100.25 0.8401
+             123.03 1.0275
+             145.82 1.1262
+             173.16 1.1902
+            </tableData>
+          </table>
+	  <!--(ported from C172p:) Ground effect: occurs when aircraft flies wingspan or less above the ground-->
+                <table>
+                    <independentVar>aero/h_b-mac-ft</independentVar>
+                    <tableData>
+                          0.0000	0.4800
+                          0.1000	0.5150
+                          0.1500	0.6290
+                          0.2000	0.7090
+                          0.3000	0.8150
+                          0.4000	0.8820
+                          0.5000	0.9280
+                          0.6000	0.9620
+                          0.7000	0.9880
+                          0.8000	1.0000
+                          0.9000	1.0000
+                          1.0000	1.0000
+                          1.1000	1.0000
+                      </tableData>
+                </table>
+       </product>
+    </function>
+
+    <function name="aero/force/Drag_induced">
+       <description>Induced drag</description>
+         <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>aero/cl-squared</property>
+           <value>0.01900</value>
+         </product>
+    </function>
+
+    <function name="aero/force/Drag_mach">
+       <description>Drag due to mach</description>
+        <product>
+          <property>aero/qbar-psf</property>
+          <property>metrics/Sw-sqft</property>
+          <table>
+            <independentVar lookup="row">velocities/mach</independentVar>
+            <tableData>
+                0.00      0.000
+                0.7      0.000
+                1.10      0.023
+                1.80      0.015
+            </tableData>
+          </table>
+        </product>
+    </function>
+
+    <function name="aero/force/Drag_flap">
+       <description>Drag due to flaps</description>
+         <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>fcs/flap-pos-deg</property>
+           <value> 0.00080 </value>
+         </product>
+    </function>
+
+    <function name="aero/force/Drag_speedbrake">
+       <description>Drag due to speedbrakes</description>
+         <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>fcs/speedbrake-pos-norm</property>
+           <value>0.07940</value>
+         </product>
+    </function>
+
+    <function name="aero/force/Drag_beta">
+       <description>Residual sideslip drag (rudder/aileron trim, interference); fuselage cross-flow drag is in Drag_comp</description>
+       <product><property>aero/qbar-psf</property><property>metrics/Sw-sqft</property><table><independentVar lookup="row">aero/beta-rad</independentVar><tableData>
+-1.5708 0.2427
+-1.309 0.22617
+-1.0472 0.1818
+-0.872665 0.14234
+-0.698132 0.10036
+-0.610865 0.08001
+-0.523599 0.0609
+-0.436332 0.04362
+-0.349066 0.02867
+-0.261799 0.01653
+-0.174533 0.00754
+-0.0872665 0.00197
+0 0
+0.0872665 0.00197
+0.174533 0.00754
+0.261799 0.01653
+0.349066 0.02867
+0.436332 0.04362
+0.523599 0.0609
+0.610865 0.08001
+0.698132 0.10036
+0.872665 0.14234
+1.0472 0.1818
+1.309 0.22617
+1.5708 0.2427
+</tableData></table><table><independentVar lookup="row">aero/alpha-deg</independentVar><description>cross-control / interference drag in an attached yawed flow: fades out when the wing is stalled</description><tableData>
+-180 1
+-16 1
+-8 2.5
+8 2.5
+16 1
+180 1
+</tableData></table></product>
+    </function>
+
+    <function name="aero/force/Drag_elevator">
+       <description>Trim drag of the elevator (small: a glider tail adds very little drag when trimmed)</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <abs><property>fcs/elevator-pos-norm</property></abs>
+           <value>0</value>
+       </product>
+    </function>
+
+  <function name="aero/force/Drag_strip"><description>strip-theory nonlinear drag correction</description><product><property>aero/gate/fwd</property><product><value>-1</value><sum><product><property>aero/strip/dX</property><cos><property>aero/alpha-rad</property></cos></product><product><property>aero/strip/dZ</property><sin><property>aero/alpha-rad</property></sin></product></sum></product></product></function>
+  <function name="aero/force/Drag_comp"><description>fuselage normal cross-flow drag component</description><product><property>aero/gate/fwd</property><sum><product><value>-1</value><property>aero/comp/dZ</property><sin><property>aero/alpha-rad</property></sin></product><product><value>-1.0636</value><property>aero/comp/dYf</property><sin><property>aero/beta-rad</property></sin></product></sum></product></function>
+  <function name="aero/force/Drag_tail"><description>Tailplane profile + induced drag</description>
+       <product><property>aero/pitch/new_w</property><property>aero/gate/fwd</property><property>aero/qbar-psf</property><property>aero/tail/eta</property><value>20.4</value><sum><value>0.006</value><product><value>0.07066</value><property>aero/tail/CL</property><property>aero/tail/CL</property></product></sum></product></function>
+  </axis>
+
+  <axis name="SIDE">
+
+    <function name="aero/force/Side_beta">
+       <description>Side force due to beta</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>aero/beta-rad</property>
+           <value>-1</value>
+       </product>
+    </function>
+
+  <function name="aero/force/Side_comp"><description>fuselage lateral cross-flow force plus fin side-force stall residual (share of the lumped Side_beta)</description><product><property>aero/gate/fwd</property><sum><property>aero/comp/dYf</property>
+  <product><property>aero/qbar-psf</property><value>193.23</value><value>-0.7437401396856975</value><table><independentVar lookup="row">aero/comp/vt/bdeg</independentVar><tableData>
+-90 1.10094
+-70 0.834052
+-50 0.567168
+-40 0.433726
+-30 0.300284
+-25 0.233563
+-20 0.166842
+-15 0.100121
+-12 0.0600882
+-10 0.0333998
+-8 0.00671142
+-7.49705 0
+-6 0
+-4 0
+0 0
+4 0
+6 0
+7.49705 0
+8 -0.00671142
+10 -0.0333998
+12 -0.0600882
+15 -0.100121
+20 -0.166842
+25 -0.233563
+30 -0.300284
+40 -0.433726
+50 -0.567168
+70 -0.834052
+90 -1.10094
+</tableData></table></product></sum></product></function>
+  </axis>
+
+  <axis name="ROLL">
+
+    <function name="aero/moment/Roll_beta">
+       <description>Roll moment due to beta</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>metrics/bw-ft</property>
+           <property>aero/beta-rad</property>
+           <value>-0.1</value>
+       </product>
+    </function>
+
+    <function name="aero/moment/Roll_damp">
+       <description>Roll moment due to roll rate</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>metrics/bw-ft</property>
+           <property>aero/bi2vel</property>
+           <property>velocities/p-aero-rad_sec</property>
+           <value>-0.4</value>
+           <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <description>roll damping fades out when stalled (replaced by the bounded autorotation term below)</description>
+            <tableData>
+              0  1
+              90  1
+            </tableData>
+          </table>
+       </product>
+    </function>
+
+    <function name="aero/moment/Roll_yaw">
+       <description>Roll moment due to yaw rate</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>metrics/bw-ft</property>
+           <property>aero/bi2vel</property>
+           <property>velocities/r-aero-rad_sec</property>
+           <value>0.15</value>
+       </product>
+    </function>
+
+    <function name="aero/moment/Roll_aileron">
+       <description>Roll moment due to aileron</description>
+       <product>
+          <property>aero/qbar-psf</property>
+          <property>metrics/Sw-sqft</property>
+          <property>metrics/bw-ft</property>
+          <property>fcs/left-aileron-pos-rad</property>
+          <value>0.12</value>
+	  <!-- (ported from c172p:) the ailerons are less efficient and even create an opposite roll moment close to stall because deflection down makes the wing portion stall-->
+                    <table>
+                        <independentVar lookup="row">aero/alpha-deg</independentVar>
+                        <tableData>
+                                                        15    1
+                            16    0.8
+                            18    1
+                            25    1.41887
+                            90    1.41887
+                            100    1.41887
+                            140    1
+                            180    1
+                        </tableData>
+                    </table>
+       </product>
+    </function>
+
+    <function name="aero/moment/Roll_rudder">
+       <description>Roll moment due to rudder</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>metrics/bw-ft</property>
+           <property>fcs/rudder-pos-rad</property>
+           <value>0.01</value>
+           <table><independentVar lookup="row">aero/comp/vt/bdeg</independentVar><tableData>
+-90 0.934488
+-70 0.934488
+-45 0.956262
+-25 1
+-7.49705 1
+7.49705 1
+25 1
+45 0.956262
+70 0.934488
+90 0.934488
+</tableData></table>
+       </product>
+    </function>
+
+  <function name="aero/moment/Roll_strip"><description>strip-theory roll moment (autorotation emerges here)</description><product><property>aero/gate/fwd</property><sum><product><property>aero/strip/sL0/ZN</property><value>-4.64833</value></product><product><property>aero/strip/sL1/ZN</property><value>-9.29667</value></product><product><property>aero/strip/sL2/ZN</property><value>-13.94500</value></product><product><property>aero/strip/sL3/ZN</property><value>-18.59333</value></product><product><property>aero/strip/sL4/ZN</property><value>-23.24167</value></product><product><property>aero/strip/sL5/ZN</property><value>-27.89000</value></product><product><property>aero/strip/sR0/ZN</property><value>4.64833</value></product><product><property>aero/strip/sR1/ZN</property><value>9.29667</value></product><product><property>aero/strip/sR2/ZN</property><value>13.94500</value></product><product><property>aero/strip/sR3/ZN</property><value>18.59333</value></product><product><property>aero/strip/sR4/ZN</property><value>23.24167</value></product><product><property>aero/strip/sR5/ZN</property><value>27.89000</value></product></sum></product></function>
+  <function name="aero/moment/Roll_comp"><description>fuselage cross-flow roll moment</description><product><property>aero/gate/fwd</property><sum><product><value>-0.8419</value><property>aero/comp/fu0/Y</property></product><product><value>-0.4552</value><property>aero/comp/fu1/Y</property></product><product><value>-0.3634</value><property>aero/comp/fu2/Y</property></product><product><value>-0.3321</value><property>aero/comp/fu3/Y</property></product><product><value>-0.2017</value><property>aero/comp/fu4/Y</property></product><product><value>-0.2091</value><property>aero/comp/fu5/Y</property></product><product><value>-0.2320</value><property>aero/comp/fu6/Y</property></product><product><value>-0.3154</value><property>aero/comp/fu7/Y</property></product></sum></product></function>
+  </axis>
+
+  <axis name="PITCH">
+
+    <function name="aero/moment/Pitch_alpha"><product><property>aero/pitch/old_w</property>
+       <description>Pitch moment due to alpha</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>metrics/cbarw-ft</property>
+           <property>aero/alpha-rad</property>
+           <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <description>post-stall pitch stiffness</description>
+            <tableData>
+              0  1
+              14  1
+              25  1.94077
+              45  0.3
+              65  4.73211
+              90  4.73211
+              100  4.73211
+              140  1
+              180  1
+            </tableData>
+          </table>
+           <value>-0.93760</value>
+       </product>
+    </product></function>
+
+    <function name="aero/moment/Pitch_elevator"><product><property>aero/pitch/old_w</property>
+       <description>Pitch moment due to elevator</description>
+       <product>
+          <property>aero/qbar-psf</property>
+          <property>metrics/Sw-sqft</property>
+          <property>metrics/cbarw-ft</property>
+          <property>fcs/elevator-pos-rad</property>
+          <table>
+            <independentVar lookup="row">velocities/mach</independentVar>
+            <tableData>
+              0.0     -0.500
+              2.0     -0.300
+            </tableData>
+          </table>
+	  <!--(ported from C172p): the elevator looses efficiency when stalled-->
+		<table>
+			<independentVar lookup="row">fcs/elevator-pos-rad</independentVar>
+			<independentVar lookup="column">aero/alpha-deg</independentVar>
+			<tableData>
+					20  25   35     45     55      65      90
+				-0.49   1   0.5  0.2    0.1    0.1     0.1     0.1
+				0       1   0.8  0.6    0.5    0.4     0.4     0.4
+				0.40    1   1.5  1.5    1.5    1.5     1.5     1.5
+			</tableData>
+		</table>
+       </product>
+    </product></function>
+
+    <function name="aero/moment/Pitch_damp"><product><property>aero/pitch/old_w</property>
+       <description>Pitch moment due to pitch rate</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>metrics/cbarw-ft</property>
+           <property>aero/ci2vel</property>
+           <property>velocities/q-aero-rad_sec</property>
+           <value>-13.5</value>
+           <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <tableData>
+              0  1
+              14  1
+              25  1.85913
+              90  1.85913
+              100  1.85913
+              140  1
+              180  1
+            </tableData>
+          </table>
+       </product>
+    </product></function>
+
+    <function name="aero/moment/Pitch_alphadot"><product><property>aero/pitch/old_w</property>
+       <description>Pitch moment due to alpha rate</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>metrics/cbarw-ft</property>
+           <property>aero/ci2vel</property>
+           <property>aero/alphadot-rad_sec</property>
+           <value>-12</value>
+       </product>
+    </product></function>
+
+  <function name="aero/moment/Pitch_comp"><description>tailplane stall residual (share of the lumped Pitch_alpha), fuselage Munk moment and cross-flow pitch moment</description><product><property>aero/pitch/old_w</property><product><property>aero/gate/fwd</property><sum>
+  <product><property>aero/qbar-psf</property><value>193.23</value><value>3.46</value><value>-0.36798000231551514</value><table><independentVar lookup="row">aero/comp/ht/ae</independentVar><tableData>
+-90 0.457677
+-70 0.346049
+-50 0.23442
+-40 0.178606
+-30 0.122792
+-25 0.0948844
+-20 0.0669772
+-15 0.03907
+-12 0.0223257
+-10 0.0111629
+-8 0
+-6 0
+-4 0
+0 0
+4 0
+6 0
+8 0
+10 -0.0111629
+12 -0.0223257
+15 -0.03907
+20 -0.0669772
+25 -0.0948844
+30 -0.122792
+40 -0.178606
+50 -0.23442
+70 -0.346049
+90 -0.457677
+</tableData></table></product>
+  <product><property>aero/qbar-psf</property><value>79.42751874361801</value><sin><product><value>2</value><property>aero/alpha-rad</property></product></sin></product>
+  <product><value>-6.8862</value><property>aero/comp/fu0/Z</property></product><product><value>-3.7688</value><property>aero/comp/fu1/Z</property></product><product><value>-0.5038</value><property>aero/comp/fu2/Z</property></product><product><value>2.6126</value><property>aero/comp/fu3/Z</property></product><product><value>5.9866</value><property>aero/comp/fu4/Z</property></product><product><value>9.2649</value><property>aero/comp/fu5/Z</property></product><product><value>12.5172</value><property>aero/comp/fu6/Z</property></product><product><value>15.8499</value><property>aero/comp/fu7/Z</property></product></sum></product></product></function>
+  
+    <function name="aero/moment/Pitch_w0"><description>Wing pitching moment about the aerodynamic centre (FX S02-196 / FX 60-126)</description>
+       <product><property>aero/pitch/new_w</property><property>aero/gate/fwd</property><property>aero/qbar-psf</property><value>193.23</value><value>3.46</value><value>-0.09</value></product></function>
+    <function name="aero/moment/Pitch_fus"><description>Fuselage Munk moment (slender body, 2*(k2-k1)*volume)</description>
+       <product><property>aero/pitch/new_w</property><property>aero/gate/fwd</property><property>aero/qbar-psf</property><value>90.010</value><sin><product><value>2</value><property>aero/alpha-rad</property></product></sin></product></function>
+    <function name="aero/moment/Pitch_tail"><description>Tailplane lift times arm (lift upward = nose down)</description>
+       <product><property>aero/pitch/new_w</property><property>aero/gate/fwd</property><value>-1</value><property>aero/qbar-psf</property><property>aero/tail/eta</property><value>20.4</value><property>aero/tail/CL</property><value>15.7130</value></product></function>
+  </axis>
+
+  <axis name="YAW">
+
+    <function name="aero/moment/Yaw_beta">
+       <description>Yaw moment due to beta</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>metrics/bw-ft</property>
+           <property>aero/beta-rad</property>
+           <value>0.16474</value>
+           <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <tableData>
+              0  1
+              14  1
+              25  0.3
+              90  0.3
+              100  0.3
+              140  1
+              180  1
+            </tableData>
+          </table>
+       </product>
+    </function>
+
+    <function name="aero/moment/Yaw_damp">
+       <description>Yaw moment due to yaw rate</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>metrics/bw-ft</property>
+           <property>aero/bi2vel</property>
+           <property>velocities/r-aero-rad_sec</property>
+           <value>-0.15</value>
+           <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <tableData>
+              0  1
+              14  1
+              25  2.45053
+              90  2.45053
+              100  2.45053
+              140  1
+              180  1
+            </tableData>
+          </table>
+       </product>
+    </function>
+
+    <function name="aero/moment/Yaw_rudder">
+       <description>Yaw moment due to rudder</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>metrics/bw-ft</property>
+           <property>fcs/rudder-pos-rad</property>
+           <value>-0.038</value>
+           <table><independentVar lookup="row">aero/comp/vt/bdeg</independentVar><tableData>
+-90 0.934488
+-70 0.934488
+-45 0.956262
+-25 1
+-7.49705 1
+7.49705 1
+25 1
+45 0.956262
+70 0.934488
+90 0.934488
+</tableData></table>
+           <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <tableData>
+              0  1
+              14  1
+              25  1.17648
+              90  1.17648
+              100  1.17648
+              140  1
+              180  1
+            </tableData>
+          </table>
+       </product>
+    </function>
+
+    <function name="aero/moment/Yaw_aileron">
+       <description>Adverse yaw</description>
+       <product>
+           <property>aero/qbar-psf</property>
+           <property>metrics/Sw-sqft</property>
+           <property>metrics/bw-ft</property>
+           <property>fcs/left-aileron-pos-rad</property>
+           <value>-0.02</value>
+           <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <tableData>
+              0  1
+              14  1
+              25  -0.722533
+              45  1.43267
+              90  1.43267
+              100  1.43267
+              140  1
+              180  1
+            </tableData>
+          </table>
+       </product>
+    </function>
+
+  <function name="aero/moment/Yaw_strip"><description>strip-theory yaw moment from differential drag</description><product><property>aero/gate/fwd</property><sum><product><property>aero/strip/sL0/X</property><value>4.64833</value></product><product><property>aero/strip/sL1/X</property><value>9.29667</value></product><product><property>aero/strip/sL2/X</property><value>13.94500</value></product><product><property>aero/strip/sL3/X</property><value>18.59333</value></product><product><property>aero/strip/sL4/X</property><value>23.24167</value></product><product><property>aero/strip/sL5/X</property><value>27.89000</value></product><product><property>aero/strip/sR0/X</property><value>-4.64833</value></product><product><property>aero/strip/sR1/X</property><value>-9.29667</value></product><product><property>aero/strip/sR2/X</property><value>-13.94500</value></product><product><property>aero/strip/sR3/X</property><value>-18.59333</value></product><product><property>aero/strip/sR4/X</property><value>-23.24167</value></product><product><property>aero/strip/sR5/X</property><value>-27.89000</value></product></sum></product></function>
+  <function name="aero/moment/Yaw_comp"><description>fin weathercock stall residual (share of the lumped Yaw_beta), fuselage Munk moment and cross-flow yaw moment</description><product><property>aero/gate/fwd</property><sum>
+  <product><property>aero/qbar-psf</property><value>193.23</value><value>55.78</value><value>0.07735732232036395</value><table><independentVar lookup="row">aero/comp/vt/bdeg</independentVar><tableData>
+-90 1.10094
+-70 0.834052
+-50 0.567168
+-40 0.433726
+-30 0.300284
+-25 0.233563
+-20 0.166842
+-15 0.100121
+-12 0.0600882
+-10 0.0333998
+-8 0.00671142
+-7.49705 0
+-6 0
+-4 0
+0 0
+4 0
+6 0
+7.49705 0
+8 -0.00671142
+10 -0.0333998
+12 -0.0600882
+15 -0.100121
+20 -0.166842
+25 -0.233563
+30 -0.300284
+40 -0.433726
+50 -0.567168
+70 -0.834052
+90 -1.10094
+</tableData></table></product>
+  <product><value>-1</value><property>aero/qbar-psf</property><value>79.42751874361801</value><sin><product><value>2</value><property>aero/beta-rad</property></product></sin></product>
+  <product><value>6.8862</value><property>aero/comp/fu0/Y</property></product><product><value>3.7688</value><property>aero/comp/fu1/Y</property></product><product><value>0.5038</value><property>aero/comp/fu2/Y</property></product><product><value>-2.6126</value><property>aero/comp/fu3/Y</property></product><product><value>-5.9866</value><property>aero/comp/fu4/Y</property></product><product><value>-9.2649</value><property>aero/comp/fu5/Y</property></product><product><value>-12.5172</value><property>aero/comp/fu6/Y</property></product><product><value>-15.8499</value><property>aero/comp/fu7/Y</property></product></sum></product></function>
+  </axis>
+	
+	
+	
+</aerodynamics>

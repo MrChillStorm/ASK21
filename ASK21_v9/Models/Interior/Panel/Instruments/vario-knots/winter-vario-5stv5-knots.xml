@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PropertyList>
+	<path>winter-vario-5stv5-knots.ac</path>
+	<params>
+		<te-reading-mps type="string">instrumentation/variometer/te-reading-mps</te-reading-mps>
+		<mc-cready type="string">instrumentation/mc-cready/rot</mc-cready>
+		<light type="string">sim/model/instruments-light</light>
+	</params>
+	<animation>
+		<type>material</type>
+		<object-name>Face</object-name>
+		<object-name>Needle</object-name>
+		<emission>
+			<red>   0.28 </red>
+			<green> 0.14 </green>
+			<blue>  0.07 </blue>
+			<factor-prop alias="/params/light" />
+		</emission>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>Needle</object-name>
+		<property alias="/params/te-reading-mps" />
+		<interpolation>
+			<entry>
+				<ind>-6.33</ind>
+				<dep> -160</dep>
+			</entry>
+			<entry>
+				<ind> 6.33</ind>
+				<dep>  160</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x>-1</x>
+		</axis>
+	</animation>
+	<animation>
+		<type>knob</type>
+		<object-name>mc-cready</object-name>
+		<property alias="/params/mc-cready" />
+		<factor>-1</factor>
+		<axis>
+			<x>1</x>
+		</axis>
+		<action>
+			<binding>
+				<command>property-adjust</command>
+				<property alias="/params/mc-cready" />
+				<factor>2</factor>
+				<min>0</min>
+				<max>360</max>
+				<wrap>true</wrap>
+			</binding>
+		</action>
+	</animation>
+</PropertyList>

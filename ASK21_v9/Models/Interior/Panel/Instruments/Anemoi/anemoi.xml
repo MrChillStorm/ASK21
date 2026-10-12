@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PropertyList>
+
+	<path>anemoi.ac</path>
+
+	<effect>
+		<inherits-from>Effects/model-interior-display</inherits-from>
+		<parameters>
+			<sample-res>0.0005</sample-res>
+			<dirt-factor>1.5</dirt-factor>
+			<contrast>0.7</contrast>
+		</parameters>
+		<object-name>anemoi.screen</object-name>
+	</effect>
+
+	<animation>
+		<type>pick</type>
+		<object-name>anemoi.btn</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>nasal</command>
+				<script>anemoi.btn();</script>
+			</binding>
+			<binding>
+				<command>property-assign</command>
+				<property>instrumentation/anemoi/btn-pressed</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>instrumentation/anemoi/btn-pressed</property>
+					<value>0</value>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	<animation>
+		<type>translate</type>
+		<object-name>anemoi.btn</object-name>
+		<property>instrumentation/anemoi/btn-pressed</property>
+		<factor>-.001</factor>
+		<axis>
+			<x>1</x>
+		</axis>
+	</animation>
+
+</PropertyList>
+
+

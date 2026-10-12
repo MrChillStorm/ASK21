@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>panelF.ac</path>
+
+	<!-- Anemoi: Shows current and average wind -->
+	<model>
+		<name>wind</name>
+		<path>Instruments/Anemoi/anemoi.xml</path>
+		<condition>
+			<property>/sim/model/windcompass</property>
+		</condition>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.095</z-m>
+		</offsets>
+	</model>
+
+
+	<!-- Airspeed Indicator (ASI) -->
+	<model>
+		<name>winter-asi</name>
+		<path>Instruments/winter-asi/winter-asi.xml</path>
+		<offsets>
+			<x-m> 0.0  </x-m>
+			<y-m>-0.085</y-m>
+			<z-m> 0.125</z-m>
+		</offsets>
+	</model>
+	<model>
+		<name>ppc_asi</name>
+		<path>Instruments/partial_panel/partial_panel.ac</path>
+		<condition>
+			<property>instrumentation/partial-panel/asi</property>
+		</condition>
+		<offsets>
+			<x-m> 0.0  </x-m>
+			<y-m>-0.085</y-m>
+			<z-m> 0.125</z-m>
+		</offsets>
+	</model>
+
+	<!-- Altimeter (ALT) -->
+	<model>
+		<name>winter-alt</name>
+		<path>Instruments/winter-alt/winter-alt.xml</path>
+		<offsets>
+			<x-m> 0.0  </x-m>
+			<y-m>-0.085</y-m>
+			<z-m>0.035</z-m>
+		</offsets>
+	</model>
+	<model>
+		<name>ppc_alt</name>
+		<path>Instruments/partial_panel/partial_panel.ac</path>
+		<condition>
+			<property>instrumentation/partial-panel/alt</property>
+		</condition>
+		<offsets>
+			<x-m> 0.0  </x-m>
+			<y-m>-0.085</y-m>
+			<z-m>0.035</z-m>
+		</offsets>
+	</model>
+
+	<!--Variometer-->
+	<model>
+		<name>vario</name>
+		<path>Instruments/vario-5stv5/winter-vario-5stv5.xml</path>
+		<condition>
+			<not-equals>
+				<property>/sim/model/livery/instruments/vsi</property>
+				<value>1</value>
+			</not-equals>
+		</condition>
+		<offsets>
+			<x-m> 0.0  </x-m>
+			<y-m>0.085</y-m>
+			<z-m>0.125</z-m>
+		</offsets>
+	</model>
+	<model>
+		<name>vario-1</name>
+		<path>Instruments/vario-knots/winter-vario-5stv5-knots.xml</path>
+		<condition>
+			<equals>
+				<property>/sim/model/livery/instruments/vsi</property>
+				<value>1</value>
+			</equals>
+		</condition>
+		<offsets>
+			<x-m> 0.0  </x-m>
+			<y-m>0.085</y-m>
+			<z-m>0.125</z-m>
+		</offsets>
+	</model>
+
+	<!-- Take-off check placard on the empty hole at the bottom right (the hole is patched, see src/make_panels.py) -->
+	<model>
+		<name>placard</name>
+		<path>Instruments/placard/placard.xml</path>
+		<offsets>
+			<x-m> 0.0  </x-m>
+			<y-m> 0.085</y-m>
+			<z-m> 0.036</z-m>
+		</offsets>
+	</model>
+
+	<!-- LXNAV V8 vario indicator (replaces the ILEC SC7; data and sound by lxv8-core.nas) -->
+	<model>
+		<name>vario2</name>
+		<path>Instruments/lx-v8/lxv8.xml</path>
+		<offsets>
+			<x-m> 0.0  </x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.04</z-m>
+		</offsets>
+	</model>
+
+	<!-- (the G-meter is a page of the V8 now) -->
+
+
+	<!-- Compass -->
+	<model>
+		<name>compass</name>
+		<path>Instruments/57mm_compass/57mm_compass.xml</path>
+		<offsets>
+			<x-m>0.0  </x-m>
+			<y-m>0.17 </y-m>
+			<z-m>0.033</z-m>
+		</offsets>
+	</model>
+	<model>
+		<name>compass_screws</name>
+		<path>Instruments/GMeter/57mm_screws.xml</path>
+		<offsets>
+			<x-m> 0.0 </x-m>
+			<y-m> 0.17</y-m>
+			<z-m> 0.033</z-m>
+		</offsets>
+	</model>
+
+	<!-- COM Radio -->
+	<model>
+		<name>com</name>
+		<path>Aircraft/Instruments-3d/ar-6201/ar-6201.xml</path>
+		<offsets>
+			<x-m> 0.0 </x-m>
+			<y-m> 0.0 </y-m>
+			<z-m>-0.09</z-m>
+		</offsets>
+	</model>
+	<model>
+		<name>radio_screws</name>
+		<path>Instruments/GMeter/57mm_screws.xml</path>
+		<offsets>
+			<x-m> 0.0 </x-m>
+			<y-m> 0.0 </y-m>
+			<z-m>-0.09</z-m>
+		</offsets>
+	</model>
+
+	<!--57mm turnslip-->
+	<model>
+		<name>turnslip</name>
+		<path>Instruments/tsi-5550/tsi-5550.xml</path>
+		<condition>
+			<not><property>/sim/model/transponder</property></not>
+		</condition>
+		<offsets>
+			<x-m> 0.0 </x-m>
+			<y-m> 0.0 </y-m>
+			<z-m>-0.025</z-m>
+		</offsets>
+	</model>
+	<!-- Transponder: stock BXP 6401 at its real size; the hole of the panel is patched (see src/make_panels.py) -->
+	<model>
+		<name>transponder</name>
+		<path>Aircraft/Instruments-3d/bxp6401/bxp6401.xml</path>
+		<condition>
+			<property>/sim/model/transponder</property>
+		</condition>
+		<offsets>
+			<x-m> 0.0 </x-m>
+			<y-m> 0.0 </y-m>
+			<z-m>-0.025</z-m>
+		</offsets>
+	</model>
+	<model>
+		<name>transponder_screws</name>
+		<path>Instruments/GMeter/57mm_screws.xml</path>
+		<condition>
+			<property>/sim/model/transponder</property>
+		</condition>
+		<offsets>
+			<x-m> 0.0 </x-m>
+			<y-m> 0.0</y-m>
+			<z-m> -0.025</z-m>
+		</offsets>
+	</model>
+
+	<!-- Master switch -->
+	<model>
+		<name>masterswitch</name>
+		<path>Instruments/switches/masterswitch.xml</path>
+		<offsets>
+			<x-m> 0.0  </x-m>
+			<y-m>-0.18 </y-m>
+			<z-m> 0.033</z-m>
+		</offsets>
+	</model>
+	<model>
+		<name>turnslip_switch</name>
+		<path>Instruments/switches/turnslipswitch.xml</path>
+		<condition>
+			<not><property>/sim/model/transponder</property></not>
+		</condition>
+		<offsets>
+			<x-m> 0.0  </x-m>
+			<y-m>-0.16 </y-m>
+			<z-m> 0.033</z-m>
+		</offsets>
+	</model>
+
+</PropertyList>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Version: 03/2023 -->
+<PropertyList>
+	<name>training_dialog</name>
+	<layout>vbox</layout>
+	<default-padding>5</default-padding>
+	<modal>false</modal>
+	<width>250</width>
+	<group>
+		<layout>hbox</layout>
+		<empty>
+			<stretch>true</stretch>
+		</empty>
+		<text>
+			<label>Training Options</label>
+		</text>
+		<empty>
+			<stretch>true</stretch>
+		</empty>
+		<button>
+			<legend/>
+			<key>Esc</key>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<border>2</border>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+	<hrule/>
+	<empty>
+		<stretch>true</stretch>
+	</empty>
+	<text>
+		<label>Partial Panel Covers</label>
+	</text>
+	<group>
+		<layout>hbox</layout>
+		<checkbox>
+			<name>ppc_asi</name>
+			<label>Airspeed Indicator</label>
+			<property>/instrumentation/partial-panel/asi</property>
+			<live>true</live>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+		</checkbox>
+		<checkbox>
+			<name>ppc_alt</name>
+			<label>Altimeter</label>
+			<property>/instrumentation/partial-panel/alt</property>
+			<live>true</live>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+		</checkbox>
+	</group>
+	<empty>
+		<stretch>true</stretch>
+	</empty>
+	<hrule/>
+</PropertyList>

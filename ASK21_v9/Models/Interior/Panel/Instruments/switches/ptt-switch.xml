@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PropertyList>
+	<path>ptt-switch.ac</path>
+	<animation>
+		<type>translate</type>
+		<object-name>ptt.btn</object-name>
+		<property>instrumentation/comm[0]/ptt</property>
+		<factor>-0.002</factor>
+		<axis>
+			<x>1</x>
+		</axis>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>ptt.btn</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>instrumentation/comm[0]/ptt</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>instrumentation/comm[0]/ptt</property>
+					<value>0</value>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+</PropertyList>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>ilec-raz.ac</path>
+	<effect>
+		<inherits-from>Models/Effects/instrument-glass</inherits-from>
+		<object-name>raz.glass</object-name>
+	</effect>
+	<animation>
+		<type>material</type>
+		<object-name>raz</object-name>
+		<object-name>raz.needle</object-name>
+		<emission>
+			<red>0.28</red>
+			<green>0.14</green>
+			<blue>0.07</blue>
+			<factor-prop>sim/model/instruments-light</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>raz.needle</object-name>
+		<property>instrumentation/ilec-sc7/te-reading-mps</property>
+		<factor>-24</factor>
+		<min-deg>-120</min-deg>
+		<max-deg> 120</max-deg>
+		<axis>
+			<x>1</x>
+		</axis>
+		<center>
+			<y-m>-0.00125</y-m>
+		</center>
+	</animation>
+</PropertyList>

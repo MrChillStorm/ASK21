@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!-- Controls of the LXNAV V8 vario indicator, for use with the close-up window.
+     The buttons do what the three push buttons of the instrument do. -->
+<PropertyList>
+	<name>lxv8_dialog</name>
+	<layout>vbox</layout>
+	<default-padding>3</default-padding>
+	<modal>false</modal>
+	<x>10</x>
+	<y>10</y>
+	<width>300</width>
+
+	<group>
+		<layout>hbox</layout>
+		<empty><stretch>true</stretch></empty>
+		<text>
+			<label>LXNAV V8</label>
+			<font><name>times_bold</name></font>
+		</text>
+		<empty><stretch>true</stretch></empty>
+		<button>
+			<pref-width>22</pref-width>
+			<pref-height>22</pref-height>
+			<legend>X</legend>
+			<key>Esc</key>
+			<binding><command>nasal</command><script>lxv8.close_window()</script></binding>
+		</button>
+	</group>
+	<hrule/>
+
+	<button>
+		<legend>Top   (MacCready +, menu up, zoom)</legend>
+		<pref-width>284</pref-width>
+		<pref-height>34</pref-height>
+		<binding>
+			<command>nasal</command>
+			<script>lxv8.click("up", 0)</script>
+		</binding>
+	</button>
+	<button>
+		<legend>Middle   (next page, select)</legend>
+		<pref-width>284</pref-width>
+		<pref-height>34</pref-height>
+		<binding>
+			<command>nasal</command>
+			<script>lxv8.click("mid", 0)</script>
+		</binding>
+	</button>
+	<button>
+		<legend>Middle, long press   (setup, back)</legend>
+		<pref-width>284</pref-width>
+		<pref-height>34</pref-height>
+		<binding>
+			<command>nasal</command>
+			<script>lxv8.click("mid", 1)</script>
+		</binding>
+	</button>
+	<button>
+		<legend>Bottom   (MacCready -, menu down)</legend>
+		<pref-width>284</pref-width>
+		<pref-height>34</pref-height>
+		<binding>
+			<command>nasal</command>
+			<script>lxv8.click("dn", 0)</script>
+		</binding>
+	</button>
+	<hrule/>
+	<group>
+		<layout>hbox</layout>
+		<text><label>Window left</label><pref-width>90</pref-width></text>
+		<slider>
+			<name>lxv8_wx</name>
+			<property>/instrumentation/lxv8/window/x</property>
+			<min>0</min>
+			<max>1800</max>
+			<step>10</step>
+			<live>true</live>
+			<binding>
+				<command>dialog-apply</command>
+				<object-name>lxv8_wx</object-name>
+			</binding>
+		</slider>
+	</group>
+	<group>
+		<layout>hbox</layout>
+		<text><label>Window top</label><pref-width>90</pref-width></text>
+		<slider>
+			<name>lxv8_wy</name>
+			<property>/instrumentation/lxv8/window/y</property>
+			<min>0</min>
+			<max>1000</max>
+			<step>10</step>
+			<live>true</live>
+			<binding>
+				<command>dialog-apply</command>
+				<object-name>lxv8_wy</object-name>
+			</binding>
+		</slider>
+	</group>
+	<button>
+		<legend>Close the close-up window</legend>
+		<pref-width>284</pref-width>
+		<pref-height>28</pref-height>
+		<binding>
+			<command>nasal</command>
+			<script>lxv8.close_window()</script>
+		</binding>
+	</button>
+</PropertyList>

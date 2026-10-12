@@ -1,0 +1,588 @@
+<?xml version="1.0"?>
+<!-- version: 2011-09-28 -->
+
+<PropertyList>
+  <name>dragrobot_advanced_dialog</name>
+  <layout>vbox</layout>
+  <default-padding>1</default-padding>
+  <modal>true</modal>
+  <width>500</width>
+
+<!-- headline -->
+  <group>
+    <layout>hbox</layout>
+    <default-padding>1</default-padding>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <text>
+      <label>Drag Roboter Advanced Configuration</label>
+      <font>
+        <name>times_bold</name>
+      </font>
+    </text>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+  </group>
+
+
+    <hrule/>
+    <hrule/>
+
+<!-- terrain awareness -->
+  <group>
+    <layout>hbox</layout>
+    <checkbox>
+      <halign>left</halign>
+      <label>turn away from terrain ahead (hills, mountains)</label>
+      <property>sim/glider/dragger/conf/terrain_guard</property>
+      <live>true</live>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+    </checkbox>
+  </group>
+
+
+<!-- tug lift-off speed -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>tug lift-off speed</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f km/h</format>
+        <property>sim/glider/gui/dragrobot/min_speed_takeoff</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>80km/h</label>
+        </text>
+      </group>
+      <slider>
+        <name>min_takeoff_mps</name>
+        <property>sim/glider/dragger/conf/glob_min_speed_takeoff_mps</property>
+        <min>22.2</min>
+        <max>33.3</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>120km/h</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+<!-- maximum speed -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>max. speed</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f km/h </format>
+        <property>sim/glider/gui/dragrobot/max_speed</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>100km/h</label>
+        </text>
+      </group>
+      <slider>
+        <name>max_speed_mps</name>
+        <property>sim/glider/dragger/conf/glob_max_speed_mps</property>
+        <min>27.8</min>
+        <max>55.5</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>200km/h</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+<!-- lift at max. speed -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>max. climb rate</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.1f m/s </format>
+        <property>sim/glider/dragger/conf/glob_max_speed_lift_mps</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+  <empty><stretch>true</stretch></empty>
+        <text>
+  <halign>right</halign>
+          <label>2m/s</label>
+        </text>
+      </group>
+      <slider>
+        <name>max_speed_lift_mps</name>
+        <property>sim/glider/dragger/conf/glob_max_speed_lift_mps</property>
+        <min>2.0</min>
+        <max>5.0</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>5m/s</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+<!-- max. acceleration -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>max. acceleration</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.1f m/ss </format>
+        <property>sim/glider/dragger/conf/glob_max_acceleration_mpss</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0.8m/ss</label>
+        </text>
+      </group>
+      <slider>
+        <name>max_acceleration_mpss</name>
+        <property>sim/glider/dragger/conf/glob_max_acceleration_mpss</property>
+        <min>0.8</min>
+        <max>3.0</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>3m/ss</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+<!-- stay-low until speed -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>stay-low until speed</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f km/h</format>
+        <property>sim/glider/gui/dragrobot/climb_start_speed</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>100km/h</label>
+        </text>
+      </group>
+      <slider>
+        <name>climb_start_speed_mps</name>
+        <property>sim/glider/dragger/conf/glob_climb_start_speed_mps</property>
+        <min>27.8</min>
+        <max>36.1</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>130km/h</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+<!-- height while staying low -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>height while staying low</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.1f m </format>
+        <property>sim/glider/dragger/conf/glob_low_height_m</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0.5m</label>
+        </text>
+      </group>
+      <slider>
+        <name>low_height_m</name>
+        <property>sim/glider/dragger/conf/glob_low_height_m</property>
+        <min>0.5</min>
+        <max>5.0</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>5m</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+<!-- climb build-up time -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>climb build-up time</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f s </format>
+        <property>sim/glider/dragger/conf/glob_climb_tau_s</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>2s</label>
+        </text>
+      </group>
+      <slider>
+        <name>climb_tau_s</name>
+        <property>sim/glider/dragger/conf/glob_climb_tau_s</property>
+        <min>2.0</min>
+        <max>15.0</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>15s</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+  <hrule/>
+
+<!-- max. tauten speed -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>max. speed for tautening</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.1f km/h </format>
+        <property>sim/glider/gui/dragrobot/max_speed_tauten</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>5km/h</label>
+        </text>
+      </group>
+      <slider>
+        <name>max_speed_tauten_mps</name>
+        <property>sim/glider/dragger/conf/glob_max_speed_tauten_mps</property>
+        <min>1.4</min>
+        <max>4.2</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>15km/h</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+<!-- max. tauten acceleration -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>max. acceleration for tautening</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.1f m/ss </format>
+        <property>sim/glider/dragger/conf/glob_min_acceleration_mpss</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0.2m/ss</label>
+        </text>
+      </group>
+      <slider>
+        <name>min_acceleration_mpss</name>
+        <property>sim/glider/dragger/conf/glob_min_acceleration_mpss</property>
+        <min>0.2</min>
+        <max>1.0</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>1m/ss</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+<!-- tauten distance -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>tauten distance</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m </format>
+        <property>sim/glider/dragger/conf/glob_max_tautendist_m</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>10m</label>
+        </text>
+      </group>
+      <slider>
+        <name>max_tautendist_m</name>
+        <property>sim/glider/dragger/conf/glob_max_tautendist_m</property>
+        <min>10.0</min>
+        <max>100.0</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>100m</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+
+    <hrule/>
+    <hrule/>
+
+
+<!-- bottom line -->
+  <group>
+    <layout>hbox</layout>
+    <button>
+      <legend>Reset</legend>
+      <binding>
+        <command>nasal</command>
+        <script>dragrobot.resetRobotAttributes()</script>
+      </binding>
+    </button>
+    <empty>
+      <pref-height>6</pref-height>
+    </empty>
+    <button>
+      <legend>Close</legend>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+
+
+
+<!-- nasal code -->
+  <nasal>
+    <open>
+    </open>
+    <close>
+    </close>
+  </nasal>
+
+</PropertyList>

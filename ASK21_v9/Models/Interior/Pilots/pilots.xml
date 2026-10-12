@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+	<path>pilots.ac</path>
+
+	<animation>
+		<type>select</type>
+		<condition>
+			<property>/sim/model/pilots-enabled</property>
+			<or>
+				<not-equals>
+					<property>/sim/current-view/view-number</property>
+					<value>0</value>
+				</not-equals>
+				<property>/sim/model/pilots-always-present</property>
+			</or>
+		</condition>
+		<object-name>pilot</object-name>
+	</animation>
+	<animation>
+		<type>select</type>
+		<condition>
+			<and>
+				<property>/sim/model/pilots-enabled</property>
+				<property>/sim/model/copilot-present</property>
+				<or>
+					<not-equals>
+						<property>/sim/current-view/view-number</property>
+						<value>11</value>
+					</not-equals>
+					<property>/sim/model/pilots-always-present</property>
+				</or>
+			</and>
+		</condition>
+		<object-name>copilot</object-name>
+	</animation>
+</PropertyList>

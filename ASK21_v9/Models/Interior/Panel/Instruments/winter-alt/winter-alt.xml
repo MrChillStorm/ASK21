@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<!--This models the Winter Altimeter 4110 and 4320 see https://www.winter-instruments.de/ -->
+<PropertyList>
+	<path>winter-alt.ac</path>
+	
+	<params>
+		<altitude-ft type="string">instrumentation/altimeter/indicated-altitude-ft</altitude-ft>
+		<setting-hpa type="string">instrumentation/altimeter/setting-hpa</setting-hpa>
+		<variant type="string">sim/model/livery/instruments/alt</variant>
+		<light type="string">sim/model/instruments-light</light>
+	</params>
+	
+	<effect>
+		<inherits-from>Models/Effects/instrument-glass</inherits-from>
+		<object-name>alt.glass</object-name>
+	</effect>
+	
+	<!-- Illumination -->
+	<animation>
+		<type>material</type>
+		<object-name>alt.face.m</object-name>
+		<object-name>alt.face.ft</object-name>
+		<object-name>alt.face.press</object-name>
+		<object-name>needle.m</object-name>
+		<object-name>needle.km</object-name>
+		<object-name>needle.100ft</object-name>
+		<object-name>needle.1000ft</object-name>
+		<object-name>needle.10000ft</object-name>
+		<emission>
+			<red>0.28</red>
+			<green>0.14</green>
+			<blue>0.07</blue>
+			<factor-prop alias="/params/light" />
+		</emission>
+	</animation>
+
+	<!-- Change Ft/M indication -->
+	<animation>
+		<type>select</type>
+		<object-name>alt.face.m</object-name>
+		<object-name>needle.km</object-name>
+		<object-name>needle.m</object-name>
+		<condition>
+			<equals>
+				<property alias="/params/variant" />
+				<value>0</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>alt.face.ft</object-name>
+		<object-name>needle.100ft</object-name>
+		<object-name>needle.1000ft</object-name>
+		<object-name>needle.10000ft</object-name>
+		<condition>
+			<equals>
+				<property alias="/params/variant" />
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<!-- Alti-4110 -->
+	<animation>
+		<type>rotate</type>
+		<object-name>needle.km</object-name>
+		<property alias="/params/altitude-ft" />
+		<factor>0.010973</factor>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>needle.m</object-name>
+		<property alias="/params/altitude-ft" />
+		<factor>0.10973</factor>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Alti-4320 -->
+	<animation>
+		<type>rotate</type>
+		<object-name>needle.100ft</object-name>
+		<property alias="/params/altitude-ft" />
+		<factor>0.36</factor>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>needle.1000ft</object-name>
+		<property alias="/params/altitude-ft" />
+		<factor>0.036</factor>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>needle.10000ft</object-name>
+		<property alias="/params/altitude-ft" />
+		<factor>0.0036</factor>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Common -->
+
+	<!-- QNH Indication -->
+	<animation>
+		<type>rotate</type>
+		<object-name>alt.face.press</object-name>
+		<property alias="/params/setting-hpa" />
+		<interpolation>
+			<entry>
+				<ind>940</ind>
+				<dep>-30.0</dep>
+			</entry>
+			<entry>
+				<ind>1050</ind>
+				<dep>300</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x>1</x>
+		</axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>alt.face.press</object-name>
+		<property alias="/params/variant" />
+		<factor>180</factor>
+		<axis>
+			<x>1</x>
+		</axis>
+	</animation>
+
+	<!-- QNH Knob -->
+	<animation>
+		<type>knob</type>
+		<object-name>alt.knob</object-name>
+		<property alias="/params/setting-hpa" />
+		<factor>30.0</factor>
+		<center>
+			<y-m>-0.03</y-m>
+			<z-m>-0.03</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+		</axis>
+		<action>
+			<binding>
+				<command>property-adjust</command>
+				<property alias="/params/setting-hpa" />
+				<factor>0.5</factor>
+				<min>940</min>
+				<max>1050</max>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+	</animation>
+</PropertyList>
