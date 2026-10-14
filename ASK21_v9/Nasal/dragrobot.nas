@@ -227,6 +227,38 @@ var hookDragger = func {
 # global variables:
 var dragrobot_timeincrement_s = 0;                     # timer increment
 
+# ####################################################################################
+# Crab angle. The legs plan a ground track (true-heading-deg); the tug points its nose into the wind by
+# the angle that keeps it on that track. While it is rolled into a turn the angle is held, so the turn
+# is flown in the air mass and drifts with the wind like the glider's, and after the turn it settles
+# onto the angle of the new track.
+var crab_deg = 0;
+var crab_tau_s = 3;
+
+# one step of the crab angle: `crab` moves towards the angle that holds the track against the wind (we, wn:
+# the wind velocity, east and north, in m/s), unless the tug is rolled into a turn
+var crabStep = func(crab, track_deg, speed_mps, roll_deg, dt, we, wn) {
+	if ( speed_mps > 10 and math.abs(roll_deg) < 3 ) {
+		var t = track_deg * D2R;
+		var right = we * math.cos(t) - wn * math.sin(t);       # wind component to the right of the track
+		var x = -right / speed_mps;
+		if ( x > 0.9 ) { x = 0.9; }
+		if ( x < -0.9 ) { x = -0.9; }
+		var k = dt / crab_tau_s;
+		if ( k > 1 ) { k = 1; }
+		crab += (math.asin(x) * R2D - crab) * k;
+	}
+	return crab;
+}
+
+var noseHeading = func(track_deg, speed_mps, roll_deg, dt) {
+	# the properties give the direction the wind blows from
+	var we = -getprop("environment/wind-from-east-fps") * FT2M;
+	var wn = -getprop("environment/wind-from-north-fps") * FT2M;
+	crab_deg = crabStep(crab_deg, track_deg, speed_mps, roll_deg, dt, we, wn);
+	return math.mod(track_deg + crab_deg + 360, 360);
+}
+
 
 
 # ####################################################################################
@@ -613,6 +645,8 @@ var createDragRobot = func {
 	dragger_ai.getNode("position/longitude-deg", 1).setValue(dip.lon());
 	dragger_ai.getNode("position/altitude-ft", 1).setValue(dipalt_m * M2FT);
 	dragger_ai.getNode("orientation/true-heading-deg", 1).setValue(heading);
+	dragger_ai.getNode("orientation/nose-heading-deg", 1).setValue(heading);
+	crab_deg = 0;
 	dragger_ai.getNode("orientation/pitch-deg", 1).setValue(0);
 	dragger_ai.getNode("orientation/roll-deg", 1).setValue(0);
 	dragger_ai.getNode("velocities/true-airspeed-kt", 1).setValue(0);
@@ -628,7 +662,7 @@ var createDragRobot = func {
 	dragger_mod.model.getNode("elevation-ft-prop", 1).setValue(
 		"ai/models/dragger/position/altitude-ft");
 	dragger_mod.model.getNode("heading-deg-prop", 1).setValue(
-		"ai/models/dragger/orientation/true-heading-deg");
+		"ai/models/dragger/orientation/nose-heading-deg");
 	dragger_mod.model.getNode("roll-deg-prop", 1).setValue(
 		"ai/models/dragger/orientation/roll-deg");
 	dragger_mod.model.getNode("load", 1).remove();
@@ -919,7 +953,9 @@ var leg0DragRobot = func {
 		}
 	}
 	
+	crab_deg = 0;                                              # on the ground the tug follows the runway
 	dragpos_geo.apply_course_distance( oldheading_deg , distance_m );
+	setprop("ai/models/dragger/orientation/nose-heading-deg", oldheading_deg);
 	newelevation_m = geo.elevation( dragpos_geo.lat(), dragpos_geo.lon() );
 	if ( newelevation_m != nil ) {
 		dragpos_geo.set_alt(newelevation_m);
@@ -1125,7 +1161,9 @@ var leg1DragRobot = func {
 	}
 	
 	# calculate new position based on new heading and distance increment
-	dragpos_geo.apply_course_distance( newheading_deg , distance_m );
+	var nose_deg = noseHeading(newheading_deg, newspeed_mps, newroll_deg, deltatime_s);
+	dragpos_geo.apply_course_distance( nose_deg , distance_m );
+	setprop("ai/models/dragger/orientation/nose-heading-deg", nose_deg);
 	dragpos_geo.apply_course_distance( 270.0 , wind_from_east_mps * deltatime_s );
 	dragpos_geo.apply_course_distance( 180.0 , wind_from_nord_mps * deltatime_s );
 	newelevation_m = dragpos_geo.alt() + newliftdist_m;
@@ -1202,7 +1240,9 @@ var leg2DragRobot = func {
 	newlift_mps = liftModel(oldspeed_mps, getprop("ai/models/dragger/velocities/vertical-speed-fps") * FT2M, dragpos_geo, deltatime_s);
 	newliftdist_m = (newlift_mps + wind_from_down_mps) * deltatime_s;
 	
-	dragpos_geo.apply_course_distance( oldheading_deg , distance_m );
+	var nose_deg = noseHeading(oldheading_deg, newspeed_mps, 0, deltatime_s);
+	dragpos_geo.apply_course_distance( nose_deg , distance_m );
+	setprop("ai/models/dragger/orientation/nose-heading-deg", nose_deg);
 	dragpos_geo.apply_course_distance( 270.0 , wind_from_east_mps * deltatime_s );
 	dragpos_geo.apply_course_distance( 180.0 , wind_from_nord_mps * deltatime_s );
 	newelevation_m = dragpos_geo.alt() + newliftdist_m;
@@ -1310,7 +1350,9 @@ var leg3DragRobot = func {
 	newlift_mps = 0.0;
 	newliftdist_m = wind_from_down_mps * deltatime_s;
 	
-	dragpos_geo.apply_course_distance( oldheading_deg , distance_m );
+	var nose_deg = noseHeading(oldheading_deg, speed_mps, 0, deltatime_s);
+	dragpos_geo.apply_course_distance( nose_deg , distance_m );
+	setprop("ai/models/dragger/orientation/nose-heading-deg", nose_deg);
 	dragpos_geo.apply_course_distance( 270.0 , wind_from_east_mps * deltatime_s );
 	dragpos_geo.apply_course_distance( 180.0 , wind_from_nord_mps * deltatime_s );
 	newelevation_m = dragpos_geo.alt() + newliftdist_m;
@@ -1395,6 +1437,10 @@ var guardPath = func(lat, lon, alt_m, hdg_deg, speed_mps, roll_deg, mode, arg, s
 	var t = 0;
 	var dist = 0;
 	var need = -99;
+	# the dragger flies its nose into the wind and drifts with it, as in the legs (the wind is taken as steady)
+	var we = -getprop("environment/wind-from-east-fps") * FT2M;
+	var wn = -getprop("environment/wind-from-north-fps") * FT2M;
+	var crab = crab_deg;
 	var ph = 0;                                         # pattern mode: phase of the pattern and distance flown in it
 	var ph_dist = 0;
 	if ( mode == "pattern" ) {
@@ -1439,7 +1485,10 @@ var guardPath = func(lat, lon, alt_m, hdg_deg, speed_mps, roll_deg, mode, arg, s
 		if ( dr < -lim ) { dr = -lim; }
 		r += dr;
 		h = math.mod(h + turnrate * r / maxroll * guard_step_s + 360, 360);
-		p.apply_course_distance(h, speed_mps * guard_step_s);
+		crab = crabStep(crab, h, speed_mps, r, guard_step_s, we, wn);
+		p.apply_course_distance(math.mod(h + crab + 360, 360), speed_mps * guard_step_s);
+		p.apply_course_distance(270.0, -we * guard_step_s);
+		p.apply_course_distance(180.0, -wn * guard_step_s);
 		dist += speed_mps * guard_step_s;
 		if ( mode == "pattern" and ph == 4 and arg.S.distance_to(p) * math.cos((arg.S.course_to(p) - arg.H) * D2R) <= arg.L + 30 ) {
 			break;                                      # released here
@@ -1610,7 +1659,9 @@ var avoidDragRobot = func {
 	var newliftdist_m = (newlift_mps + wind_from_down_mps) * deltatime_s;
 	
 	var newheading_deg = math.mod(oldheading_deg + turnrate * newroll_deg / maxroll * deltatime_s + 360, 360);
-	dragpos_geo.apply_course_distance( newheading_deg , distance_m );
+	var nose_deg = noseHeading(newheading_deg, newspeed_mps, newroll_deg, deltatime_s);
+	dragpos_geo.apply_course_distance( nose_deg , distance_m );
+	setprop("ai/models/dragger/orientation/nose-heading-deg", nose_deg);
 	dragpos_geo.apply_course_distance( 270.0 , wind_from_east_mps * deltatime_s );
 	dragpos_geo.apply_course_distance( 180.0 , wind_from_nord_mps * deltatime_s );
 	dragpos_geo.set_alt(dragpos_geo.alt() + newliftdist_m);
@@ -1815,7 +1866,9 @@ var patternDragRobot = func {
 	var newliftdist_m = (newlift_mps + wind_from_down_mps) * deltatime_s;
 	
 	var newheading_deg = math.mod(oldheading_deg + turn_rate_degs * newroll_deg / pattern_bank_deg * deltatime_s + 360, 360);
-	dragpos_geo.apply_course_distance( newheading_deg , distance_m );
+	var nose_deg = noseHeading(newheading_deg, newspeed_mps, newroll_deg, deltatime_s);
+	dragpos_geo.apply_course_distance( nose_deg , distance_m );
+	setprop("ai/models/dragger/orientation/nose-heading-deg", nose_deg);
 	dragpos_geo.apply_course_distance( 270.0 , wind_from_east_mps * deltatime_s );
 	dragpos_geo.apply_course_distance( 180.0 , wind_from_nord_mps * deltatime_s );
 	dragpos_geo.set_alt(dragpos_geo.alt() + newliftdist_m);
@@ -1860,6 +1913,8 @@ var stopRobot = func {
 	setprop("ai/models/dragger/position/longitude-deg", getprop("sim/glider/dragger/robot/wp0lon_deg") );
 	setprop("ai/models/dragger/position/altitude-ft", getprop("sim/glider/dragger/robot/wp0alt_m")  * M2FT - 33);
 	setprop("ai/models/dragger/orientation/true-heading-deg", getprop("sim/glider/dragger/robot/wp0head_deg") );
+	setprop("ai/models/dragger/orientation/nose-heading-deg", getprop("sim/glider/dragger/robot/wp0head_deg") );
+	crab_deg = 0;
 	setprop("ai/models/dragger/orientation/roll-deg",          0);
 	setprop("ai/models/dragger/velocities/true-airspeed-kt",   0);
 	setprop("ai/models/dragger/velocities/vertical-speed-fps", 0);

@@ -81,7 +81,7 @@ var record = func(t, me_lat, me_lon) {
 		if (size(h.t) and t - h.t[size(h.t) - 1] < 0.05) continue;
 		append(h.t, t); append(h.lat, lat); append(h.lon, lon);
 		append(h.alt, (n.getNode("position/altitude-ft").getValue() or 0) * FT2M);
-		append(h.hdg, n.getNode("orientation/true-heading-deg").getValue() or 0);
+		append(h.hdg, (n.getNode("orientation/nose-heading-deg") or n.getNode("orientation/true-heading-deg")).getValue() or 0);
 		var k = 0;
 		while (k < size(h.t) - 2 and t - h.t[k] > history_s) k += 1;
 		if (k > 0) {
