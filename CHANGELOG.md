@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-14
+
+Aerotow
+- New: the drag robot crabs into the wind to hold its planned track, instead of pointing its nose along it.
+- New: in turns the drag robot keeps its crab angle, so it drifts with the wind like the glider, and settles onto the new angle after roll-out.
+- Changed: the tug's wake follows the direction the tug's nose points.
+- Fixed: the terrain look-ahead ignored the wind. It now flies the same crab and drift as the robot.
+
 ## 2026-10-12, evening
 
 Cockpit
