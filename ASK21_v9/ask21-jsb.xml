@@ -450,4 +450,6 @@
 		</force>
 	</external_reactions>
 	<system file="ask21-fcs"/>
+	<system file="ask21-wake"/>
+	<system file="ask21-flex"/>
 </fdm_config>

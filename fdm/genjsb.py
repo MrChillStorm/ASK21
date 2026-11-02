@@ -163,6 +163,10 @@ def build(iyy=1446.0, ixx=6518.0, izz=7403.0, src=SRC, emptywt=794.0):
 		</channel>'''
     s = s[:a] + yaw + s[b:]
     s = s.replace('<description> Models a ASK21. </description>', '<description> Models a ASK21. v9 aerodynamics: component build-up (Systems/ask21-aero.xml) </description>')
+    # ---- the tug's wake (fdm/genxml.py writes Systems/ask21-wake.xml; after the FCS, which declares its inputs) and
+    # the wing panels' bending (fdm/flexwing.py writes Systems/ask21-flex.xml)
+    assert s.count('<system file="ask21-fcs"/>') == 1
+    s = s.replace('<system file="ask21-fcs"/>', '<system file="ask21-fcs"/>\n\t<system file="ask21-wake"/>\n\t<system file="ask21-flex"/>')
     return s
 
 

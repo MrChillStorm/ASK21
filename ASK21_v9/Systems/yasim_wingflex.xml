@@ -15,5 +15,19 @@
 		</input>
 		<output>/sim/model/wingflex-lift</output>
 	</filter>
+
+	<!-- both wings from the generic wingflexer: the tip deflection of the original model's 0.5 deg per unit at each hinge -->
+	<filter>
+		<type>gain</type>
+		<gain>-0.1668</gain>
+		<input>/sim/systems/wingflexer/z-m</input>
+		<output>/sim/model/wingflex/left-m</output>
+	</filter>
+	<filter>
+		<type>gain</type>
+		<gain>-0.1668</gain>
+		<input>/sim/systems/wingflexer/z-m</input>
+		<output>/sim/model/wingflex/right-m</output>
+	</filter>
   
 </PropertyList>

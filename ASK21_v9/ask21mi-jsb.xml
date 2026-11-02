@@ -39,42 +39,66 @@
 		</location>
 	</metrics>
 	<mass_balance>
-		<ixx unit="SLUG*FT2">      1000 </ixx>
-		<iyy unit="SLUG*FT2">       504 </iyy>
-		<izz unit="SLUG*FT2">      2355 </izz>
+		<!-- the ASK 21's v9 airframe (Systems/ask21-aero.xml and ask21-jsb.xml) with the power plant as a point mass.
+		     v9: empty-aircraft inertias about the empty CG, AFFTC-TR-89-27 App. C (Ixx 30.2e6, Iyy 6.7e6, Izz 34.3e6 lb-in2).
+		     Point masses on the AFFTC / flight-manual moment arms (report datum = wing root leading edge = x -1.637 m):
+		     front seat -47.91 in, rear seat -3.15 in, tail ballast 209.8 in, cockpit ballast -63.39 in. -->
+		<ixx unit="SLUG*FT2">6518</ixx>
+		<iyy unit="SLUG*FT2">1446</iyy>
+		<izz unit="SLUG*FT2">7403</izz>
 		<emptywt unit="LBS">       794 </emptywt>
 		<location name="CG" unit="M">
+			<!-- 29.02 in aft of the datum (AFFTC, S/N 21235) -->
 			<x>  -0.9 </x>
-			<!--315mm aft of reference point (leading edge)-->
-			<!--empty mass-->
 			<y>   0.00 </y>
 			<z>  0.76674 </z>
 		</location>
 		<pointmass name="Pilot">
-			<description> weight of the pilot </description>
+			<description> front seat occupant incl. parachute (arm -47.91 in) </description>
 			<weight unit="KG">    80 </weight>
 			<location name="POINTMASS" unit="M">
-				<x> -2.8 </x>
+				<x> -2.8539 </x>
 				<y>   0.00 </y>
-				<z>  0.5 </z>
+				<z>  0.50 </z>
 			</location>
 		</pointmass>
 		<pointmass name="Copilot">
-			<description> weight of the copilot </description>
+			<description> rear seat occupant incl. parachute (arm -3.15 in) </description>
 			<weight unit="KG">    80 </weight>
 			<location name="POINTMASS" unit="M">
-				<x> -1.8 </x>
+				<x> -1.7170 </x>
 				<y>   0.00 </y>
-				<z>  0.6 </z>
+				<z>  0.58 </z>
 			</location>
 		</pointmass>
 		<pointmass name="Spin Ballast">
-			<description> weight of the spinballast </description>
+			<description> tail (spin) ballast plates at the bottom of the fin, 1 kg each, max 12 (arm 209.8 in) </description>
 			<weight unit="KG">   0 </weight>
 			<location name="POINTMASS" unit="M">
-				<x> 3.5 </x>
+				<x> 3.6919 </x>
 				<y>   0.00 </y>
-				<z>  0.8 </z>
+				<z>  0.65 </z>
+			</location>
+		</pointmass>
+		<pointmass name="Cockpit Ballast">
+			<description> front-seat trim ballast (lead discs, arm -63.39 in) </description>
+			<weight unit="KG">   0 </weight>
+			<location name="POINTMASS" unit="M">
+				<x> -3.2471 </x>
+				<y>   0.00 </y>
+				<z>  0.25 </z>
+			</location>
+		</pointmass>
+		<pointmass name="Power plant">
+			<description> the self-launch installation, about 80 kg: an ASH 26 E with the same engine family weighs 360 kg empty,
+			     280 kg as the pure sailplane (Schleicher). Its own position is not published; the Mi has the glider's C.G.
+			     limits and seat loads, so it is put at the glider's empty C.G. (the retracted engine itself lies behind the
+			     wing, the batteries and fuel system elsewhere). EASA TCDS A.221: +100 kg max. mass of non-lifting parts. </description>
+			<weight unit="KG">    80 </weight>
+			<location name="POINTMASS" unit="M">
+				<x> -0.9 </x>
+				<y>   0.00 </y>
+				<z>  0.80 </z>
 			</location>
 		</pointmass>
 	</mass_balance>
@@ -439,4 +463,6 @@
 		</force>
 	</external_reactions>
 	<system file="ask21mi-fcs"/>
+	<system file="ask21-wake"/>
+	<system file="ask21-flex"/>
 </fdm_config>

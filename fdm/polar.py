@@ -1,11 +1,12 @@
 import numpy as np, csv, sys
 from static import Static
+from spinmap import JSB_SHIP
 LOADS={470:(197,45),570:(117,346)}     # front/rear lb giving ~13 in CG
 def run(aero, verbose=True, masses=(470,570)):
     rows=list(csv.DictReader(open('polar_fm.csv')))
     out={}
     for m in masses:
-        fr,re=LOADS[m]; st=Static(aero,front=fr,rear=re,h_ft=0.0)
+        fr,re=LOADS[m]; st=Static(aero,jsb=JSB_SHIP,front=fr,rear=re,h_ft=0.0)
         g=(4,-0.3,-2); errs=[]; res=[]
         for r in rows:
             if int(r['mass_kg'])!=m: continue

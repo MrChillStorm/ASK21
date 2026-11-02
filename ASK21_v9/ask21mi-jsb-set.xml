@@ -33,6 +33,8 @@ See AUTHORS.txt for credits
 		
 		<flight-model archive="y">jsb</flight-model>
 		<aero archive="y">ask21mi-jsb</aero>
+		<!-- the flight model's rate: the spins (and the fit to them, fdm/) are converged at 240 Hz, not at 120 -->
+		<model-hz type="int">240</model-hz>
 		<startup>
 			<splash-texture>Aircraft/ASK21_v9/ask21-splash.png</splash-texture>
 		</startup>

@@ -6,6 +6,7 @@ import sim
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 JSB_TEST = os.path.join(HERE, 'jsb_test.xml')
+JSB_SHIP = os.path.join(HERE, 'v9_jsb.xml')
 ORDER = {'none': 0, 'incipient': 1, 'sustained': 2}
 
 

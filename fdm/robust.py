@@ -28,7 +28,7 @@ def fuzz(aero, jsb=None, n=60, seed=1):
         f.run_ic()
         f['atmosphere/wind-north-fps'] = float(rng.uniform(-60, 60)); f['atmosphere/wind-east-fps'] = float(rng.uniform(-60, 60))
         for i in range(int(25 / f['simulation/dt'])):
-            if i % 60 == 0:
+            if i % H.steps(f, 0.5) == 0:
                 f['fcs/elevator-cmd-norm'] = float(rng.uniform(-1, 1)); f['fcs/aileron-cmd-norm'] = float(rng.uniform(-1, 1)); f['fcs/rudder-cmd-norm'] = float(rng.uniform(-1, 1))
                 f['/controls/engines/engine/throttle'] = float(rng.choice([0.0, 1.0]))
             f.run()

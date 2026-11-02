@@ -28,7 +28,8 @@
 			self.getNode("gear/gear[0]/rollspeed-ms", 	1).alias( self.getNode("sim/multiplay/generic/float[5]") );
 			self.getNode("gear/gear[1]/rollspeed-ms", 	1).alias( self.getNode("sim/multiplay/generic/float[6]") );
 			self.getNode("gear/gear[2]/rollspeed-ms", 	1).alias( self.getNode("sim/multiplay/generic/float[7]") );
-			self.getNode("sim/systems/wingflexer/z-m", 	1).alias( self.getNode("sim/multiplay/generic/float[8]") );
+			self.getNode("sim/model/wingflex/left-m", 	1).alias( self.getNode("sim/multiplay/generic/float[8]") );
+			self.getNode("sim/model/wingflex/right-m", 	1).alias( self.getNode("sim/multiplay/generic/float[9]") );
 
 			<!-- MI variant only -->
 			self.getNode("engines/engine/prop-pos-norm",		1).alias( self.getNode("sim/multiplay/generic/float[10]") );
@@ -57,7 +58,8 @@
 			self.getNode("gear/gear[0]/rollspeed-ms", 	1).unalias();
 			self.getNode("gear/gear[1]/rollspeed-ms", 	1).unalias();
 			self.getNode("gear/gear[2]/rollspeed-ms", 	1).unalias();
-			self.getNode("sim/systems/wingflexer/z-m", 	1).unalias();
+			self.getNode("sim/model/wingflex/left-m", 	1).unalias();
+			self.getNode("sim/model/wingflex/right-m", 	1).unalias();
 			self.getNode("engines/engine/prop-pos-norm",		1).unalias();
 			self.getNode("controls/engines/engine[0]/throttle",	1).unalias();
 			self.getNode("engines/engine[0]/mp-osi",			1).unalias();
@@ -67,6 +69,7 @@
 	</nasal>
 
 	<!--	WINGFLEXER	-->
+	<!-- the wing's bending line through the hinges, from the flight model's first bending mode (fdm/flexwing.py): deg per metre of tip deflection, up + -->
 	<animation>
 		<type>rotate</type>
 		<object-name>wing.L1</object-name>
@@ -78,8 +81,8 @@
 		<object-name>speedbrakeLac1</object-name>
 		<object-name>speedbrakeLac2</object-name>
 		<object-name>wingwheelL</object-name>
-		<property>sim/systems/wingflexer/z-m</property>
-		<factor>-0.5</factor>
+		<property>sim/model/wingflex/left-m</property>
+		<factor>1.5228</factor>
 		<center>
 			<x-m> 0.00</x-m>
 			<y-m>-0.29524</y-m>
@@ -101,8 +104,8 @@
 		<object-name>speedbrakeLac1</object-name>
 		<object-name>speedbrakeLac2</object-name>
 		<object-name>wingwheelL</object-name>
-		<property>sim/systems/wingflexer/z-m</property>
-		<factor>-0.5</factor>
+		<property>sim/model/wingflex/left-m</property>
+		<factor>3.5503</factor>
 		<center>
 			<x-m> 0.00</x-m>
 			<y-m>-2.33212</y-m>
@@ -120,8 +123,8 @@
 		<object-name>wing.L4</object-name>
 		<object-name>aileronL</object-name>
 		<object-name>wingwheelL</object-name>
-		<property>sim/systems/wingflexer/z-m</property>
-		<factor>-0.5</factor>
+		<property>sim/model/wingflex/left-m</property>
+		<factor>5.0999</factor>
 		<center>
 			<x-m>  0.00</x-m>
 			<y-m>-4.32656</y-m>
@@ -137,8 +140,8 @@
 		<type>rotate</type>
 		<object-name>wing.L4</object-name>
 		<object-name>wingwheelL</object-name>
-		<property>sim/systems/wingflexer/z-m</property>
-		<factor>-0.5</factor>
+		<property>sim/model/wingflex/left-m</property>
+		<factor>2.8573</factor>
 		<center>
 			<x-m>  0.00</x-m>
 			<y-m>-7.93317</y-m>
@@ -161,8 +164,8 @@
 		<object-name>speedbrakeRac1</object-name>
 		<object-name>speedbrakeRac2</object-name>
 		<object-name>wingwheelR</object-name>
-		<property>sim/systems/wingflexer/z-m</property>
-		<factor>0.5</factor>
+		<property>sim/model/wingflex/right-m</property>
+		<factor>-1.5228</factor>
 		<center>
 			<x-m> 0.00</x-m>
 			<y-m>0.29524</y-m>
@@ -184,8 +187,8 @@
 		<object-name>speedbrakeRac1</object-name>
 		<object-name>speedbrakeRac2</object-name>
 		<object-name>wingwheelR</object-name>
-		<property>sim/systems/wingflexer/z-m</property>
-		<factor>0.5</factor>
+		<property>sim/model/wingflex/right-m</property>
+		<factor>-3.5503</factor>
 		<center>
 			<x-m> 0.00</x-m>
 			<y-m>2.33212</y-m>
@@ -203,8 +206,8 @@
 		<object-name>wing.R4</object-name>
 		<object-name>aileronR</object-name>
 		<object-name>wingwheelR</object-name>
-		<property>sim/systems/wingflexer/z-m</property>
-		<factor>0.5</factor>
+		<property>sim/model/wingflex/right-m</property>
+		<factor>-5.0999</factor>
 		<center>
 			<x-m>  0.00</x-m>
 			<y-m>4.32656</y-m>
@@ -220,8 +223,8 @@
 		<type>rotate</type>
 		<object-name>wing.R4</object-name>
 		<object-name>wingwheelR</object-name>
-		<property>sim/systems/wingflexer/z-m</property>
-		<factor>0.5</factor>
+		<property>sim/model/wingflex/right-m</property>
+		<factor>-2.8573</factor>
 		<center>
 			<x-m>  0.00</x-m>
 			<y-m>7.93317</y-m>

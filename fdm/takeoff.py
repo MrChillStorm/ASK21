@@ -16,7 +16,7 @@ def setup(aero, jsb=None, front=176.0, rear=176.0, tail=0.0, trim=0.0, tag=None)
     f['ic/theta-deg'] = 1.8; f['ic/phi-deg'] = 0
     f.run_ic()
     f['fcs/pitch-trim-cmd-norm'] = trim
-    for _ in range(240): f.run()          # settle on the wheels
+    for _ in range(H.steps(f, 2.0)): f.run()          # settle on the wheels
     return f
 
 
@@ -84,7 +84,7 @@ def aerotow(aero, jsb=None, front=176.0, rear=176.0, tail=0.0, trim=0.0, stick=0
             if ev['airborne'] is None and t - off_t[0] > 1.0 and f['position/h-agl-ft'] > 3.0: ev['airborne'] = off_t
         else:
             off_t = None
-        if int(round(t / dt)) % 12 == 0:
+        if int(round(t / dt)) % H.steps(f, 0.1) == 0:
             L.append((t, V, vt * 3.6, f['attitude/theta-deg'], f['aero/alpha-deg'], f['position/h-agl-ft'] * 0.3048 - 0.69, F, wow[0], wow[1], wow[2], 0.0))
         if ev['airborne'] and t > ev['airborne'][0] + 4: break
     return ev, np.array(L)
@@ -122,7 +122,7 @@ def winch(aero, jsb=None, front=176.0, rear=176.0, tail=0.0, trim=0.0, stick=0.0
             if ev['airborne'] is None and t - off_t[0] > 1.0 and f['position/h-agl-ft'] > 3.0: ev['airborne'] = off_t
         else:
             off_t = None
-        if int(round(t / dt)) % 12 == 0:
+        if int(round(t / dt)) % H.steps(f, 0.1) == 0:
             L.append((t, V, f['attitude/theta-deg'], f['aero/alpha-deg'], f['position/h-agl-ft'] * 0.3048 - 0.69, F, wow[0], wow[1], wow[2], f['velocities/q-rad_sec'] * 57.3))
     return ev, np.array(L)
 

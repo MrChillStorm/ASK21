@@ -17,6 +17,7 @@ class Static:
         s.h = h_ft
         f['ic/vt-fps'] = 80; f['ic/alpha-deg'] = 2; f.run_ic(); f.run()
         s.W = f['inertia/weight-lbs']
+        s.flex = 'flex/enable' in ' '.join(f.get_property_catalog())
 
     def eval(s, V_mps, alpha, beta=0.0, p=0.0, q=0.0, r=0.0, elev=0.0, ail=0.0, rud=0.0, sb=0.0, theta=None, phi=0.0, h_agl_ft=None):
         f = s.f
@@ -34,6 +35,9 @@ class Static:
         if sb:
             f['/controls/engines/engine/throttle'] = 1.0 - sb
         f.run(); f.run()
+        if s.flex:
+            # the wing's static bending (Systems/ask21-flex.xml) answers the last frame's load: two more frames for its own
+            f.run(); f.run()
         def g(k):
             try: return f[k]
             except Exception: return float('nan')

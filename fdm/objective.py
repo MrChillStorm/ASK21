@@ -44,7 +44,7 @@ def _vs(args):
     aero, fr, re = args
     from static import Static
     from scipy.optimize import brentq
-    st = Static(aero, front=fr, rear=re); W = st.W; best = 0.0
+    st = Static(aero, jsb=spinmap.JSB_SHIP, front=fr, rear=re); W = st.W; best = 0.0
     for a in np.arange(6, 22.1, 0.5):
         try: el = brentq(lambda e: st.coeffs(25.0, a, elev=e)['Cm'], -1, 1)
         except ValueError: continue

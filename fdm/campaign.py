@@ -68,12 +68,18 @@ def j_polar(M, mass):
     loads = {470: (197, 45), 570: (117, 346)}
     fr, re = loads[mass]
     st = Static(P(M['aero']), jsb=P(M['ship']), front=fr, rear=re, h_ft=0.0)
-    res = []; g = (6, -0.3, -2)
-    for v in list(range(62, 100, 2)) + list(range(100, 285, 5)):
+    # down from high speed, where the attached flow's trim is the only one, each trim starting from the last: a sweep
+    # up from below the stall can settle on the stalled branch first and lead every later trim astray
+    res = []; g = (-1.5, 0.3, -8)
+    for v in list(range(280, 100, -5)) + list(range(100, 60, -2)):
         t = st.trim_glide(v / 3.6, guess=g)
-        if t['ok']:
-            g = (t['alpha'], t['elev'], t['gamma'])
-            res.append((v, t['sink'], t['alpha'], t['elev']))
+        if not t['ok']:
+            if res and v < 100:
+                break                 # the stall: no glide slower
+            continue
+        g = (t['alpha'], t['elev'], t['gamma'])
+        res.append((v, t['sink'], t['alpha'], t['elev']))
+    res.sort()
     # scale to the exact FM mass (weight differs by the empty-mass assumption): V ~ sqrt(W), w ~ sqrt(W)
     k = np.sqrt(mass * 2.20462 / st.W)
     return dict(mass=mass, W=st.W, cg=st.cg_in(), pts=[(v * k, s * k, a, e) for v, s, a, e in res])
@@ -259,7 +265,7 @@ def j_slip(M, mode):
             dpsi = (f['attitude/psi-deg'] - psi0 + 180) % 360 - 180
             phic = float(np.clip(-2.0 * dpsi, -30, 30)) if tt < 30 else 0.0
             f['fcs/aileron-cmd-norm'] = float(np.clip(-0.06 * (f['attitude/phi-deg'] - phic) - 0.03 * f['velocities/p-rad_sec'] * 57.3, -1, 1))
-        if int(round(F.t / F.dt)) % 24 == 0:
+        if int(round(F.t / F.dt)) % H.steps(f, 0.2) == 0:
             L.append((tt, f['velocities/vc-kts'] * 1.852, f['aero/beta-deg'], f['attitude/phi-deg'], (f['attitude/psi-deg'] - psi0 + 180) % 360 - 180,
                       -f['velocities/v-down-fps'] * 0.3048, f['fcs/aileron-cmd-norm'], f['fcs/rudder-cmd-norm'], f['fcs/elevator-cmd-norm'],
                       f['velocities/vt-fps'] * 0.3048 * 3.6))
@@ -376,7 +382,7 @@ def j_ground(M):
     out = []
     for fr, re in ((176, 176), (176, 0)):
         f = T.setup(P(M['aero']), P(M['ship']), fr, re)
-        for _ in range(1200): f.run()
+        for _ in range(H.steps(f, 10.0)): f.run()
         out.append(dict(fr=fr, re=re, theta=f['attitude/theta-deg'], wow=[f['gear/unit[%d]/WOW' % i] for i in range(3)]))
     return out
 
@@ -394,7 +400,7 @@ def j_phugoid(M, V):
     f['ic/vt-fps'] = (V / 3.6 + 1.5) / 0.3048; f.run_ic(); t = []; v = []
     for i in range(int(150 / F.dt)):
         f['fcs/elevator-cmd-norm'] = el; f['fcs/aileron-cmd-norm'] = 0; f['fcs/rudder-cmd-norm'] = 0; f.run()
-        if i % 12 == 0: t.append(i * F.dt); v.append(f['velocities/vt-fps'] * 0.3048)
+        if i % H.steps(f, 0.1) == 0: t.append(i * F.dt); v.append(f['velocities/vt-fps'] * 0.3048)
     t = np.array(t); v = np.array(v); pk, _ = find_peaks(v, distance=40); vp = v[pk] - np.mean(v[len(v) // 3:])
     if len(pk) < 3 or vp[0] <= 0 or vp[-1] <= 0: return dict(V=V, period=None, ratio=None, zeta=None)
     r = float((vp[-1] / vp[0]) ** (1 / (len(vp) - 1)))
@@ -449,5 +455,5 @@ if __name__ == '__main__':
             if isinstance(r, dict) and 'error' in r: print('ERROR', args[0], args[2:], r['error'], flush=True)
             if k % 10 == 0: print('%d / %d  %.0f s' % (k, len(J), time.time() - t), flush=True)
     fn = 'results_%s%s.json' % (key, '_' + '_'.join(only) if only else '')
-    json.dump(dict(model=MODELS[key], date=time.strftime('%Y-%m-%d %H:%M'), results=out), open(fn, 'w'))
+    json.dump(dict(model=MODELS[key], hz=H.HZ, date=time.strftime('%Y-%m-%d %H:%M'), results=out), open(fn, 'w'))
     print('wrote', fn, '%.0f s' % (time.time() - t))

@@ -1,12 +1,19 @@
 <?xml version="1.0"?>
 
 <PropertyList>
-	
+
+	<!-- each wing bends as the flight model's wing panels do (Systems/ask21-flex.xml): tip deflection, m, up + -->
 	<filter>
 		<type>gain</type>
-		<gain>2</gain>
-		<input>/fdm/jsbsim/aero/force/Lift_alpha</input>
-		<output>/sim/model/wingflex-lift</output>
+		<gain>1</gain>
+		<input>/fdm/jsbsim/flex/qL-m</input>
+		<output>/sim/model/wingflex/left-m</output>
 	</filter>
-  
+	<filter>
+		<type>gain</type>
+		<gain>1</gain>
+		<input>/fdm/jsbsim/flex/qR-m</input>
+		<output>/sim/model/wingflex/right-m</output>
+	</filter>
+
 </PropertyList>

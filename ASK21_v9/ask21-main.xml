@@ -248,7 +248,8 @@ See AUTHORS.txt for credits
 				<float n="5"  alias="/gear/gear[0]/rollspeed-ms"/>
 				<float n="6"  alias="/gear/gear[1]/rollspeed-ms"/>
 				<float n="7"  alias="/gear/gear[2]/rollspeed-ms"/>
-				<float n="8"  alias="/sim/systems/wingflexer/z-m"/>
+				<float n="8"  alias="/sim/model/wingflex/left-m"/>
+				<float n="9"  alias="/sim/model/wingflex/right-m"/>
 				<!-- float[10-12] used for -MI variant -->
 				<float n="13"  alias="/sim/model/sound/wind-volume-front"/>
 				<float n="14"  alias="/sim/model/sound/wind-volume-rear"/>

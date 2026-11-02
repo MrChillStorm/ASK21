@@ -47,7 +47,7 @@ class Flight:
         f['ic/terrain-elevation-ft'] = -4000; f['ic/h-sl-ft'] = h_ft
         f['fcs/elevator-cmd-norm'] = tr['elev']; f['fcs/aileron-cmd-norm'] = 0; f['fcs/rudder-cmd-norm'] = 0
         f.run_ic()
-        s.f = f; s.t = 0.0; s.dt = f['simulation/dt']
+        s.f = f; s.t = 0.0; s.dt = f['simulation/dt']; s.nlog = H.steps(f, 0.05)      # log at 20 Hz
         s.psi_unw = 0.0; s.last_psi = f['attitude/psi-deg']; s.h0 = f['position/h-sl-ft']
         s.log = []
 
@@ -77,7 +77,7 @@ class Flight:
             f['fcs/aileron-cmd-norm'] = float(np.clip(-0.04 * f['attitude/phi-deg'] - 0.02 * f['velocities/p-rad_sec'] * 57.3 + ail, -1, 1))
             f['fcs/rudder-cmd-norm'] = float(np.clip(0.05 * f['aero/beta-deg'], -0.3, 0.3))
             s.step()
-            if int(round(s.t / s.dt)) % 6 == 0: s.rec()
+            if int(round(s.t / s.dt)) % s.nlog == 0: s.rec()
             a = f['aero/alpha-deg']; amax = max(amax, a)
             if el <= -0.999 or (amax > 10 and a < amax - 0.7) or a > 16 or (amax_trigger is not None and a > amax_trigger):
                 return s.t
@@ -94,7 +94,7 @@ class Flight:
             if ail is not None: f['fcs/aileron-cmd-norm'] = a0 + w * (ail - a0)
             if cb and cb(s): return True
             s.step()
-            if int(round(s.t / s.dt)) % 6 == 0: s.rec()
+            if int(round(s.t / s.dt)) % s.nlog == 0: s.rec()
             if f['position/h-agl-ft'] < 500 or not np.isfinite(f['velocities/vt-fps']): return False
         return False
 

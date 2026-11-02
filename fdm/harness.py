@@ -5,6 +5,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, 'root')
 LB = 0.45359237
 DATUM_X_IN = -1.637 / 0.0254          # report datum in the structural frame (in)
+HZ = float(os.environ.get('FDM_HZ', 120))      # flight-model rate, as FlightGear's /sim/model-hz
 
 
 def make_root(aero=None, jsb=None, tag=None):
@@ -23,12 +24,12 @@ def is_official(jsb):
     return 'Spin Ballast' in s and 'Cockpit Ballast' not in s
 
 
-def mk(aero=None, jsb=None, front_lb=176.0, rear_lb=0.0, tail_lb=0.0, ckpt_lb=0.0, dt=1 / 120.0, tag=None):
+def mk(aero=None, jsb=None, front_lb=176.0, rear_lb=0.0, tail_lb=0.0, ckpt_lb=0.0, dt=None, tag=None):
     if is_official(jsb):          # official FG model: no cockpit-ballast mass -> ballast goes with the front pilot
         front_lb, ckpt_lb = front_lb + ckpt_lb, 0.0
     R = make_root(aero, jsb, tag)
     f = jsbsim.FGFDMExec(R); f.set_debug_level(0)
-    f.set_dt(dt)
+    f.set_dt(dt or 1 / HZ)
     f['test/adot'] = 0.0          # free alpha-dot input of the *_noadot.xml test variants
     for p in ['/controls/engines/engine/throttle', '/systems/groundhandling/rudder', '/systems/groundhandling/throttle',
               '/systems/groundhandling/wingholder']:
@@ -51,3 +52,8 @@ def set_load(f, front_lb, rear_lb, tail_lb=0.0, ckpt_lb=0.0):
 
 def cg_report_in(f):
     return f['inertia/cg-x-in'] - DATUM_X_IN
+
+
+def steps(f, T):
+    """number of flight-model steps in T seconds"""
+    return max(1, int(round(T / f['simulation/dt'])))
