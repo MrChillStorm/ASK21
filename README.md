@@ -76,8 +76,8 @@ The front panel of the glider:
   g-load and the air density, so netto reads zero in still air at any
   speed, loading and height.
 - **Spoken messages** like "Thermal average 2.1" or "Traffic 2 o'clock,
-  high, 400 meters" play as recorded clips. The buttons and menus are
-  described in
+  high, 400 meters" are spoken by FlightGear's own speech synthesis. The
+  buttons and menus are described in
   [the V8's README](ASK21_v9/Models/Interior/Panel/Instruments/lx-v8/README.md).
 - **Take-off check placard** at the bottom right: loading, canopy,
   straps, controls, trim, airbrakes, instruments, radio, rope, wind.
@@ -228,8 +228,7 @@ revision 8166). Changed in 2026, all inside `ASK21_v9`:
   `ask21mi-jsb.xml`, `ask21.xml`, `ask21mi.xml`) and in the 3-D model
   (`Models/ask21.xml`), so the glider sits as the rigging drawing shows.
 - **Cockpit.** New: the V8 (`Models/Interior/Panel/Instruments/lx-v8`,
-  with `Sounds/lxv8-tone.wav`, `Sounds/lxv8-voice/` and
-  `tools/lxv8-speak.py`), the placard (`Instruments/placard`), the yaw
+  with `Sounds/lxv8-tone.wav`), the placard (`Instruments/placard`), the yaw
   strings (`Models/Interior/yawstring` and `Nasal/yawstring.nas`, in
   place of FlightGear's standard yaw string script in `Nasal/ask21.nas`)
   and the scripts in `Models/Interior/Panel/src`. Changed: the panels
@@ -240,8 +239,8 @@ revision 8166). Changed in 2026, all inside `ASK21_v9`:
   V8's sounds in `Sounds/ask21-sound.xml`, the V8 and transponder loads in
   `Nasal/electrical.nas` and `Nasal/electrical-mi.nas`, the transponder
   in `Nasal/ask21.nas` and `Systems/ask21-instrumentation.xml`, its
-  option in `gui/dialogs/options.xml`, and the menu entry, settings and
-  scripts in `ask21-main.xml`.
+  option in `gui/dialogs/options.xml`, and the menu entry, settings,
+  voice and scripts in `ask21-main.xml`.
 - **Aerotow.** `Nasal/dragrobot.nas` (tow types, terrain, the tug's
   reaction to the rope, take-off run) with its dialogs
   `gui/dialogs/dragrobot.xml` and `dragrobot_advanced.xml`, the new

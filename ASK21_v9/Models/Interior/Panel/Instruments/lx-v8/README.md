@@ -21,11 +21,10 @@ The ILEC script (`ilec-sc7.nas`) is still loaded: it only provides the `ilec-sc7
   reads zero in still air at any speed, loading and height. Total energy uses the true airspeed, like a TE probe.
 * Audio: `lxv8-tone.wav` (500 Hz triangle) is pitched and gated from Nasal (`/instrumentation/lxv8/audio/*`,
   `Sounds/ask21-sound.xml`). Speed-to-fly audio is muted below 72 km/h and behind the tug.
-* Voice: on macOS run `python3 tools/lxv8-speak.py` while FlightGear runs with `--telnet=5401`. The instrument then sends the
-  text of a message ("Thermal average 2.1", "Traffic 2 o'clock, high, 400 meters") to the helper, which speaks it with the
-  `say` command in the system voice, like FG9070 does in the browser. Without the helper (or on other systems) the
-  instrument plays prerecorded clips (`Sounds/lxv8-voice/`, made with `src/make_voice.py`; every clip is a one-shot sound in
-  `Sounds/ask21-sound.xml`, started through `/instrumentation/lxv8/voice/clip`) one after the other.
+* Voice: messages ("Thermal average 2.1", "Traffic 2 o'clock, high, 400 meters") are spoken by FlightGear's speech
+  synthesis, in a voice of its own ("LXNAV V8", defined in `ask21-main.xml` next to FlightGear's ATC and pilot voices;
+  the text goes to `/sim/sound/voices/lxv8`). It speaks only when voices are on in FlightGear's Sound settings, and at
+  FlightGear's voice volume, not the V8's.
 * FLARM list: AI and multiplayer aircraft whose model name is a known glider (the list of FG9070), moving faster than 15 kt.
 
 ## Screws

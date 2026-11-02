@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-02
+
+Cockpit
+- Changed: the V8 speaks with FlightGear's own speech synthesis, on every system and with no helper program.
+- Removed: the V8's recorded voice clips and the macOS speech helper (`tools/lxv8-speak.py`).
+
 ## 2026-10-14
 
 Aerotow

@@ -7,8 +7,8 @@
 #
 # Provides the values shown by the display (lxv8.nas) in the hash `f`, and drives the
 # vario tone through /instrumentation/lxv8/audio/{pitch,volume}, which Sounds/ask21-sound.xml
-# plays with a looped triangle wave (lxv8-tone.wav, 500 Hz). Voice messages are pre-rendered
-# clips (Sounds/lxv8-voice/, made with tools/make_voice.sh) played one after the other.
+# plays with a looped triangle wave (lxv8-tone.wav, 500 Hz). Voice messages are spoken by
+# FlightGear's speech synthesis.
 #
 # The polar is the flight manual's, scaled with the mass, load factor and air density from the
 # flight model (see below). Approximation: the audio cadence is not given in the manual.
@@ -512,7 +512,6 @@ var audio_off_at = 0;
 var audio_base_pitch = 1.0;
 var audio_node_pitch = root.getNode("audio/pitch", 1);
 var audio_node_volume = root.getNode("audio/volume", 1);
-var audio_node_voice = root.getNode("audio/voice-volume", 1);
 audio_node_pitch.setDoubleValue(1.0);
 audio_node_volume.setDoubleValue(0);
 
@@ -539,83 +538,37 @@ var audio_tick = func {
 	}
 	audio_gain += (target - audio_gain) * 0.6;
 	audio_node_volume.setDoubleValue(vol * audio_gain);
-	audio_node_voice.setDoubleValue(f.power ? math.pow(clamp(master, 0.1, 1), 1.0) : 0);
 };
 
 # ####################################################################################
-# Voice: pre-rendered clips of the system speech voice, played one after the other.
-# Sounds/lxv8-voice/index.nas (generated) defines voice_clips = {name: duration_s}.
+# Voice: FlightGear's speech synthesis (Flite). ask21-main.xml adds the voice "LXNAV V8"
+# and the alias /sim/sound/voices/lxv8 for its text. FlightGear plays it at its own volume.
 # ####################################################################################
-var voice_dir = nil;
+var voice_node = props.globals.getNode("/sim/sound/voices/lxv8", 1);
 var voice_busy_until = 0;
-var voice_queue = [];
-var voice_clips = {};
-var voice_numbers = {};
-var voice_text_node = root.getNode("voice/text", 1);
-var voice_seq_node = root.getNode("voice/seq", 1);
-var voice_helper_node = root.getNode("voice/helper-time", 1);
-var voice_helper_time = nil;
 
-# tools/lxv8-speak.py (macOS) speaks the text with `say`; it writes the wall clock time to voice/helper-time while it runs
-var helper_alive = func {
-	var h = voice_helper_node.getValue();
-	return h != nil and math.abs(systime() - num(h)) < 3;
-};
-
-var voice_clip_node = root.getNode("voice/clip", 1);
-voice_clip_node.setIntValue(0);
-
-# Every clip is a one-shot sound in Sounds/ask21-sound.xml that plays when /instrumentation/lxv8/voice/clip is its number.
-var voice_play_next = func {
-	if (!size(voice_queue)) { voice_clip_node.setIntValue(0); return; }
-	var name = voice_queue[0];
-	voice_queue = subvec(voice_queue, 1);
-	var dur = contains(voice_clips, name) ? voice_clips[name] : 0.6;
-	voice_clip_node.setIntValue(contains(voice_numbers, name) ? voice_numbers[name] : 0);
-	voice_busy_until = (getprop("/sim/time/elapsed-sec") or 0) + dur;
-	settimer(func {
-		voice_clip_node.setIntValue(0);              # back to 0 so that the next clip (or the same one again) starts
-		settimer(voice_play_next, 0.03);
-	}, math.max(0.05, dur - 0.04));                  # the next clip starts while the end of this one is still playing
-};
-
-# text: the sentence for the speech helper; names: list of clip names without ".wav" for the prerecorded fallback.
-# Ignored while another message is playing.
-var speak = func(text, names) {
+# Ignored while another message is playing; FlightGear does not report when a message ends, so its
+# length is estimated from the text (numbers are spoken as words, longer than their digits).
+var speak = func(text) {
 	if (!S.speech or !f.power) return;
-	if (helper_alive()) {
-		voice_text_node.setValue(text);
-		voice_seq_node.setIntValue((voice_seq_node.getValue() or 0) + 1);
-		return;
-	}
-	if (voice_dir == nil) return;
-	if (size(voice_queue) or (getprop("/sim/time/elapsed-sec") or 0) < voice_busy_until) return;
-	voice_queue = names;
-	voice_play_next();
+	var now = getprop("/sim/time/elapsed-sec") or 0;
+	if (now < voice_busy_until) return;
+	voice_busy_until = now + 0.5 + 0.08 * size(text);
+	voice_node.setValue(text);
 };
-
-var digit_names = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 
 var thermal_done = func(avg) {
 	var tenths = int(math.round(math.abs(avg) * 10));
-	var names = ["thermal-average"];
-	if (avg < 0) append(names, "minus");
-	append(names, digit_names[int(tenths / 10) < 10 ? int(tenths / 10) : 9]);
-	append(names, "point");
-	append(names, digit_names[tenths - 10 * int(tenths / 10)]);
-	speak(sprintf("Thermal average %s%d.%d", avg < 0 ? "minus " : "", int(tenths / 10), tenths - 10 * int(tenths / 10)), names);
+	speak(sprintf("Thermal average %s%d.%d", avg < 0 ? "minus " : "", int(tenths / 10), tenths - 10 * int(tenths / 10)));
 };
 
 var announce_traffic = func(tg) {
-	var names = ["traffic", "clock-" ~ tg.clock];
-	append(names, math.abs(tg.dh) < 30 ? "level" : (tg.dh > 0 ? "high" : "low"));
 	var d = tg.dist;
 	var hundreds = d < 1000 ? int(math.round(d / 100)) * 100 : int(math.round(d / 500)) * 500;
 	if (hundreds < 100) hundreds = 100;
 	if (hundreds > 4000) hundreds = 4000;
-	append(names, "meters-" ~ hundreds);
 	var vert = math.abs(tg.dh) < 30 ? "level" : (tg.dh > 0 ? "high" : "low");
-	speak(sprintf("Traffic %d o'clock, %s, %d meters", tg.clock, vert, hundreds), names);
+	speak(sprintf("Traffic %d o'clock, %s, %d meters", tg.clock, vert, hundreds));
 };
 
 # ####################################################################################
@@ -626,8 +579,6 @@ var start_core = func {
 	# timers are kept in globals so that a reload of this file can stop the old ones
 	if (contains(globals, "lxv8_timers")) foreach (var tm; globals.lxv8_timers) tm.stop();
 	globals.lxv8_timers = [];
-	voice_dir = getprop("/sim/aircraft-dir") ~ "/Sounds/lxv8-voice";
-	if (io.stat(voice_dir ~ "/index.nas") != nil) io.load_nasal(voice_dir ~ "/index.nas", "lxv8");
 	var t1 = maketimer(0.05, update);
 	var t2 = maketimer(0.02, audio_tick);
 	var t3 = maketimer(0.5, update_targets);

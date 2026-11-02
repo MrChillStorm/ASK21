@@ -65,6 +65,18 @@ See AUTHORS.txt for credits
 			<path>/sim/weight[1]/weight-lb</path>
 			<path>/sim/glider/propwash/strength</path>
 		</aircraft-data>
+		<!-- the LXNAV V8's voice: FlightGear's speech synthesis, a voice of its own next to the four of defaults.xml
+		     (index well above theirs); lxv8-core.nas writes the messages to /sim/sound/voices/lxv8 -->
+		<sound>
+			<voices>
+				<lxv8 alias="/sim/sound/voices/voice[10]/text"/>
+				<voice n="10">
+					<desc>LXNAV V8</desc>
+					<text type="string"/>
+					<htsvoice type="string">cmu_us_arctic_slt.htsvoice</htsvoice>
+				</voice>
+			</voices>
+		</sound>
 		<hitches>
 			<!-- make sure some properties do exist, when the list for multiplayer transfere is defined-->
 			<!-- they need to be in the same value, as they are initialized in the FDM, to get the same values after reset should fix this somehow-->
