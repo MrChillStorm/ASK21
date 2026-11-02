@@ -18,6 +18,12 @@ How it was built, and a test-by-test comparison of this model and the
 standard FlightGear one against those sources, is in the report:
 [ASK21-JSBSim-model-report.pdf](ASK21-JSBSim-model-report.pdf).
 
+The wings bend, with the stiffness a ground vibration test of the real
+glider measured, and the 3-D model's wings bend with them. What you hear
+of the air is computed from the glider's shape by
+[PyWopWop](https://github.com/MrChillStorm/PyWopWop), and every other
+sound plays at the level the real thing makes.
+
 The cockpit is reworked too, around a new LXNAV V8 vario, and the drag
 robot tows like a real tug: it reacts to the pull of the rope, keeps
 clear of hills and can take you around a landing pattern.
@@ -43,8 +49,8 @@ Add-ons → Additional aircraft folders (or start FlightGear with
   glider as an ASK 21.
 - The YASim variants (**ASK 21 Glider (YASim)** and the YASim
   motorglider) keep their original flight model, apart from the nose
-  wheel (see below). The cockpit and the tow work the same in them;
-  only the tug's wake needs JSBSim.
+  wheel (see below). The cockpit, the sound and the tow work the same
+  in them; the tug's wake and the wing bending need JSBSim.
 
 ## Flying it
 
@@ -52,12 +58,17 @@ Add-ons → Additional aircraft folders (or start FlightGear with
   the aerotow: it lifts off by itself before the tug, at about 75–80
   km/h. With the trim neutral it floats up early and you hold it down
   with a slight push.
-- **Stalls and spins.** The stall breaks cleanly and can pitch down hard
-  if you go looking for it. Whether it spins, and for how long, depends
-  on the loading the same way as in the AFFTC tests: at forward centre
-  of gravity it won't keep spinning, at aft centre of gravity it does.
-  The manual's recovery stops the spin in half to three-quarters of a
-  turn.
+- **Stalls and spins.** At forward centre of gravity you run out of
+  elevator before the wing stalls, as in the real glider; further aft
+  the stall breaks and can pitch down hard if you go looking for it.
+  Whether it spins, and for how long, depends on the loading the same
+  way as in the AFFTC tests: at forward centre of gravity it won't keep
+  spinning, at aft centre of gravity it does. The manual's recovery
+  stops the spin in half to three-quarters of a turn.
+- **Wings.** They bend: the tips rise about 17 cm in level flight and
+  more in a pull-up, and they sag 8 cm on the ground. The bending adds
+  to the dihedral, so the glider rolls a little more slowly and holds
+  the wings level a little more firmly than a rigid one would.
 - **Slips.** Full rudder gives up to about 45° of sideslip and sinks
   faster than full airbrakes at the same speed.
 - **Ground.** The glider rests on its nose and main wheels at the
@@ -145,6 +156,25 @@ The drag robot (ASK21 → Drag Robot) is the AI tug that tows you up.
 - If the chosen tug model isn't installed, the robot uses the next one it
   finds (DR400, PA28, Ercoupe, Staggerwing).
 
+## Sound
+
+- **The air.** PyWopWop computes the glider's sound from its shape: the
+  hiss of the canopy's boundary layer in the cockpit, the wing and
+  tail's own noise, the rumble the airbrakes add, the ailerons' in a
+  roll, and the stall, in the cockpit and outside, from 40 to 150 kt.
+  Aerobatics too: the stall when pulling up to 5 g, inverted flight and
+  its stall, and the canopy's flow turning in a slip. At altitude the
+  same indicated airspeed is a faster, thinner flow: each sound's level
+  and pitch follow PyWopWop's own physics for that (at 3 km the wing is
+  about 3.5 dB louder, everything a little higher).
+- **Everything else** plays at the level it makes, on the same scale:
+  the tyres rumbling, the touchdown, the wheel brake, the airbrakes'
+  lock, the releases, the canopy windows and the varios. Outside you
+  hear the tyres and the releases too, fading with distance. An open
+  sliding window adds the wind through it.
+- The made-up sounds of the original (a howl at low speed, a whoosh when
+  pitching) are gone.
+
 ## How it compares
 
 Every number below comes from the same scripted test programme flown
@@ -152,38 +182,43 @@ with both models (details and sources in the report).
 
 | | Source | Standard FlightGear model | This model |
 |---|---|---|---|
-| Polar rms error, 470 / 570 kg | flight manual | 0.09 / 0.17 m/s | 0.025 / 0.028 m/s |
-| Best glide ratio | 33.5 | 42 | 32.6–32.8 |
-| Stall speed single / dual | 65 / 74 km/h | 60.3 / 69.3 | 63.7 / 72.4 |
-| Neutral point | aft of 18.46 in | 16.5 in (unstable at aft CG) | 21.9 in |
-| Inverted −1 g stall | 38–40 KIAS | 54 | 40.7 |
-| AFFTC spin map, 24 loadings | AFFTC | 2 right (spiral dives) | 22 right |
-| Spin rate / height lost per turn | 80–140 °/s / 200 ft | no spin | 94 °/s / 313 ft |
-| Recovery with the manual's procedure | under 1 turn | no spin | 0.50–0.73 turn |
-| Full-rudder sideslip | up to 50° | 16° | 45° |
-| Full-aileron roll, first 180° | about 5 s | 6.2–6.6 s | 4.4–4.7 s |
-| Hands-free aerotow lift-off (tug 85 km/h) | before the tug, about 75 | 91–108 km/h | 65–79 km/h |
+| Polar rms error, 470 / 570 kg | flight manual | 0.09 / 0.17 m/s | 0.025 / 0.030 m/s |
+| Best glide ratio | 33.5 | 42 | 32.6–32.7 |
+| Stall speed single / dual | 65 / 74 km/h | 60.3 / 69.3 | 63.9 / 72.8 |
+| Neutral point | aft of 18.46 in | 16.5 in (unstable at aft CG) | 22.1 in |
+| Forward-CG stall | elevator runs out first | elevator runs out first | elevator runs out first |
+| Inverted −1 g stall | 38–40 KIAS | 54 | 40.6 |
+| AFFTC spin map, 24 loadings | AFFTC | 2 right (spiral dives) | 20 right |
+| Spin rate / height lost per turn | 80–140 °/s / 200 ft | no spin | 104 °/s / 291 ft |
+| Recovery with the manual's procedure | under 1 turn | no spin | 0.53–0.76 turn |
+| Full-rudder sideslip | up to 50° | 16° | 46° |
+| Full-aileron roll, first 180° | about 5 s | 6.2–6.6 s | 4.5–4.8 s |
+| Hands-free aerotow lift-off (tug 85 km/h) | before the tug, about 75 | 91–108 km/h | 66–80 km/h |
 | 45° airbrake dive at 600 kg | 232 km/h | 194 | 232 |
+| Wing bending, glider on springs | ground vibration test: 2.95 / 6.50 Hz | rigid | 2.95 / 6.0 Hz |
 
 ## Known gaps
 
-- **Phugoid.** Below about 105 km/h the slow pitch-and-speed
+- **Phugoid.** Below about 115 km/h the slow pitch-and-speed
   oscillation is very slightly unstable on paper: with the stick held
   perfectly still it grows over a few cycles. In flight it doesn't show
   as porpoising; you damp it without noticing.
-- **Spins** lose about 313 ft per turn against the AFFTC's 200 ft, and
-  the nose bobs more than reported.
-- **Stalls** at the most forward centre of gravity still break, where
-  the real glider runs out of elevator first. Dynamic stalls from a
-  steep nose-up attitude drop the nose further than reported.
-- **Not modelled:** controls that float free when released, and
-  airspeed indicator errors.
+- **Spins** lose about 291 ft per turn against the AFFTC's 200 ft, and
+  the nose bobs more than reported. At one heavy loading (two pilots and
+  tail ballast, centre of gravity 14.2 in) the spin builds up more
+  slowly than in the tests.
+- **Stalls** at aft centre of gravity drop the nose about 8° where the
+  AFFTC saw 2–3°. Dynamic stalls from a steep nose-up attitude drop the
+  nose further than reported.
+- **Not modelled:** controls that float free when released, airspeed
+  indicator errors, and the wing's twisting and its higher bending
+  modes.
 
 ## Rebuilding the model and the report
 
 The [`fdm`](fdm) folder holds everything that produced the flight model
-and the report, and regenerates both exactly. It needs Python 3.12 with
-`jsbsim` 1.3.2, `numpy`, `scipy`, `matplotlib`, `aerosandbox`,
+and the report, and regenerates both exactly. It needs Python 3.12 or
+newer with `jsbsim` 1.3, `numpy`, `scipy`, `matplotlib`, `aerosandbox`,
 `neuralfoil` and `cma`, and [tectonic](https://tectonic-typesetting.github.io)
 or another XeLaTeX for the PDF.
 
@@ -191,20 +226,30 @@ or another XeLaTeX for the PDF.
 cd fdm
 python3 genxml.py ../ASK21_v9/Systems/ask21-aero.xml "$(cat v9_params.json)"
 python3 genjsb.py ../ASK21_v9/ask21-jsb.xml
+python3 flexwing.py --write
 ```
 
 - `genxml.py` writes the aerodynamics: 22 wing strips, 6 tailplane and 3
   fin strips, and 11 fuselage stations, with the parameters in
-  `v9_params.json`. `genjsb.py` writes the mass, gear and controls file.
-- `campaign.py v9` and `campaign.py fg` fly the 186-point test programme
-  with each model (under a minute on 8 cores) and store the results in
+  `v9_params.json`, and the tug's wake (`Systems/ask21-wake.xml`).
+  `genjsb.py` writes the mass, gear and controls file.
+- `flexwing.py` works out the wing panels' bending from the ground
+  vibration test and writes its system (`Systems/ask21-flex.xml`), the
+  3-D wings' bending and the wing cameras.
+- `FDM_HZ=240 python3 campaign.py v9` and `campaign.py fg` fly the
+  186-point test programme with each model, at its rate in FlightGear
+  (about a minute on 8 cores), and store the results in
   `results_v9.json` and `results_fg.json`.
 - `figures.py`, `mktables.py`, `paradox.py`, `mknumbers.py`, `mkscore.py`
   and `mktab_a1.py` turn the results into every figure, table and number
   in the report; `tectonic ask21_report.tex` builds the PDF.
 - `optimize.py` and `optimize2.py` with `objective.py` identified the
-  post-stall parameters against the AFFTC spin results; `opt_final.json`
-  is the chosen candidate.
+  post-stall parameters against the AFFTC spin results, the last time
+  with the wing bending at 240 Hz; `opt_final.json` is the chosen
+  candidate.
+- `FG_ROOT=<FlightGear's data> python3 airsound.py <PyWopWop>/out/ask21`
+  writes the sound from PyWopWop's bank (`pywopwop glider-bank ask21`):
+  its loops with their altitude laws, and every other sound's level.
 - `fg_*.xml` are the unmodified files of the standard FlightGear model,
   used for the comparison.
 
@@ -223,9 +268,24 @@ revision 8166). Changed in 2026, all inside `ASK21_v9`:
   `ask21-jsb.xml` gets the mass properties and inertias from the AFFTC
   report, a cockpit ballast station, the control travels from the
   rigging data and the pitch control without a stick map. The
-  aerodynamics read the tug's wake as airflow at every station; the
-  system files `Systems/ask21-fcs.xml` and `Systems/ask21mi-fcs.xml`
-  declare its inputs.
+  aerodynamics read the tug's wake as airflow at every station
+  (`Systems/ask21-wake.xml`; the system files `Systems/ask21-fcs.xml`
+  and `Systems/ask21mi-fcs.xml` declare its inputs). The wings bend
+  (`Systems/ask21-flex.xml`), and the tip skids and the ground-handling
+  wing supports follow the bent tips. Both JSBSim versions run at 240 Hz
+  (`ask21-jsb-set.xml`, `ask21mi-jsb-set.xml`).
+- **Wing bending, 3-D.** The 3-D model's wings bend as the flight model's
+  do (`Systems/jsb_wingflex.xml`, the animations and multiplayer
+  properties in `Models/ask21.xml` and `ask21-main.xml`), and the wing
+  cameras ride on them (`Systems/wingflex_view.xml`). The YASim versions
+  keep FlightGear's generic wing flexer (`Systems/yasim_wingflex.xml`).
+- **Motorglider.** `ask21mi-jsb.xml` has the glider's mass properties
+  and inertias plus 80 kg for the power plant; it had the original
+  model's, too small for flexible wings.
+- **Sound.** `Sounds/ask21-sound.xml` plays PyWopWop's computed airflow
+  (`Sounds/pywopwop`) in place of the original wind, airbrake, howl and
+  whoosh sounds, and every other sound at its physical level;
+  `Systems/sound.xml` tells it how far the sliding windows are open.
 - **Nose wheel.** 5.4 cm lower in all four flight models (`ask21-jsb.xml`,
   `ask21mi-jsb.xml`, `ask21.xml`, `ask21mi.xml`) and in the 3-D model
   (`Models/ask21.xml`), so the glider sits as the rigging drawing shows.
@@ -251,7 +311,9 @@ revision 8166). Changed in 2026, all inside `ASK21_v9`:
 - **Fixes** to bugs of the original aircraft:
   - `ask21-main.xml` loaded `immat.nas` and `te-vario.nas` under the
     same index, so the registration letters never followed the
-    callsign or the Immatriculation dialog.
+    callsign or the Immatriculation dialog. And the `-set` files loaded
+    their own scripts under `te-vario.nas`'s index, so the rear seat's
+    vario never moved.
   - `Nasal/electrical.nas` and `electrical-mi.nas`: the low-battery
     warning used an undefined variable, which stopped the battery at
     10 %; the glider's ammeter always showed charging.

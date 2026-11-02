@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-11-02, evening
+
+Flight model
+- New: the wings bend, each panel in its first bending mode, with the stiffness of a ground vibration test of the real glider. The bending acts back on the flight: it adds dihedral and lifts the wing in a pull-up.
+- New: the tip skids and the ground-handling wing supports follow the bent wing tips.
+- Changed: the JSBSim versions run at 240 Hz instead of 120. Borderline spins depended on the step size at 120 Hz; at 240 Hz they no longer do.
+- Changed: the post-stall parameters are fitted again, with the bending and at 240 Hz. The AFFTC spin map matches at 20 of 24 loadings, and at forward centre of gravity the elevator now runs out before the stall, as the AFFTC found.
+- Changed: the flight model costs FlightGear about half as much. It reads half as many properties per step, and the tug's wake costs nothing when no tug is near.
+- Fixed: the JSBSim motorglider had the original model's mass and inertia, too small for flexible wings, and diverged in roll within a second. It now has the glider's, plus its power plant.
+
+3-D model
+- New: the wings bend as the flight model's do, in multiplayer too, and the wing cameras ride on them.
+
+Sound
+- New: the airflow is computed by PyWopWop from the glider's shape: the canopy's hiss, the wing and tail's noise, the airbrakes, the ailerons and the stall, in the cockpit and outside, with its level and pitch following the altitude up to 10 km.
+- New: the airflow covers aerobatics: the stall when pulling up to 5 g, inverted flight and its stall, and the canopy's wind in a slip.
+- Changed: every other sound plays at the level the real thing makes: tyres, touchdown, wheel brake, airbrake lock, releases, windows, varios. The tyres and releases are heard outside too.
+- Changed: an open sliding window adds the wind through it.
+- Removed: the original wind and airbrake sounds, the howl at low speed and the whoosh when pitching.
+
+Cockpit
+- Fixed: the rear seat's vario never moved.
+- Changed: the V8 works out the speed to fly about ten times faster, with the same result.
+
 ## 2026-11-02
 
 Cockpit
