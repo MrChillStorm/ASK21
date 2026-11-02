@@ -125,12 +125,15 @@ var update_polar = func {
 	min_sink = min_sink_at();
 };
 
-# MacCready speed to fly (indicated, m/s). air: vertical air movement (+ lift), headwind: m/s (+ head)
-var speed_to_fly = func(mc, air, headwind) {
+# MacCready speed to fly (indicated, m/s) on a 0.5 m/s grid. air: vertical air movement (+ lift), headwind: m/s (+ head)
+var stf_grid = [];
+for (var v = polar_min_speed; v <= polar_max_speed; v += 0.5) append(stf_grid, v);
+var stf_k = 0;                                   # grid index of the last answer
+var speed_to_fly_scan = func(mc, air, headwind) {
 	var best = polar_min_speed;
 	var best_score = -1e9;
 	var tas_per_ias = 1 / math.sqrt(polar.sigma);
-	for (var v = polar_min_speed; v <= polar_max_speed; v += 0.5) {
+	foreach (var v; stf_grid) {
 		var gs = v * tas_per_ias - headwind;
 		var denom = sink_at(v) - air + math.max(0, mc);
 		if (denom <= 0.01) continue;
@@ -139,20 +142,87 @@ var speed_to_fly = func(mc, air, headwind) {
 	}
 	return best;
 };
+# The same answer from a few points of the grid (ties go to the lower speed, as in the scan). The polar is convex, so
+# the speeds without an answer (lift above the sink plus MacCready) are one band around the minimum sink, and where the
+# glider makes way forward the score (ground speed per sink) has a single peak over a stretch of the grid that has
+# answers. Without the band the search climbs from the last answer. With it, the score below the band rises towards
+# it (the sink falls as the speed grows), so the answer is the point under the band or the peak above it: bisection
+# finds the band's edges, a climb the peak. It scans only when no speed makes way forward.
+var speed_to_fly = func(mc, air, headwind) {
+	var tas_per_ias = 1 / math.sqrt(polar.sigma);
+	var n = size(stf_grid);
+	var bad = func(k) { return sink_at(stf_grid[k]) - air + math.max(0, mc) <= 0.01; };
+	var score = func(k) {
+		var v = stf_grid[k];
+		return (v * tas_per_ias - headwind) / (sink_at(v) - air + math.max(0, mc));
+	};
+	var climb = func(k, k0) {                  # up from k while the score grows, then down (not below k0)
+		var s = score(k);
+		while (k + 1 < n) { var s1 = score(k + 1); if (s1 > s) { k += 1; s = s1; } else break; }
+		while (k > k0) { var s0 = score(k - 1); if (s0 >= s) { k -= 1; s = s0; } else break; }
+		return [k, s];
+	};
+	# the grid points on either side of the minimum sink: the band, if there is one, holds the one that sinks less
+	var r = polar.m / polar_m0;
+	var c = int((math.pow(polar_b * r * r / (3 * polar_a), 0.25) - polar_min_speed) / 0.5);
+	c = math.min(math.max(c, 0), n - 2);
+	var ci = nil;
+	foreach (var k; [c, c + 1]) if (bad(k)) { ci = k; break; }
+	var best = nil;
+	if (ci == nil) {
+		best = climb(math.min(math.max(stf_k, 0), n - 1), 0);
+	} else {
+		var lo = 0; var hi = ci;                 # the band's lowest point
+		if (bad(0)) hi = 0;
+		else while (hi - lo > 1) { var m = int((lo + hi) / 2); if (bad(m)) hi = m; else lo = m; }
+		var top = hi - 1;
+		lo = ci; hi = n - 1;                     # and its highest
+		if (bad(n - 1)) lo = n - 1;
+		else while (hi - lo > 1) { var m = int((lo + hi) / 2); if (bad(m)) lo = m; else hi = m; }
+		var above = lo + 1 < n ? climb(lo + 1, lo + 1) : nil;
+		if (top >= 0) {
+			var s = score(top);
+			if (above == nil or s >= above[1]) best = [top, s];
+		}
+		if (best == nil) best = above;
+	}
+	if (best == nil or best[1] <= 0) return speed_to_fly_scan(mc, air, headwind);
+	stf_k = best[0];
+	return stf_grid[best[0]];
+};
 
-# ---- moving average over a window (s)
+# ---- moving average over a window (s); old samples are passed by a start index and cut off now and then, not copied
+#      out one at a time
 var Averager = {
-	new: func(window_s) { return { parents: [Averager], w: window_s, t: [], v: [], sum: 0 }; },
+	new: func(window_s) { return { parents: [Averager], w: window_s, t: [], v: [], h: 0, sum: 0 }; },
 	push: func(t, x) {
 		append(me.t, t); append(me.v, x); me.sum += x;
-		while (size(me.t) > 1 and t - me.t[0] > me.w) {
-			me.sum -= me.v[0];
-			me.t = subvec(me.t, 1);
-			me.v = subvec(me.v, 1);
+		while (size(me.t) - me.h > 1 and t - me.t[me.h] > me.w) {
+			me.sum -= me.v[me.h];
+			me.h += 1;
 		}
+		if (me.h > 256) { me.t = subvec(me.t, me.h); me.v = subvec(me.v, me.h); me.h = 0; }
 	},
-	get: func { return size(me.t) ? me.sum / size(me.t) : 0; },
-	reset: func { me.t = []; me.v = []; me.sum = 0; },
+	get: func { var n = size(me.t) - me.h; return n ? me.sum / n : 0; },
+	reset: func { me.t = []; me.v = []; me.h = 0; me.sum = 0; },
+};
+
+# ---- minimum and maximum over a window (s): queues of the samples that can still become the minimum (or maximum), so
+#      each sample is handled twice in all instead of a pass over the window every update
+var MinMax = {
+	new: func(window_s) { return { parents: [MinMax], w: window_s, lt: [], lv: [], l0: 0, ht: [], hv: [], h0: 0 }; },
+	push: func(t, x) {
+		while (size(me.lv) > me.l0 and me.lv[-1] >= x) { pop(me.lv); pop(me.lt); }
+		append(me.lv, x); append(me.lt, t);
+		while (t - me.lt[me.l0] > me.w) me.l0 += 1;
+		while (size(me.hv) > me.h0 and me.hv[-1] <= x) { pop(me.hv); pop(me.ht); }
+		append(me.hv, x); append(me.ht, t);
+		while (t - me.ht[me.h0] > me.w) me.h0 += 1;
+		if (me.l0 > 256) { me.lv = subvec(me.lv, me.l0); me.lt = subvec(me.lt, me.l0); me.l0 = 0; }
+		if (me.h0 > 256) { me.hv = subvec(me.hv, me.h0); me.ht = subvec(me.ht, me.h0); me.h0 = 0; }
+	},
+	min: func me.lv[me.l0],
+	max: func me.hv[me.h0],
 };
 
 # ---- state shared with the display
@@ -182,8 +252,7 @@ var te_out = {raw: 0, te: 0, fast: 0, netto: 0, nettoInst: 0};
 var lps = {};
 var avg_vario = Averager.new(S.integrator);
 var avg_netto = Averager.new(S.nettoTime);
-var range_t = [];
-var range_v = [];
+var vario_range = MinMax.new(S.integrator);
 var last_hdg = nil;
 var last_hdg_t = 0;
 var turn_rate = 0;
@@ -325,18 +394,10 @@ var update = func {
 	f.avgN = avg_netto.get();
 
 	# min / max of the vario over the integrator time: the yellow bar
-	append(range_t, t); append(range_v, o.te);
-	while (size(range_t) > 1 and t - range_t[0] > S.integrator) {
-		range_t = subvec(range_t, 1);
-		range_v = subvec(range_v, 1);
-	}
-	var lo = range_v[0]; var hi = range_v[0];
-	foreach (var x; range_v) {
-		if (x < lo) lo = x;
-		if (x > hi) hi = x;
-	}
-	f.minV = lo;
-	f.maxV = hi;
+	vario_range.w = S.integrator;
+	vario_range.push(t, o.te);
+	f.minV = vario_range.min();
+	f.maxV = vario_range.max();
 
 	update_circling(t);
 
