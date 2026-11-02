@@ -728,7 +728,8 @@ See AUTHORS.txt for credits
 			<file n="3">Aircraft/ASK21_v9/Nasal/groundhandling.nas</file>
 			<file n="4">Aircraft/ASK21_v9/Nasal/jsoverride.nas</file>
 			<file n="5">Aircraft/ASK21_v9/Nasal/immat.nas</file>
-			<file n="6">Aircraft/ASK21_v9/Nasal/te-vario.nas</file>
+			<!-- the -set files add their own scripts to this module as file 6 and 7 -->
+			<file n="10">Aircraft/ASK21_v9/Nasal/te-vario.nas</file>
 		</ask21>
 		<dragrobot>
 			<file>Aircraft/ASK21_v9/Nasal/dragrobot.nas</file>
