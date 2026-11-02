@@ -1,3 +1,5 @@
+![The ASK 21 in FlightGear, banking low over a field in the evening light](ASK21_v9.jpg)
+
 # ASK 21 for FlightGear, with a JSBSim model built from the test reports
 
 The Schleicher ASK 21 two-seat trainer from FlightGear's aircraft
