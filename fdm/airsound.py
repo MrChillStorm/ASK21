@@ -10,15 +10,15 @@ of attack and the sideslip. At altitude the same indicated
 airspeed is a higher true airspeed in thinner air. PyWopWop's own model (pywopwop.glider.spectra) at the same
 equivalent airspeed at 1 to 5 km gives each loop's change: the frequency shift that best matches its spectrum and the
 level that then matches its A-weighted energy follow sigma^b and sigma^a (sigma: the air's density over sea level's)
-to within 0.5 dB (0.9 dB for the canopy in a full slip at 150 kt), and each loop's pitch and volume carry its law. What a shift and a level leave of the spectrum's
+to within 0.7 dB (most within 0.3), and each loop's pitch and volume carry its law. What a shift and a level leave of the spectrum's
 change is small but for the wing and tail's self-noise (about 1.5 dB per third octave at 3 km), which in the cockpit
-lies some 60 dB under the canopy's wind. SimGear clips a volume above 1, so the quieter loops' samples are raised by
+lies 40 to 55 dB under the canopy's wind. SimGear clips a volume above 1, so the quieter loops' samples are raised by
 what their law needs up to TOP_M, and the whole aircraft turned down by what a loop's peak can't give. The wing's
 separated sound fades in on the angle of attack over PyWopWop's window (its root's separation to its stall), upright
 and inverted, each moved to where the flight model stalls (the campaign's results).
 
 Every other sound plays at the level it makes, on the bank's scale: a full-scale sample is 93.98 - gain dB re 20 uPa
-(the bank's manifest; about 110 dB in the cockpit, 111.5 dB 30 m outside) plus the turn-down, so a file whose
+(the bank's manifest; about 109 dB in the cockpit, 111.5 dB 30 m outside) plus the turn-down, so a file whose
 A-weighted rms (a click's: its loudest 125 ms) is L dB re its full scale plays at volume
 10^((SPL - full scale - L)/20). LEVELS has each sound's
 level in the cockpit (the front seat) and 30 m outside, the law it follows and where the level comes from: measured

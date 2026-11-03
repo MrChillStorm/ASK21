@@ -4,8 +4,8 @@
  "sample_rate": 48000.0,
  "bits": 16,
  "gain_db": {
-  "cockpit": -16.055,
-  "exterior": -17.553
+  "exterior": -17.553,
+  "cockpit": -15.07
  },
  "stall_speed_kt": 34.7,
  "stall_alpha_body_deg": 11.96,
@@ -30,8 +30,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": 2.2108,
-   "oaspl_db": 84.76,
-   "dba": 77.82
+   "oaspl_db": 84.6,
+   "dba": 76.95
   },
   {
    "file": "40kt_cockpit_airframe.wav",
@@ -42,7 +42,7 @@
    "source": "airframe",
    "alpha_body_deg": 2.2108,
    "oaspl_db": 43.09,
-   "dba": 21.6
+   "dba": 21.57
   },
   {
    "file": "40kt_cockpit_wind.wav",
@@ -52,8 +52,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": 2.2108,
-   "oaspl_db": 84.76,
-   "dba": 77.82
+   "oaspl_db": 84.6,
+   "dba": 76.95
   },
   {
    "file": "40kt_cockpit_brakes.wav",
@@ -85,8 +85,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": 2.2108,
-   "oaspl_db": 88.91,
-   "dba": 79.85
+   "oaspl_db": 88.84,
+   "dba": 79.21
   },
   {
    "file": "40kt_cockpit_rear_airframe.wav",
@@ -97,7 +97,7 @@
    "source": "airframe",
    "alpha_body_deg": 2.2108,
    "oaspl_db": 51.73,
-   "dba": 27.99
+   "dba": 27.97
   },
   {
    "file": "40kt_cockpit_rear_wind.wav",
@@ -107,8 +107,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": 2.2108,
-   "oaspl_db": 88.91,
-   "dba": 79.85
+   "oaspl_db": 88.84,
+   "dba": 79.21
   },
   {
    "file": "40kt_cockpit_rear_brakes.wav",
@@ -316,8 +316,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -1.1612,
-   "oaspl_db": 85.6,
-   "dba": 80.17
+   "oaspl_db": 85.22,
+   "dba": 78.86
   },
   {
    "file": "50kt_cockpit_airframe.wav",
@@ -328,7 +328,7 @@
    "source": "airframe",
    "alpha_body_deg": -1.1612,
    "oaspl_db": 47.43,
-   "dba": 25.95
+   "dba": 25.89
   },
   {
    "file": "50kt_cockpit_wind.wav",
@@ -338,8 +338,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -1.1612,
-   "oaspl_db": 85.6,
-   "dba": 80.17
+   "oaspl_db": 85.22,
+   "dba": 78.86
   },
   {
    "file": "50kt_cockpit_brakes.wav",
@@ -371,8 +371,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -1.1612,
-   "oaspl_db": 89.08,
-   "dba": 81.79
+   "oaspl_db": 88.91,
+   "dba": 80.85
   },
   {
    "file": "50kt_cockpit_rear_airframe.wav",
@@ -383,7 +383,7 @@
    "source": "airframe",
    "alpha_body_deg": -1.1612,
    "oaspl_db": 56.1,
-   "dba": 32.31
+   "dba": 32.28
   },
   {
    "file": "50kt_cockpit_rear_wind.wav",
@@ -393,8 +393,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -1.1612,
-   "oaspl_db": 89.08,
-   "dba": 81.79
+   "oaspl_db": 88.9,
+   "dba": 80.85
   },
   {
    "file": "50kt_cockpit_rear_brakes.wav",
@@ -602,8 +602,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -2.9557,
-   "oaspl_db": 86.53,
-   "dba": 82.1
+   "oaspl_db": 85.81,
+   "dba": 80.43
   },
   {
    "file": "60kt_cockpit_airframe.wav",
@@ -614,7 +614,7 @@
    "source": "airframe",
    "alpha_body_deg": -2.9557,
    "oaspl_db": 51.43,
-   "dba": 29.57
+   "dba": 29.47
   },
   {
    "file": "60kt_cockpit_wind.wav",
@@ -624,8 +624,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -2.9557,
-   "oaspl_db": 86.53,
-   "dba": 82.1
+   "oaspl_db": 85.81,
+   "dba": 80.43
   },
   {
    "file": "60kt_cockpit_brakes.wav",
@@ -647,7 +647,7 @@
    "source": "ailerons",
    "alpha_body_deg": -2.9557,
    "oaspl_db": 31.05,
-   "dba": 11.83
+   "dba": 11.75
   },
   {
    "file": "60kt_cockpit_rear_mix.wav",
@@ -657,8 +657,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -2.9557,
-   "oaspl_db": 89.52,
-   "dba": 83.53
+   "oaspl_db": 89.18,
+   "dba": 82.33
   },
   {
    "file": "60kt_cockpit_rear_airframe.wav",
@@ -669,7 +669,7 @@
    "source": "airframe",
    "alpha_body_deg": -2.9557,
    "oaspl_db": 60.12,
-   "dba": 35.96
+   "dba": 35.92
   },
   {
    "file": "60kt_cockpit_rear_wind.wav",
@@ -679,8 +679,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -2.9557,
-   "oaspl_db": 89.52,
-   "dba": 83.53
+   "oaspl_db": 89.18,
+   "dba": 82.33
   },
   {
    "file": "60kt_cockpit_rear_brakes.wav",
@@ -702,7 +702,7 @@
    "source": "ailerons",
    "alpha_body_deg": -2.9557,
    "oaspl_db": 37.17,
-   "dba": 16.03
+   "dba": 16.0
   },
   {
    "file": "60kt_side_mix.wav",
@@ -888,8 +888,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -4.4153,
-   "oaspl_db": 87.95,
-   "dba": 84.45
+   "oaspl_db": 86.65,
+   "dba": 82.39
   },
   {
    "file": "75kt_cockpit_airframe.wav",
@@ -900,7 +900,7 @@
    "source": "airframe",
    "alpha_body_deg": -4.4153,
    "oaspl_db": 56.4,
-   "dba": 34.16
+   "dba": 34.03
   },
   {
    "file": "75kt_cockpit_wind.wav",
@@ -910,8 +910,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -4.4153,
-   "oaspl_db": 87.95,
-   "dba": 84.45
+   "oaspl_db": 86.64,
+   "dba": 82.39
   },
   {
    "file": "75kt_cockpit_brakes.wav",
@@ -943,8 +943,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -4.4153,
-   "oaspl_db": 90.37,
-   "dba": 85.73
+   "oaspl_db": 89.67,
+   "dba": 84.2
   },
   {
    "file": "75kt_cockpit_rear_airframe.wav",
@@ -955,7 +955,7 @@
    "source": "airframe",
    "alpha_body_deg": -4.4153,
    "oaspl_db": 65.08,
-   "dba": 40.65
+   "dba": 40.59
   },
   {
    "file": "75kt_cockpit_rear_wind.wav",
@@ -965,8 +965,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -4.4153,
-   "oaspl_db": 90.35,
-   "dba": 85.73
+   "oaspl_db": 89.66,
+   "dba": 84.2
   },
   {
    "file": "75kt_cockpit_rear_brakes.wav",
@@ -1174,8 +1174,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -5.204,
-   "oaspl_db": 89.17,
-   "dba": 86.29
+   "oaspl_db": 87.24,
+   "dba": 83.9
   },
   {
    "file": "90kt_cockpit_airframe.wav",
@@ -1186,7 +1186,7 @@
    "source": "airframe",
    "alpha_body_deg": -5.204,
    "oaspl_db": 60.17,
-   "dba": 38.31
+   "dba": 38.17
   },
   {
    "file": "90kt_cockpit_wind.wav",
@@ -1196,8 +1196,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -5.204,
-   "oaspl_db": 89.17,
-   "dba": 86.29
+   "oaspl_db": 87.23,
+   "dba": 83.9
   },
   {
    "file": "90kt_cockpit_brakes.wav",
@@ -1208,7 +1208,7 @@
    "source": "brakes",
    "alpha_body_deg": -5.204,
    "oaspl_db": 84.3,
-   "dba": 62.99
+   "dba": 62.98
   },
   {
    "file": "90kt_cockpit_ailerons.wav",
@@ -1229,8 +1229,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -5.204,
-   "oaspl_db": 91.28,
-   "dba": 87.55
+   "oaspl_db": 90.18,
+   "dba": 85.76
   },
   {
    "file": "90kt_cockpit_rear_airframe.wav",
@@ -1241,7 +1241,7 @@
    "source": "airframe",
    "alpha_body_deg": -5.204,
    "oaspl_db": 68.81,
-   "dba": 44.74
+   "dba": 44.68
   },
   {
    "file": "90kt_cockpit_rear_wind.wav",
@@ -1251,8 +1251,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -5.204,
-   "oaspl_db": 91.26,
-   "dba": 87.55
+   "oaspl_db": 90.15,
+   "dba": 85.76
   },
   {
    "file": "90kt_cockpit_rear_brakes.wav",
@@ -1263,7 +1263,7 @@
    "source": "brakes",
    "alpha_body_deg": -5.204,
    "oaspl_db": 84.01,
-   "dba": 62.7
+   "dba": 62.69
   },
   {
    "file": "90kt_cockpit_rear_ailerons.wav",
@@ -1460,8 +1460,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -5.8007,
-   "oaspl_db": 90.71,
-   "dba": 88.31
+   "oaspl_db": 88.0,
+   "dba": 85.54
   },
   {
    "file": "110kt_cockpit_airframe.wav",
@@ -1472,7 +1472,7 @@
    "source": "airframe",
    "alpha_body_deg": -5.8007,
    "oaspl_db": 64.7,
-   "dba": 43.05
+   "dba": 42.89
   },
   {
    "file": "110kt_cockpit_wind.wav",
@@ -1482,8 +1482,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -5.8007,
-   "oaspl_db": 90.7,
-   "dba": 88.31
+   "oaspl_db": 87.98,
+   "dba": 85.54
   },
   {
    "file": "110kt_cockpit_brakes.wav",
@@ -1515,8 +1515,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -5.8007,
-   "oaspl_db": 92.48,
-   "dba": 89.55
+   "oaspl_db": 90.82,
+   "dba": 87.46
   },
   {
    "file": "110kt_cockpit_rear_airframe.wav",
@@ -1527,7 +1527,7 @@
    "source": "airframe",
    "alpha_body_deg": -5.8007,
    "oaspl_db": 73.29,
-   "dba": 49.46
+   "dba": 49.39
   },
   {
    "file": "110kt_cockpit_rear_wind.wav",
@@ -1537,8 +1537,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -5.8007,
-   "oaspl_db": 92.43,
-   "dba": 89.55
+   "oaspl_db": 90.74,
+   "dba": 87.46
   },
   {
    "file": "110kt_cockpit_rear_brakes.wav",
@@ -1746,8 +1746,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -6.1446,
-   "oaspl_db": 92.05,
-   "dba": 89.91
+   "oaspl_db": 88.58,
+   "dba": 86.78
   },
   {
    "file": "130kt_cockpit_airframe.wav",
@@ -1758,7 +1758,7 @@
    "source": "airframe",
    "alpha_body_deg": -6.1446,
    "oaspl_db": 68.74,
-   "dba": 47.2
+   "dba": 47.05
   },
   {
    "file": "130kt_cockpit_wind.wav",
@@ -1768,8 +1768,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -6.1446,
-   "oaspl_db": 92.02,
-   "dba": 89.91
+   "oaspl_db": 88.53,
+   "dba": 86.78
   },
   {
    "file": "130kt_cockpit_brakes.wav",
@@ -1780,7 +1780,7 @@
    "source": "brakes",
    "alpha_body_deg": -6.1446,
    "oaspl_db": 92.63,
-   "dba": 73.28
+   "dba": 73.27
   },
   {
    "file": "130kt_cockpit_ailerons.wav",
@@ -1791,7 +1791,7 @@
    "source": "ailerons",
    "alpha_body_deg": -6.1446,
    "oaspl_db": 49.28,
-   "dba": 31.98
+   "dba": 31.96
   },
   {
    "file": "130kt_cockpit_rear_mix.wav",
@@ -1801,8 +1801,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -6.1446,
-   "oaspl_db": 93.59,
-   "dba": 91.15
+   "oaspl_db": 91.35,
+   "dba": 88.74
   },
   {
    "file": "130kt_cockpit_rear_airframe.wav",
@@ -1813,7 +1813,7 @@
    "source": "airframe",
    "alpha_body_deg": -6.1446,
    "oaspl_db": 77.28,
-   "dba": 53.55
+   "dba": 53.49
   },
   {
    "file": "130kt_cockpit_rear_wind.wav",
@@ -1823,8 +1823,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -6.1446,
-   "oaspl_db": 93.48,
-   "dba": 91.15
+   "oaspl_db": 91.17,
+   "dba": 88.74
   },
   {
    "file": "130kt_cockpit_rear_brakes.wav",
@@ -1846,7 +1846,7 @@
    "source": "ailerons",
    "alpha_body_deg": -6.1446,
    "oaspl_db": 54.76,
-   "dba": 36.0
+   "dba": 35.96
   },
   {
    "file": "130kt_side_mix.wav",
@@ -2032,8 +2032,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -6.3586,
-   "oaspl_db": 93.29,
-   "dba": 91.27
+   "oaspl_db": 89.11,
+   "dba": 87.77
   },
   {
    "file": "150kt_cockpit_airframe.wav",
@@ -2044,7 +2044,7 @@
    "source": "airframe",
    "alpha_body_deg": -6.3586,
    "oaspl_db": 72.32,
-   "dba": 50.74
+   "dba": 50.6
   },
   {
    "file": "150kt_cockpit_wind.wav",
@@ -2054,8 +2054,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -6.3586,
-   "oaspl_db": 93.26,
-   "dba": 91.27
+   "oaspl_db": 89.02,
+   "dba": 87.77
   },
   {
    "file": "150kt_cockpit_brakes.wav",
@@ -2066,7 +2066,7 @@
    "source": "brakes",
    "alpha_body_deg": -6.3586,
    "oaspl_db": 95.62,
-   "dba": 77.28
+   "dba": 77.27
   },
   {
    "file": "150kt_cockpit_ailerons.wav",
@@ -2076,8 +2076,8 @@
    "observer": "cockpit",
    "source": "ailerons",
    "alpha_body_deg": -6.3586,
-   "oaspl_db": 48.64,
-   "dba": 28.13
+   "oaspl_db": 48.62,
+   "dba": 25.92
   },
   {
    "file": "150kt_cockpit_rear_mix.wav",
@@ -2087,8 +2087,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -6.3586,
-   "oaspl_db": 94.71,
-   "dba": 92.51
+   "oaspl_db": 91.92,
+   "dba": 89.79
   },
   {
    "file": "150kt_cockpit_rear_airframe.wav",
@@ -2099,7 +2099,7 @@
    "source": "airframe",
    "alpha_body_deg": -6.3586,
    "oaspl_db": 80.8,
-   "dba": 57.12
+   "dba": 57.06
   },
   {
    "file": "150kt_cockpit_rear_wind.wav",
@@ -2109,8 +2109,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -6.3586,
-   "oaspl_db": 94.53,
-   "dba": 92.51
+   "oaspl_db": 91.58,
+   "dba": 89.78
   },
   {
    "file": "150kt_cockpit_rear_brakes.wav",
@@ -2131,8 +2131,8 @@
    "observer": "cockpit_rear",
    "source": "ailerons",
    "alpha_body_deg": -6.3586,
-   "oaspl_db": 56.3,
-   "dba": 34.73
+   "oaspl_db": 56.29,
+   "dba": 34.07
   },
   {
    "file": "150kt_side_mix.wav",
@@ -2318,8 +2318,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": 11.9566,
-   "oaspl_db": 85.06,
-   "dba": 76.36
+   "oaspl_db": 85.0,
+   "dba": 75.83
   },
   {
    "file": "stall_cockpit_airframe.wav",
@@ -2330,7 +2330,7 @@
    "source": "airframe",
    "alpha_body_deg": 11.9566,
    "oaspl_db": 44.84,
-   "dba": 18.94
+   "dba": 18.93
   },
   {
    "file": "stall_cockpit_wind.wav",
@@ -2340,8 +2340,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": 11.9566,
-   "oaspl_db": 85.05,
-   "dba": 76.36
+   "oaspl_db": 84.99,
+   "dba": 75.83
   },
   {
    "file": "stall_cockpit_rear_mix.wav",
@@ -2351,8 +2351,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": 11.9566,
-   "oaspl_db": 89.1,
-   "dba": 78.55
+   "oaspl_db": 89.06,
+   "dba": 78.1
   },
   {
    "file": "stall_cockpit_rear_airframe.wav",
@@ -2363,7 +2363,7 @@
    "source": "airframe",
    "alpha_body_deg": 11.9566,
    "oaspl_db": 52.62,
-   "dba": 24.48
+   "dba": 24.47
   },
   {
    "file": "stall_cockpit_rear_wind.wav",
@@ -2373,8 +2373,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": 11.9566,
-   "oaspl_db": 89.09,
-   "dba": 78.55
+   "oaspl_db": 89.06,
+   "dba": 78.1
   },
   {
    "file": "stall_side_mix.wav",
@@ -2484,7 +2484,7 @@
    "source": "airframe",
    "alpha_body_deg": 11.6002,
    "oaspl_db": 61.32,
-   "dba": 32.8
+   "dba": 32.79
   },
   {
    "file": "stall_2g_side_airframe.wav",
@@ -2539,7 +2539,7 @@
    "source": "airframe",
    "alpha_body_deg": 11.3285,
    "oaspl_db": 61.75,
-   "dba": 34.87
+   "dba": 34.86
   },
   {
    "file": "stall_3.5g_cockpit_rear_airframe.wav",
@@ -2550,7 +2550,7 @@
    "source": "airframe",
    "alpha_body_deg": 11.3285,
    "oaspl_db": 68.92,
-   "dba": 39.86
+   "dba": 39.85
   },
   {
    "file": "stall_3.5g_side_airframe.wav",
@@ -2605,7 +2605,7 @@
    "source": "airframe",
    "alpha_body_deg": 11.2595,
    "oaspl_db": 66.98,
-   "dba": 39.46
+   "dba": 39.44
   },
   {
    "file": "stall_5g_cockpit_rear_airframe.wav",
@@ -2616,7 +2616,7 @@
    "source": "airframe",
    "alpha_body_deg": 11.2595,
    "oaspl_db": 74.01,
-   "dba": 44.55
+   "dba": 44.54
   },
   {
    "file": "stall_5g_side_airframe.wav",
@@ -2670,8 +2670,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -11.0974,
-   "oaspl_db": 85.33,
-   "dba": 81.44
+   "oaspl_db": 84.38,
+   "dba": 79.54
   },
   {
    "file": "inv_60kt_cockpit_airframe.wav",
@@ -2682,7 +2682,7 @@
    "source": "airframe",
    "alpha_body_deg": -11.0974,
    "oaspl_db": 52.97,
-   "dba": 32.39
+   "dba": 32.36
   },
   {
    "file": "inv_60kt_cockpit_wind.wav",
@@ -2692,8 +2692,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -11.0974,
-   "oaspl_db": 85.33,
-   "dba": 81.44
+   "oaspl_db": 84.38,
+   "dba": 79.54
   },
   {
    "file": "inv_60kt_cockpit_rear_mix.wav",
@@ -2703,8 +2703,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -11.0974,
-   "oaspl_db": 87.15,
-   "dba": 81.92
+   "oaspl_db": 86.68,
+   "dba": 80.52
   },
   {
    "file": "inv_60kt_cockpit_rear_airframe.wav",
@@ -2715,7 +2715,7 @@
    "source": "airframe",
    "alpha_body_deg": -11.0974,
    "oaspl_db": 61.11,
-   "dba": 38.3
+   "dba": 38.29
   },
   {
    "file": "inv_60kt_cockpit_rear_wind.wav",
@@ -2725,8 +2725,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -11.0974,
-   "oaspl_db": 87.14,
-   "dba": 81.92
+   "oaspl_db": 86.67,
+   "dba": 80.52
   },
   {
    "file": "inv_60kt_side_mix.wav",
@@ -2824,8 +2824,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -9.5712,
-   "oaspl_db": 87.24,
-   "dba": 84.0
+   "oaspl_db": 85.7,
+   "dba": 81.75
   },
   {
    "file": "inv_75kt_cockpit_airframe.wav",
@@ -2836,7 +2836,7 @@
    "source": "airframe",
    "alpha_body_deg": -9.5712,
    "oaspl_db": 56.93,
-   "dba": 36.86
+   "dba": 36.81
   },
   {
    "file": "inv_75kt_cockpit_wind.wav",
@@ -2846,8 +2846,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -9.5712,
-   "oaspl_db": 87.23,
-   "dba": 84.0
+   "oaspl_db": 85.69,
+   "dba": 81.75
   },
   {
    "file": "inv_75kt_cockpit_rear_mix.wav",
@@ -2857,8 +2857,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -9.5712,
-   "oaspl_db": 88.98,
-   "dba": 84.7
+   "oaspl_db": 88.14,
+   "dba": 83.01
   },
   {
    "file": "inv_75kt_cockpit_rear_airframe.wav",
@@ -2869,7 +2869,7 @@
    "source": "airframe",
    "alpha_body_deg": -9.5712,
    "oaspl_db": 65.3,
-   "dba": 42.89
+   "dba": 42.87
   },
   {
    "file": "inv_75kt_cockpit_rear_wind.wav",
@@ -2879,8 +2879,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -9.5712,
-   "oaspl_db": 88.95,
-   "dba": 84.7
+   "oaspl_db": 88.12,
+   "dba": 83.01
   },
   {
    "file": "inv_75kt_side_mix.wav",
@@ -2978,8 +2978,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -8.7728,
-   "oaspl_db": 88.77,
-   "dba": 85.98
+   "oaspl_db": 86.67,
+   "dba": 83.46
   },
   {
    "file": "inv_90kt_cockpit_airframe.wav",
@@ -2990,7 +2990,7 @@
    "source": "airframe",
    "alpha_body_deg": -8.7728,
    "oaspl_db": 60.66,
-   "dba": 40.48
+   "dba": 40.41
   },
   {
    "file": "inv_90kt_cockpit_wind.wav",
@@ -3000,8 +3000,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -8.7728,
-   "oaspl_db": 88.77,
-   "dba": 85.98
+   "oaspl_db": 86.65,
+   "dba": 83.46
   },
   {
    "file": "inv_90kt_cockpit_rear_mix.wav",
@@ -3011,8 +3011,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -8.7728,
-   "oaspl_db": 90.4,
-   "dba": 86.83
+   "oaspl_db": 89.17,
+   "dba": 84.92
   },
   {
    "file": "inv_90kt_cockpit_rear_airframe.wav",
@@ -3023,7 +3023,7 @@
    "source": "airframe",
    "alpha_body_deg": -8.7728,
    "oaspl_db": 69.13,
-   "dba": 46.62
+   "dba": 46.59
   },
   {
    "file": "inv_90kt_cockpit_rear_wind.wav",
@@ -3033,8 +3033,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -8.7728,
-   "oaspl_db": 90.37,
-   "dba": 86.83
+   "oaspl_db": 89.13,
+   "dba": 84.92
   },
   {
    "file": "inv_90kt_side_mix.wav",
@@ -3132,8 +3132,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -8.1842,
-   "oaspl_db": 90.44,
-   "dba": 88.07
+   "oaspl_db": 87.59,
+   "dba": 85.2
   },
   {
    "file": "inv_110kt_cockpit_airframe.wav",
@@ -3144,7 +3144,7 @@
    "source": "airframe",
    "alpha_body_deg": -8.1842,
    "oaspl_db": 65.1,
-   "dba": 44.51
+   "dba": 44.42
   },
   {
    "file": "inv_110kt_cockpit_wind.wav",
@@ -3154,8 +3154,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -8.1842,
-   "oaspl_db": 90.43,
-   "dba": 88.07
+   "oaspl_db": 87.56,
+   "dba": 85.2
   },
   {
    "file": "inv_110kt_cockpit_rear_mix.wav",
@@ -3165,8 +3165,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -8.1842,
-   "oaspl_db": 91.91,
-   "dba": 89.04
+   "oaspl_db": 90.13,
+   "dba": 86.85
   },
   {
    "file": "inv_110kt_cockpit_rear_airframe.wav",
@@ -3177,7 +3177,7 @@
    "source": "airframe",
    "alpha_body_deg": -8.1842,
    "oaspl_db": 73.6,
-   "dba": 50.78
+   "dba": 50.74
   },
   {
    "file": "inv_110kt_cockpit_rear_wind.wav",
@@ -3187,8 +3187,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -8.1842,
-   "oaspl_db": 91.85,
-   "dba": 89.04
+   "oaspl_db": 90.03,
+   "dba": 86.85
   },
   {
    "file": "inv_110kt_side_mix.wav",
@@ -3286,8 +3286,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -7.8505,
-   "oaspl_db": 91.9,
-   "dba": 89.75
+   "oaspl_db": 88.36,
+   "dba": 86.56
   },
   {
    "file": "inv_130kt_cockpit_airframe.wav",
@@ -3298,7 +3298,7 @@
    "source": "airframe",
    "alpha_body_deg": -7.8505,
    "oaspl_db": 68.88,
-   "dba": 48.26
+   "dba": 48.16
   },
   {
    "file": "inv_130kt_cockpit_wind.wav",
@@ -3308,8 +3308,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -7.8505,
-   "oaspl_db": 91.88,
-   "dba": 89.75
+   "oaspl_db": 88.31,
+   "dba": 86.56
   },
   {
    "file": "inv_130kt_cockpit_rear_mix.wav",
@@ -3319,8 +3319,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -7.8505,
-   "oaspl_db": 93.26,
-   "dba": 90.81
+   "oaspl_db": 90.95,
+   "dba": 88.35
   },
   {
    "file": "inv_130kt_cockpit_rear_airframe.wav",
@@ -3331,7 +3331,7 @@
    "source": "airframe",
    "alpha_body_deg": -7.8505,
    "oaspl_db": 77.35,
-   "dba": 54.45
+   "dba": 54.4
   },
   {
    "file": "inv_130kt_cockpit_rear_wind.wav",
@@ -3341,8 +3341,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -7.8505,
-   "oaspl_db": 93.15,
-   "dba": 90.81
+   "oaspl_db": 90.76,
+   "dba": 88.34
   },
   {
    "file": "inv_130kt_side_mix.wav",
@@ -3440,8 +3440,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -7.6433,
-   "oaspl_db": 93.18,
-   "dba": 91.14
+   "oaspl_db": 88.91,
+   "dba": 87.59
   },
   {
    "file": "inv_150kt_cockpit_airframe.wav",
@@ -3452,7 +3452,7 @@
    "source": "airframe",
    "alpha_body_deg": -7.6433,
    "oaspl_db": 72.3,
-   "dba": 51.34
+   "dba": 51.22
   },
   {
    "file": "inv_150kt_cockpit_wind.wav",
@@ -3462,8 +3462,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -7.6433,
-   "oaspl_db": 93.15,
-   "dba": 91.14
+   "oaspl_db": 88.82,
+   "dba": 87.59
   },
   {
    "file": "inv_150kt_cockpit_rear_mix.wav",
@@ -3473,8 +3473,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -7.6433,
-   "oaspl_db": 94.45,
-   "dba": 92.24
+   "oaspl_db": 91.58,
+   "dba": 89.45
   },
   {
    "file": "inv_150kt_cockpit_rear_airframe.wav",
@@ -3485,7 +3485,7 @@
    "source": "airframe",
    "alpha_body_deg": -7.6433,
    "oaspl_db": 80.75,
-   "dba": 57.64
+   "dba": 57.59
   },
   {
    "file": "inv_150kt_cockpit_rear_wind.wav",
@@ -3495,8 +3495,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -7.6433,
-   "oaspl_db": 94.27,
-   "dba": 92.24
+   "oaspl_db": 91.22,
+   "dba": 89.45
   },
   {
    "file": "inv_150kt_side_mix.wav",
@@ -3594,8 +3594,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -15.315,
-   "oaspl_db": 82.74,
-   "dba": 77.99
+   "oaspl_db": 82.24,
+   "dba": 76.51
   },
   {
    "file": "stall_inv_cockpit_airframe.wav",
@@ -3606,7 +3606,7 @@
    "source": "airframe",
    "alpha_body_deg": -15.315,
    "oaspl_db": 53.06,
-   "dba": 26.76
+   "dba": 26.75
   },
   {
    "file": "stall_inv_cockpit_wind.wav",
@@ -3616,8 +3616,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -15.315,
-   "oaspl_db": 82.74,
-   "dba": 77.99
+   "oaspl_db": 82.23,
+   "dba": 76.51
   },
   {
    "file": "stall_inv_cockpit_rear_mix.wav",
@@ -3627,8 +3627,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -15.315,
-   "oaspl_db": 84.49,
-   "dba": 78.23
+   "oaspl_db": 84.25,
+   "dba": 77.16
   },
   {
    "file": "stall_inv_cockpit_rear_airframe.wav",
@@ -3639,7 +3639,7 @@
    "source": "airframe",
    "alpha_body_deg": -15.315,
    "oaspl_db": 60.01,
-   "dba": 32.3
+   "dba": 32.29
   },
   {
    "file": "stall_inv_cockpit_rear_wind.wav",
@@ -3649,8 +3649,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -15.315,
-   "oaspl_db": 84.47,
-   "dba": 78.23
+   "oaspl_db": 84.23,
+   "dba": 77.16
   },
   {
    "file": "stall_inv_side_mix.wav",
@@ -3748,8 +3748,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": 2.2108,
-   "oaspl_db": 84.87,
-   "dba": 78.68
+   "oaspl_db": 84.61,
+   "dba": 77.59
   },
   {
    "file": "slip_40kt_cockpit_airframe.wav",
@@ -3760,7 +3760,7 @@
    "source": "airframe",
    "alpha_body_deg": 2.2108,
    "oaspl_db": 43.12,
-   "dba": 21.65
+   "dba": 21.61
   },
   {
    "file": "slip_40kt_cockpit_wind.wav",
@@ -3770,8 +3770,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": 2.2108,
-   "oaspl_db": 84.87,
-   "dba": 78.68
+   "oaspl_db": 84.62,
+   "dba": 77.59
   },
   {
    "file": "slip_40kt_cockpit_rear_mix.wav",
@@ -3781,8 +3781,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": 2.2108,
-   "oaspl_db": 87.9,
-   "dba": 80.2
+   "oaspl_db": 87.75,
+   "dba": 79.3
   },
   {
    "file": "slip_40kt_cockpit_rear_airframe.wav",
@@ -3793,7 +3793,7 @@
    "source": "airframe",
    "alpha_body_deg": 2.2108,
    "oaspl_db": 51.73,
-   "dba": 28.03
+   "dba": 28.02
   },
   {
    "file": "slip_40kt_cockpit_rear_wind.wav",
@@ -3803,8 +3803,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": 2.2108,
-   "oaspl_db": 87.91,
-   "dba": 80.2
+   "oaspl_db": 87.75,
+   "dba": 79.3
   },
   {
    "file": "slip_50kt_cockpit_mix.wav",
@@ -3814,8 +3814,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -1.1612,
-   "oaspl_db": 85.93,
-   "dba": 81.09
+   "oaspl_db": 85.36,
+   "dba": 79.55
   },
   {
    "file": "slip_50kt_cockpit_airframe.wav",
@@ -3826,7 +3826,7 @@
    "source": "airframe",
    "alpha_body_deg": -1.1612,
    "oaspl_db": 47.38,
-   "dba": 25.94
+   "dba": 25.88
   },
   {
    "file": "slip_50kt_cockpit_wind.wav",
@@ -3836,8 +3836,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -1.1612,
-   "oaspl_db": 85.93,
-   "dba": 81.09
+   "oaspl_db": 85.36,
+   "dba": 79.55
   },
   {
    "file": "slip_50kt_cockpit_rear_mix.wav",
@@ -3847,8 +3847,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -1.1612,
-   "oaspl_db": 88.43,
-   "dba": 82.24
+   "oaspl_db": 88.1,
+   "dba": 81.01
   },
   {
    "file": "slip_50kt_cockpit_rear_airframe.wav",
@@ -3859,7 +3859,7 @@
    "source": "airframe",
    "alpha_body_deg": -1.1612,
    "oaspl_db": 56.03,
-   "dba": 32.29
+   "dba": 32.26
   },
   {
    "file": "slip_50kt_cockpit_rear_wind.wav",
@@ -3869,8 +3869,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -1.1612,
-   "oaspl_db": 88.43,
-   "dba": 82.24
+   "oaspl_db": 88.1,
+   "dba": 81.01
   },
   {
    "file": "slip_60kt_cockpit_mix.wav",
@@ -3880,8 +3880,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -2.9557,
-   "oaspl_db": 86.97,
-   "dba": 83.06
+   "oaspl_db": 85.96,
+   "dba": 81.17
   },
   {
    "file": "slip_60kt_cockpit_airframe.wav",
@@ -3892,7 +3892,7 @@
    "source": "airframe",
    "alpha_body_deg": -2.9557,
    "oaspl_db": 51.36,
-   "dba": 29.56
+   "dba": 29.46
   },
   {
    "file": "slip_60kt_cockpit_wind.wav",
@@ -3902,8 +3902,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -2.9557,
-   "oaspl_db": 86.97,
-   "dba": 83.06
+   "oaspl_db": 85.96,
+   "dba": 81.17
   },
   {
    "file": "slip_60kt_cockpit_rear_mix.wav",
@@ -3913,8 +3913,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -2.9557,
-   "oaspl_db": 89.08,
-   "dba": 84.05
+   "oaspl_db": 88.49,
+   "dba": 82.55
   },
   {
    "file": "slip_60kt_cockpit_rear_airframe.wav",
@@ -3925,7 +3925,7 @@
    "source": "airframe",
    "alpha_body_deg": -2.9557,
    "oaspl_db": 60.04,
-   "dba": 35.95
+   "dba": 35.91
   },
   {
    "file": "slip_60kt_cockpit_rear_wind.wav",
@@ -3935,8 +3935,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -2.9557,
-   "oaspl_db": 89.08,
-   "dba": 84.05
+   "oaspl_db": 88.48,
+   "dba": 82.55
   },
   {
    "file": "slip_75kt_cockpit_mix.wav",
@@ -3946,8 +3946,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -4.4153,
-   "oaspl_db": 88.46,
-   "dba": 85.38
+   "oaspl_db": 86.74,
+   "dba": 83.09
   },
   {
    "file": "slip_75kt_cockpit_airframe.wav",
@@ -3958,7 +3958,7 @@
    "source": "airframe",
    "alpha_body_deg": -4.4153,
    "oaspl_db": 56.15,
-   "dba": 34.15
+   "dba": 34.01
   },
   {
    "file": "slip_75kt_cockpit_wind.wav",
@@ -3968,8 +3968,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -4.4153,
-   "oaspl_db": 88.46,
-   "dba": 85.38
+   "oaspl_db": 86.74,
+   "dba": 83.09
   },
   {
    "file": "slip_75kt_cockpit_rear_mix.wav",
@@ -3979,8 +3979,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -4.4153,
-   "oaspl_db": 90.17,
-   "dba": 86.28
+   "oaspl_db": 89.09,
+   "dba": 84.44
   },
   {
    "file": "slip_75kt_cockpit_rear_airframe.wav",
@@ -3991,7 +3991,7 @@
    "source": "airframe",
    "alpha_body_deg": -4.4153,
    "oaspl_db": 64.83,
-   "dba": 40.62
+   "dba": 40.56
   },
   {
    "file": "slip_75kt_cockpit_rear_wind.wav",
@@ -4001,8 +4001,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -4.4153,
-   "oaspl_db": 90.15,
-   "dba": 86.28
+   "oaspl_db": 89.07,
+   "dba": 84.44
   },
   {
    "file": "slip_90kt_cockpit_mix.wav",
@@ -4012,8 +4012,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -5.204,
-   "oaspl_db": 89.8,
-   "dba": 87.22
+   "oaspl_db": 87.39,
+   "dba": 84.57
   },
   {
    "file": "slip_90kt_cockpit_airframe.wav",
@@ -4024,7 +4024,7 @@
    "source": "airframe",
    "alpha_body_deg": -5.204,
    "oaspl_db": 60.14,
-   "dba": 38.33
+   "dba": 38.19
   },
   {
    "file": "slip_90kt_cockpit_wind.wav",
@@ -4034,8 +4034,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -5.204,
-   "oaspl_db": 89.8,
-   "dba": 87.22
+   "oaspl_db": 87.38,
+   "dba": 84.57
   },
   {
    "file": "slip_90kt_cockpit_rear_mix.wav",
@@ -4045,8 +4045,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -5.204,
-   "oaspl_db": 91.22,
-   "dba": 88.09
+   "oaspl_db": 89.62,
+   "dba": 85.95
   },
   {
    "file": "slip_90kt_cockpit_rear_airframe.wav",
@@ -4057,7 +4057,7 @@
    "source": "airframe",
    "alpha_body_deg": -5.204,
    "oaspl_db": 68.78,
-   "dba": 44.77
+   "dba": 44.71
   },
   {
    "file": "slip_90kt_cockpit_rear_wind.wav",
@@ -4067,8 +4067,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -5.204,
-   "oaspl_db": 91.2,
-   "dba": 88.09
+   "oaspl_db": 89.59,
+   "dba": 85.95
   },
   {
    "file": "slip_110kt_cockpit_mix.wav",
@@ -4078,8 +4078,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -5.8007,
-   "oaspl_db": 91.39,
-   "dba": 89.2
+   "oaspl_db": 88.09,
+   "dba": 86.13
   },
   {
    "file": "slip_110kt_cockpit_airframe.wav",
@@ -4090,7 +4090,7 @@
    "source": "airframe",
    "alpha_body_deg": -5.8007,
    "oaspl_db": 64.81,
-   "dba": 43.04
+   "dba": 42.89
   },
   {
    "file": "slip_110kt_cockpit_wind.wav",
@@ -4100,8 +4100,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -5.8007,
-   "oaspl_db": 91.38,
-   "dba": 89.2
+   "oaspl_db": 88.07,
+   "dba": 86.13
   },
   {
    "file": "slip_110kt_cockpit_rear_mix.wav",
@@ -4111,8 +4111,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -5.8007,
-   "oaspl_db": 92.56,
-   "dba": 90.06
+   "oaspl_db": 90.24,
+   "dba": 87.56
   },
   {
    "file": "slip_110kt_cockpit_rear_airframe.wav",
@@ -4123,7 +4123,7 @@
    "source": "airframe",
    "alpha_body_deg": -5.8007,
    "oaspl_db": 73.4,
-   "dba": 49.46
+   "dba": 49.39
   },
   {
    "file": "slip_110kt_cockpit_rear_wind.wav",
@@ -4133,8 +4133,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -5.8007,
-   "oaspl_db": 92.5,
-   "dba": 90.05
+   "oaspl_db": 90.15,
+   "dba": 87.56
   },
   {
    "file": "slip_130kt_cockpit_mix.wav",
@@ -4144,8 +4144,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -6.1446,
-   "oaspl_db": 92.83,
-   "dba": 90.8
+   "oaspl_db": 88.7,
+   "dba": 87.33
   },
   {
    "file": "slip_130kt_cockpit_airframe.wav",
@@ -4155,8 +4155,8 @@
    "observer": "cockpit",
    "source": "airframe",
    "alpha_body_deg": -6.1446,
-   "oaspl_db": 68.68,
-   "dba": 47.26
+   "oaspl_db": 68.67,
+   "dba": 47.12
   },
   {
    "file": "slip_130kt_cockpit_wind.wav",
@@ -4166,8 +4166,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -6.1446,
-   "oaspl_db": 92.82,
-   "dba": 90.8
+   "oaspl_db": 88.66,
+   "dba": 87.33
   },
   {
    "file": "slip_130kt_cockpit_rear_mix.wav",
@@ -4177,8 +4177,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -6.1446,
-   "oaspl_db": 93.84,
-   "dba": 91.66
+   "oaspl_db": 90.84,
+   "dba": 88.8
   },
   {
    "file": "slip_130kt_cockpit_rear_airframe.wav",
@@ -4189,7 +4189,7 @@
    "source": "airframe",
    "alpha_body_deg": -6.1446,
    "oaspl_db": 77.21,
-   "dba": 53.63
+   "dba": 53.57
   },
   {
    "file": "slip_130kt_cockpit_rear_wind.wav",
@@ -4199,8 +4199,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -6.1446,
-   "oaspl_db": 93.75,
-   "dba": 91.66
+   "oaspl_db": 90.65,
+   "dba": 88.8
   },
   {
    "file": "slip_150kt_cockpit_mix.wav",
@@ -4210,8 +4210,8 @@
    "observer": "cockpit",
    "source": "mix",
    "alpha_body_deg": -6.3586,
-   "oaspl_db": 94.14,
-   "dba": 92.14
+   "oaspl_db": 89.23,
+   "dba": 88.26
   },
   {
    "file": "slip_150kt_cockpit_airframe.wav",
@@ -4222,7 +4222,7 @@
    "source": "airframe",
    "alpha_body_deg": -6.3586,
    "oaspl_db": 72.27,
-   "dba": 50.69
+   "dba": 50.54
   },
   {
    "file": "slip_150kt_cockpit_wind.wav",
@@ -4232,8 +4232,8 @@
    "observer": "cockpit",
    "source": "wind",
    "alpha_body_deg": -6.3586,
-   "oaspl_db": 94.11,
-   "dba": 92.14
+   "oaspl_db": 89.14,
+   "dba": 88.26
   },
   {
    "file": "slip_150kt_cockpit_rear_mix.wav",
@@ -4243,8 +4243,8 @@
    "observer": "cockpit_rear",
    "source": "mix",
    "alpha_body_deg": -6.3586,
-   "oaspl_db": 95.07,
-   "dba": 93.0
+   "oaspl_db": 91.45,
+   "dba": 89.77
   },
   {
    "file": "slip_150kt_cockpit_rear_airframe.wav",
@@ -4255,7 +4255,7 @@
    "source": "airframe",
    "alpha_body_deg": -6.3586,
    "oaspl_db": 80.76,
-   "dba": 57.04
+   "dba": 56.98
   },
   {
    "file": "slip_150kt_cockpit_rear_wind.wav",
@@ -4265,8 +4265,8 @@
    "observer": "cockpit_rear",
    "source": "wind",
    "alpha_body_deg": -6.3586,
-   "oaspl_db": 94.91,
-   "dba": 93.0
+   "oaspl_db": 91.07,
+   "dba": 89.77
   }
  ],
  "stall_load_factors": [

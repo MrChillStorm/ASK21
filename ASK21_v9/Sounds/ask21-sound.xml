@@ -7,207 +7,207 @@
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/40kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.025</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.2141</value></pow><value>0.266902</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5156</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.025</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.2096</value></pow><value>0.268201</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5089</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-50kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/50kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.2808</value></pow><value>0.248221</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.4088</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.2330</value></pow><value>0.261458</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.4867</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-60kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/60kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3108</value></pow><value>0.240245</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3209</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3091</value></pow><value>0.240681</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2860</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-75kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/75kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.2925</value></pow><value>0.245065</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3031</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3659</value></pow><value>0.226262</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.0767</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-90kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/90kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.2943</value></pow><value>0.244594</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2727</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3819</value></pow><value>0.222364</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.0022</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-110kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/110kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-4.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.2785</value></pow><value>0.248848</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2924</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-4.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3266</value></pow><value>0.236154</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.1227</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-130kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/130kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3190</value></pow><value>0.238102</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2680</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3267</value></pow><value>0.236115</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.1997</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-150kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/150kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3091</value></pow><value>0.2407</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3469</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3492</value></pow><value>0.230406</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2087</value></pow></expression></pitch>
 		</airframe>
 		<wind>
 			<name>pww-stall-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/stall_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.02967359</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1587302</value></product><value>6.349206</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0694</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3311</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.02967359</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1587302</value></product><value>6.349206</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1253</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3008</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-40kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/40kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1587302</value></product><value>-5.349206</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0494</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3583</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1587302</value></product><value>-5.349206</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1469</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.4012</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-50kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/50kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0213</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3639</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1511</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5063</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-60kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/60kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0240</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2898</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1489</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5709</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-75kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/75kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0659</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.1637</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1452</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6152</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-90kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/90kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0781</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.1468</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1401</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6580</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-110kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/110kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-4.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0684</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.1722</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-4.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1374</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6866</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-130kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/130kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.0019</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2825</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1378</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.7032</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-150kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/150kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.0102</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2873</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><difference><value>1</value><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1364</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.7241</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-slip_40kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/slip_40kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.025</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0456</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3326</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.025</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1552</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.4740</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-slip_50kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/slip_50kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0268</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3052</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1531</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5369</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-slip_60kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/slip_60kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0359</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2435</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1486</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5892</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-slip_75kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/slip_75kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0723</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.1575</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1438</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6361</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-slip_90kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/slip_90kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0800</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.1501</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1397</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6698</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-slip_110kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/slip_110kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-4.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0485</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2060</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-4.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1365</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.7002</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-slip_130kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/slip_130kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0121</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2561</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1373</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.7142</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-slip_150kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/slip_150kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.1036</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.4011</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt><sqrt><clip><sum><product><abs><property>/orientation/side-slip-deg</property></abs><value>0.05780347</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1387</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.7272</value></pow></expression></pitch>
 		</wind>
 		<brakes>
 			<name>pww-40kt-cockpit-brakes</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/40kt_cockpit_brakes.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.025</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.7350</value></pow><value>0.449505</value></product></expression></volume>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.025</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.7348</value></pow><value>0.449607</value></product></expression></volume>
 			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.1882</value></pow></expression></pitch>
 		</brakes>
 		<brakes>
@@ -215,7 +215,7 @@
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/50kt_cockpit_brakes.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6852</value></pow><value>0.4745</value></product></expression></volume>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.1</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6850</value></pow><value>0.474637</value></product></expression></volume>
 			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2268</value></pow></expression></pitch>
 		</brakes>
 		<brakes>
@@ -223,7 +223,7 @@
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/60kt_cockpit_brakes.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6518</value></pow><value>0.492074</value></product></expression></volume>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6515</value></pow><value>0.492241</value></product></expression></volume>
 			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2482</value></pow></expression></pitch>
 		</brakes>
 		<brakes>
@@ -231,7 +231,7 @@
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/75kt_cockpit_brakes.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6181</value></pow><value>0.510454</value></product></expression></volume>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6177</value></pow><value>0.510666</value></product></expression></volume>
 			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2654</value></pow></expression></pitch>
 		</brakes>
 		<brakes>
@@ -239,7 +239,7 @@
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/90kt_cockpit_brakes.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5924</value></pow><value>0.524933</value></product></expression></volume>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5919</value></pow><value>0.525192</value></product></expression></volume>
 			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2769</value></pow></expression></pitch>
 		</brakes>
 		<brakes>
@@ -247,7 +247,7 @@
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/110kt_cockpit_brakes.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-4.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5613</value></pow><value>0.543015</value></product></expression></volume>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-4.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5607</value></pow><value>0.543348</value></product></expression></volume>
 			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2946</value></pow></expression></pitch>
 		</brakes>
 		<brakes>
@@ -255,7 +255,7 @@
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/130kt_cockpit_brakes.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5382</value></pow><value>0.55683</value></product></expression></volume>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5375</value></pow><value>0.557245</value></product></expression></volume>
 			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3081</value></pow></expression></pitch>
 		</brakes>
 		<brakes>
@@ -263,7 +263,7 @@
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/150kt_cockpit_brakes.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5169</value></pow><value>0.569837</value></product></expression></volume>
+			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><sqrt><property>/surface-positions/speedbrake-pos-norm</property></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5161</value></pow><value>0.570349</value></product></expression></volume>
 			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3243</value></pow></expression></pitch>
 		</brakes>
 		<ailerons>
@@ -287,15 +287,15 @@
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/60kt_cockpit_ailerons.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><abs><property>/surface-positions/left-aileron-pos-norm</property></abs></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.5948</value></pow><value>0.176379</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.0042</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.1</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><abs><property>/surface-positions/left-aileron-pos-norm</property></abs></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.5975</value></pow><value>0.175878</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.0027</value></pow></expression></pitch>
 		</ailerons>
 		<ailerons>
 			<name>pww-75kt-cockpit-ailerons</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/75kt_cockpit_ailerons.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><abs><property>/surface-positions/left-aileron-pos-norm</property></abs></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3893</value></pow><value>0.220572</value></product></expression></volume>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><abs><property>/surface-positions/left-aileron-pos-norm</property></abs></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3891</value></pow><value>0.22062</value></product></expression></volume>
 			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2631</value></pow></expression></pitch>
 		</ailerons>
 		<ailerons>
@@ -319,7 +319,7 @@
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/130kt_cockpit_ailerons.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><abs><property>/surface-positions/left-aileron-pos-norm</property></abs></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.8764</value></pow><value>0.129837</value></product></expression></volume>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><abs><property>/surface-positions/left-aileron-pos-norm</property></abs></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.8778</value></pow><value>0.129636</value></product></expression></volume>
 			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.0052</value></pow></expression></pitch>
 		</ailerons>
 		<ailerons>
@@ -327,23 +327,23 @@
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/150kt_cockpit_ailerons.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><abs><property>/surface-positions/left-aileron-pos-norm</property></abs></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.7618</value></pow><value>0.147078</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3556</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><abs><property>/surface-positions/left-aileron-pos-norm</property></abs></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.5630</value></pow><value>0.182598</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.4932</value></pow></expression></pitch>
 		</ailerons>
 		<airframe>
 			<name>pww-stall-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/stall_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.02967359</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.07352941</value></product><value>3.477941</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.8259</value></pow><value>0.137175</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.2736</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.02967359</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.07352941</value></product><value>3.477941</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.7897</value></pow><value>0.142682</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.2189</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-stall_2g-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/stall_2g_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.07352941</value></product><value>-2.477941</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06622517</value></product><value>4.13245</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.4425</value></pow><value>0.20817</value></product></expression></volume>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.07352941</value></product><value>-2.477941</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06622517</value></product><value>4.13245</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.4420</value></pow><value>0.208276</value></product></expression></volume>
 			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0020</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
@@ -351,128 +351,128 @@
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/stall_3.5g_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06622517</value></product><value>-3.13245</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.08264463</value></product><value>6.157025</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.5052</value></pow><value>0.194441</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1749</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06622517</value></product><value>-3.13245</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.08264463</value></product><value>6.157025</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3882</value></pow><value>0.220844</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0488</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-stall_5g-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/stall_5g_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.08264463</value></product><value>-5.157025</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.6911</value></pow><value>0.158837</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.2744</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.08264463</value></product><value>-5.157025</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><clip><sum><product><property>/orientation/alpha-deg</property><value>0.130039</value></product><value>-0.3654097</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><sqrt><difference><value>1</value><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.7594</value></pow><value>0.14747</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.3454</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-inv_60kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/inv_60kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.01666667</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.2268</value></pow><value>0.263241</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5266</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.01666667</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.1702</value></pow><value>0.279946</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6146</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-inv_75kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/inv_75kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.2716</value></pow><value>0.250702</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.4829</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.0984</value></pow><value>0.302709</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.8075</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-inv_90kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/inv_90kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.2991</value></pow><value>0.243325</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.4333</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.1212</value></pow><value>0.295286</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.7859</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-inv_110kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/inv_110kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-4.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3300</value></pow><value>0.235277</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3591</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-4.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.1886</value></pow><value>0.274416</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6355</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-inv_130kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/inv_130kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3397</value></pow><value>0.232815</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3860</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.2639</value></pow><value>0.252816</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5249</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-inv_150kt-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/inv_150kt_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3663</value></pow><value>0.226164</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3141</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><difference><value>1</value><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></difference><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.3184</value></pow><value>0.238258</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3899</value></pow></expression></pitch>
 		</airframe>
 		<wind>
 			<name>pww-stall_inv-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/stall_inv_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.02212389</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06756757</value></product><value>4.054054</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.0006</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.3710</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.02212389</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06756757</value></product><value>4.054054</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1453</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.4655</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-inv_60kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/inv_60kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06756757</value></product><value>-3.054054</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0211</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2659</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06756757</value></product><value>-3.054054</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1465</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.5329</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-inv_75kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/inv_75kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0811</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.1238</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-4</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.06666667</value></product><value>6</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1414</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6021</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-inv_90kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/inv_90kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1089</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.0849</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.06666667</value></product><value>-5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1362</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6502</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-inv_110kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/inv_110kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-4.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0740</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.1586</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-4.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1349</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6793</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-inv_130kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/inv_130kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.0004</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2752</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><product><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-5.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><clip><sum><product><property>/velocities/airspeed-kt</property><value>-0.05</value></product><value>7.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></product></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1355</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.6985</value></pow></expression></pitch>
 		</wind>
 		<wind>
 			<name>pww-inv_150kt-cockpit-wind</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/inv_150kt_cockpit_wind.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.0070</value></pow><value>0.675684</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.2795</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.05</value></product><value>-6.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1346</value></pow><value>0.604155</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-0.7199</value></pow></expression></pitch>
 		</wind>
 		<airframe>
 			<name>pww-stall_inv-cockpit-airframe</name>
 			<mode>looped</mode>
 			<path>Sounds/pywopwop/stall_inv_cockpit_airframe.wav</path>
 			<condition><property>sim/current-view/internal</property></condition>
-			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.02212389</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.6918</value></pow><value>0.158726</value></product></expression></volume>
-			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.1194</value></pow></expression></pitch>
+			<volume><expression><product><product><sqrt><clip><sum><product><property>/velocities/airspeed-kt</property><value>0.02212389</value></product><value>-0</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt><clip><sum><product><property>/orientation/alpha-deg</property><value>-0.3937008</value></product><value>-6.677165</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip><sqrt><clip><sum><product><property>/accelerations/pilot-g</property><value>-0.5</value></product><value>0.5</value></sum><clipMin>0</clipMin><clipMax>1</clipMax></clip></sqrt></product><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>-1.6690</value></pow><value>0.162703</value></product></expression></volume>
+			<pitch><expression><pow><div><property>/environment/density-slugft3</property><value>0.00237689</value></div><value>0.0929</value></pow></expression></pitch>
 		</airframe>
 		<airframe>
 			<name>pww-40kt-side-airframe</name>
@@ -829,7 +829,7 @@
 		<wheel-spin>
 			<name>wheel-spin-front</name>
 			<!-- level: fdm/airsound.py, 60 dB(A) in the cockpit, 36.5 at 30 m: nose and tail wheels turning, at 80 km/h: estimate, 6 dB under the main wheel's -->
-			<volume><expression><product><sum><value>0.000610773</value><product><property>sim/current-view/internal</property><value>0.010248</value></product></sum><pow><div><max><property>gear/gear[0]/rollspeed-ms</property><value>0</value></max><value>22.2222</value></div><value>1.5</value></pow></product></expression></volume>
+			<volume><expression><product><sum><value>0.000546115</value><product><property>sim/current-view/internal</property><value>0.010329</value></product></sum><pow><div><max><property>gear/gear[0]/rollspeed-ms</property><value>0</value></max><value>22.2222</value></div><value>1.5</value></pow></product></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>looped</mode>
@@ -850,7 +850,7 @@
 		<wheel-spin>
 			<name>wheel-spin-main</name>
 			<!-- level: fdm/airsound.py, 66 dB(A) in the cockpit, 42.5 at 30 m: the main wheel's whine as it turns, at 80 km/h: estimate, 10 dB under its rolling -->
-			<volume><expression><product><sum><value>0.00121865</value><product><property>sim/current-view/internal</property><value>0.0204474</value></product></sum><pow><div><max><property>gear/gear[1]/rollspeed-ms</property><value>0</value></max><value>22.2222</value></div><value>1.5</value></pow></product></expression></volume>
+			<volume><expression><product><sum><value>0.00108964</value><product><property>sim/current-view/internal</property><value>0.0206091</value></product></sum><pow><div><max><property>gear/gear[1]/rollspeed-ms</property><value>0</value></max><value>22.2222</value></div><value>1.5</value></pow></product></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>looped</mode>
@@ -871,7 +871,7 @@
 		<wheel-spin>
 			<name>wheel-spin-tail</name>
 			<!-- level: fdm/airsound.py, 60 dB(A) in the cockpit, 36.5 at 30 m: nose and tail wheels turning, at 80 km/h: estimate, 6 dB under the main wheel's -->
-			<volume><expression><product><sum><value>0.000610773</value><product><property>sim/current-view/internal</property><value>0.010248</value></product></sum><pow><div><max><property>gear/gear[2]/rollspeed-ms</property><value>0</value></max><value>22.2222</value></div><value>1.5</value></pow></product></expression></volume>
+			<volume><expression><product><sum><value>0.000546115</value><product><property>sim/current-view/internal</property><value>0.010329</value></product></sum><pow><div><max><property>gear/gear[2]/rollspeed-ms</property><value>0</value></max><value>22.2222</value></div><value>1.5</value></pow></product></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>looped</mode>
@@ -892,7 +892,7 @@
 		<wheel-rumble>
 			<name>wheel-rumble-front</name>
 			<!-- level: fdm/airsound.py, 70 dB(A) in the cockpit, 46.5 at 30 m: nose and tail wheels rolling at 80 km/h: estimate, 6 dB under the main wheel (little of the weight) -->
-			<volume><expression><product><sum><value>0.00830517</value><product><property>sim/current-view/internal</property><value>0.13935</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>43.1965</value></div><value>1.5</value></pow></product></expression></volume>
+			<volume><expression><product><sum><value>0.00742597</value><product><property>sim/current-view/internal</property><value>0.140452</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>43.1965</value></div><value>1.5</value></pow></product></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>looped</mode>
@@ -910,7 +910,7 @@
 		<wheel-rumble>
 			<name>wheel-rumble-main</name>
 			<!-- level: fdm/airsound.py, 76 dB(A) in the cockpit, 52.5 at 30 m: main wheel rolling at 80 km/h: outside the tyre/road data, in the cockpit an estimate (see the tyres) -->
-			<volume><expression><product><sum><value>0.016571</value><product><property>sim/current-view/internal</property><value>0.27804</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>43.1965</value></div><value>1.5</value></pow></product></expression></volume>
+			<volume><expression><product><sum><value>0.0148168</value><product><property>sim/current-view/internal</property><value>0.280238</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>43.1965</value></div><value>1.5</value></pow></product></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>looped</mode>
@@ -928,7 +928,7 @@
 		<wheel-rumble>
 			<name>wheel-rumble-rear</name>
 			<!-- level: fdm/airsound.py, 70 dB(A) in the cockpit, 46.5 at 30 m: nose and tail wheels rolling at 80 km/h: estimate, 6 dB under the main wheel (little of the weight) -->
-			<volume><expression><product><sum><value>0.00830517</value><product><property>sim/current-view/internal</property><value>0.13935</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>43.1965</value></div><value>1.5</value></pow></product></expression></volume>
+			<volume><expression><product><sum><value>0.00742597</value><product><property>sim/current-view/internal</property><value>0.140452</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>43.1965</value></div><value>1.5</value></pow></product></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>looped</mode>
@@ -946,7 +946,7 @@
 		<squeal>
 			<name>squeal-front</name>
 			<!-- level: fdm/airsound.py, 69 dB(A) in the cockpit, 62.0 at 30 m: nose and tail wheels touching down at 70 km/h: estimate, 6 dB under the main wheel -->
-			<volume><expression><product><sum><value>0.0509407</value><product><property>sim/current-view/internal</property><value>0.0845674</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>37.797</value></div><value>1.5</value></pow></product></expression></volume>
+			<volume><expression><product><sum><value>0.0455481</value><product><property>sim/current-view/internal</property><value>0.0901645</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>37.797</value></div><value>1.5</value></pow></product></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>once</mode>
@@ -963,7 +963,7 @@
 		<squeal>
 			<name>squeal-main</name>
 			<!-- level: fdm/airsound.py, 75 dB(A) in the cockpit, 68.0 at 30 m: the tyre scrubbing as it spins up at a touchdown at 70 km/h: estimate -->
-			<volume><expression><product><sum><value>0.0326121</value><product><property>sim/current-view/internal</property><value>0.0541398</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>37.797</value></div><value>1.5</value></pow></product></expression></volume>
+			<volume><expression><product><sum><value>0.0291597</value><product><property>sim/current-view/internal</property><value>0.057723</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>37.797</value></div><value>1.5</value></pow></product></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>once</mode>
@@ -980,7 +980,7 @@
 		<squeal>
 			<name>squeal-rear</name>
 			<!-- level: fdm/airsound.py, 69 dB(A) in the cockpit, 62.0 at 30 m: nose and tail wheels touching down at 70 km/h: estimate, 6 dB under the main wheel -->
-			<volume><expression><product><sum><value>0.0509407</value><product><property>sim/current-view/internal</property><value>0.0845674</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>37.797</value></div><value>1.5</value></pow></product></expression></volume>
+			<volume><expression><product><sum><value>0.0455481</value><product><property>sim/current-view/internal</property><value>0.0901645</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>37.797</value></div><value>1.5</value></pow></product></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>once</mode>
@@ -998,7 +998,7 @@
 		<wheelbrake>
 			<name>wheelbrake</name>
 			<!-- level: fdm/airsound.py, 72 dB(A) in the cockpit, 50.0 at 30 m: the drum brake rubbing at 40 km/h: estimate -->
-			<volume><expression><product><sum><value>0.00466835</value><product><property>sim/current-view/internal</property><value>0.065165</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>21.5983</value></div><value>1</value></pow></product></expression></volume>
+			<volume><expression><product><sum><value>0.00417415</value><product><property>sim/current-view/internal</property><value>0.0657646</value></product></sum><pow><div><max><property>velocities/groundspeed-kt</property><value>0</value></max><value>21.5983</value></div><value>1</value></pow></product></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>looped</mode>
@@ -1022,7 +1022,7 @@
 		<window-wind>
 			<name>wind front</name>
 			<!-- level: fdm/airsound.py, the wind through the open sliding window: the canopy's own (PyWopWop) plus 10 dB fully open (estimate), times the opening (Systems/sound.xml) -->
-			<volume><expression><product><property>sim/current-view/internal</property><table><property>/velocities/airspeed-kt</property><entry><ind>0</ind><dep>0</dep></entry><entry><ind>20</ind><dep>0.143949</dep></entry><entry><ind>40</ind><dep>0.327364</dep></entry><entry><ind>40</ind><dep>0.361435</dep></entry><entry><ind>45.2</ind><dep>0.333834</dep></entry><entry><ind>50</ind><dep>0.429072</dep></entry><entry><ind>50</ind><dep>0.477013</dep></entry><entry><ind>60</ind><dep>0.496627</dep></entry><entry><ind>60</ind><dep>0.535834</dep></entry><entry><ind>60</ind><dep>0.598454</dep></entry><entry><ind>75</ind><dep>0.666853</dep></entry><entry><ind>75</ind><dep>0.702313</dep></entry><entry><ind>75</ind><dep>0.781683</dep></entry><entry><ind>90</ind><dep>0.837588</dep></entry><entry><ind>90</ind><dep>0.868021</dep></entry><entry><ind>90</ind><dep>0.966119</dep></entry><entry><ind>110</ind><dep>1</dep></entry><entry><ind>110</ind><dep>1</dep></entry><entry><ind>110</ind><dep>1</dep></entry><entry><ind>130</ind><dep>1</dep></entry><entry><ind>130</ind><dep>1</dep></entry><entry><ind>130</ind><dep>1</dep></entry><entry><ind>150</ind><dep>1</dep></entry><entry><ind>150</ind><dep>1</dep></entry><entry><ind>150</ind><dep>1</dep></entry></table><property>sim/model/sound/wind-volume-front</property></product></expression></volume>
+			<volume><expression><product><property>sim/current-view/internal</property><table><property>/velocities/airspeed-kt</property><entry><ind>0</ind><dep>0</dep></entry><entry><ind>20</ind><dep>0.152004</dep></entry><entry><ind>40</ind><dep>0.29661</dep></entry><entry><ind>40</ind><dep>0.31929</dep></entry><entry><ind>45.2</ind><dep>0.281958</dep></entry><entry><ind>50</ind><dep>0.36956</dep></entry><entry><ind>50</ind><dep>0.400115</dep></entry><entry><ind>60</ind><dep>0.399655</dep></entry><entry><ind>60</ind><dep>0.442777</dep></entry><entry><ind>60</ind><dep>0.482153</dep></entry><entry><ind>75</ind><dep>0.515448</dep></entry><entry><ind>75</ind><dep>0.554862</dep></entry><entry><ind>75</ind><dep>0.60143</dep></entry><entry><ind>90</ind><dep>0.627603</dep></entry><entry><ind>90</ind><dep>0.660215</dep></entry><entry><ind>90</ind><dep>0.713157</dep></entry><entry><ind>110</ind><dep>0.766805</dep></entry><entry><ind>110</ind><dep>0.797416</dep></entry><entry><ind>110</ind><dep>0.853464</dep></entry><entry><ind>130</ind><dep>0.896778</dep></entry><entry><ind>130</ind><dep>0.919783</dep></entry><entry><ind>130</ind><dep>0.979908</dep></entry><entry><ind>150</ind><dep>1</dep></entry><entry><ind>150</ind><dep>1</dep></entry><entry><ind>150</ind><dep>1</dep></entry></table><property>sim/model/sound/wind-volume-front</property></product></expression></volume>
 			<reference-dist>3</reference-dist>
 			<max-dist>10</max-dist>
 			<mode>looped</mode>
@@ -1046,7 +1046,7 @@
 		<window-wind>
 			<name>wind rear</name>
 			<!-- level: fdm/airsound.py, the wind through the open sliding window: the canopy's own (PyWopWop) plus 10 dB fully open (estimate), times the opening (Systems/sound.xml) -->
-			<volume><expression><product><property>sim/current-view/internal</property><table><property>/velocities/airspeed-kt</property><entry><ind>0</ind><dep>0</dep></entry><entry><ind>20</ind><dep>0.143949</dep></entry><entry><ind>40</ind><dep>0.327364</dep></entry><entry><ind>40</ind><dep>0.361435</dep></entry><entry><ind>45.2</ind><dep>0.333834</dep></entry><entry><ind>50</ind><dep>0.429072</dep></entry><entry><ind>50</ind><dep>0.477013</dep></entry><entry><ind>60</ind><dep>0.496627</dep></entry><entry><ind>60</ind><dep>0.535834</dep></entry><entry><ind>60</ind><dep>0.598454</dep></entry><entry><ind>75</ind><dep>0.666853</dep></entry><entry><ind>75</ind><dep>0.702313</dep></entry><entry><ind>75</ind><dep>0.781683</dep></entry><entry><ind>90</ind><dep>0.837588</dep></entry><entry><ind>90</ind><dep>0.868021</dep></entry><entry><ind>90</ind><dep>0.966119</dep></entry><entry><ind>110</ind><dep>1</dep></entry><entry><ind>110</ind><dep>1</dep></entry><entry><ind>110</ind><dep>1</dep></entry><entry><ind>130</ind><dep>1</dep></entry><entry><ind>130</ind><dep>1</dep></entry><entry><ind>130</ind><dep>1</dep></entry><entry><ind>150</ind><dep>1</dep></entry><entry><ind>150</ind><dep>1</dep></entry><entry><ind>150</ind><dep>1</dep></entry></table><property>sim/model/sound/wind-volume-rear</property></product></expression></volume>
+			<volume><expression><product><property>sim/current-view/internal</property><table><property>/velocities/airspeed-kt</property><entry><ind>0</ind><dep>0</dep></entry><entry><ind>20</ind><dep>0.152004</dep></entry><entry><ind>40</ind><dep>0.29661</dep></entry><entry><ind>40</ind><dep>0.31929</dep></entry><entry><ind>45.2</ind><dep>0.281958</dep></entry><entry><ind>50</ind><dep>0.36956</dep></entry><entry><ind>50</ind><dep>0.400115</dep></entry><entry><ind>60</ind><dep>0.399655</dep></entry><entry><ind>60</ind><dep>0.442777</dep></entry><entry><ind>60</ind><dep>0.482153</dep></entry><entry><ind>75</ind><dep>0.515448</dep></entry><entry><ind>75</ind><dep>0.554862</dep></entry><entry><ind>75</ind><dep>0.60143</dep></entry><entry><ind>90</ind><dep>0.627603</dep></entry><entry><ind>90</ind><dep>0.660215</dep></entry><entry><ind>90</ind><dep>0.713157</dep></entry><entry><ind>110</ind><dep>0.766805</dep></entry><entry><ind>110</ind><dep>0.797416</dep></entry><entry><ind>110</ind><dep>0.853464</dep></entry><entry><ind>130</ind><dep>0.896778</dep></entry><entry><ind>130</ind><dep>0.919783</dep></entry><entry><ind>130</ind><dep>0.979908</dep></entry><entry><ind>150</ind><dep>1</dep></entry><entry><ind>150</ind><dep>1</dep></entry><entry><ind>150</ind><dep>1</dep></entry></table><property>sim/model/sound/wind-volume-rear</property></product></expression></volume>
 			<reference-dist>3</reference-dist>
 			<max-dist>10</max-dist>
 			<mode>looped</mode>
@@ -1069,7 +1069,7 @@
 		<airbrake-open>
 			<name>airbrake-open</name>
 			<!-- level: fdm/airsound.py, 85 dB(A) in the cockpit, 55.0 at 30 m: the airbrakes' over-centre lock and paddles: estimate -->
-			<volume><expression><sum><value>0.00557681</value><product><property>sim/current-view/internal</property><value>0.203972</value></product></sum></expression></volume>
+			<volume><expression><sum><value>0.00498644</value><product><property>sim/current-view/internal</property><value>0.204879</value></product></sum></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>once</mode>
@@ -1090,7 +1090,7 @@
 		<airbrake-close>
 			<name>airbrake-close</name>
 			<!-- level: fdm/airsound.py, 85 dB(A) in the cockpit, 55.0 at 30 m: the airbrakes' over-centre lock and paddles: estimate -->
-			<volume><expression><sum><value>0.00706781</value><product><property>sim/current-view/internal</property><value>0.258506</value></product></sum></expression></volume>
+			<volume><expression><sum><value>0.0063196</value><product><property>sim/current-view/internal</property><value>0.259655</value></product></sum></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>once</mode>
@@ -1112,7 +1112,7 @@
 		<variometer-up>
 			<name>variometer-up</name>
 			<!-- level: fdm/airsound.py, 92 dB(A) in the cockpit: the ILEC vario's tones at full volume (see VARIO_DBA), times its volume -->
-			<volume><expression><product><product><property>sim/current-view/internal</property><value>0.535308</value></product><property>instrumentation/ilec-sc7/volume</property></product></expression></volume>
+			<volume><expression><product><product><property>sim/current-view/internal</property><value>0.536115</value></product><property>instrumentation/ilec-sc7/volume</property></product></expression></volume>
 			<reference-dist>3</reference-dist>
 			<max-dist>10</max-dist>
 			<mode>looped</mode>
@@ -1148,7 +1148,7 @@
 		<variometer-down>
 			<name>variometer-down</name>
 			<!-- level: fdm/airsound.py, 92 dB(A) in the cockpit: the ILEC vario's tones at full volume (see VARIO_DBA), times its volume -->
-			<volume><expression><product><product><property>sim/current-view/internal</property><value>0.38341</value></product><property>instrumentation/ilec-sc7/volume</property></product></expression></volume>
+			<volume><expression><product><product><property>sim/current-view/internal</property><value>0.383989</value></product><property>instrumentation/ilec-sc7/volume</property></product></expression></volume>
 			<reference-dist>3</reference-dist>
 			<max-dist>10</max-dist>
 			<mode>looped</mode>
@@ -1191,7 +1191,7 @@
 		<lxv8-tone>
 			<name>lxv8-tone</name>
 			<!-- level: fdm/airsound.py, 92 dB(A) in the cockpit: the V8's tones at full volume (see VARIO_DBA), times its volume -->
-			<volume><expression><product><product><property>sim/current-view/internal</property><value>0.263646</value></product><property>instrumentation/lxv8/audio/volume</property></product></expression></volume>
+			<volume><expression><product><product><property>sim/current-view/internal</property><value>0.264043</value></product><property>instrumentation/lxv8/audio/volume</property></product></expression></volume>
 			<reference-dist>3</reference-dist>
 			<max-dist>10</max-dist>
 			<mode>looped</mode>
@@ -1218,7 +1218,7 @@
 		<winch_tow>
 			<name>winch_tow</name>
 			<!-- level: fdm/airsound.py, 70 dB(A) in the cockpit, 50.0 at 30 m: the winch cable singing (an Aeolian tone: amplitude as the cube of the speed) at 50 kt: estimate -->
-			<volume><expression><product><sum><value>0.00689182</value><product><property>sim/current-view/internal</property><value>0.0749988</value></product></sum><pow><div><max><property>velocities/airspeed-kt</property><value>0</value></max><value>50</value></div><value>3</value></pow></product></expression></volume>
+			<volume><expression><product><sum><value>0.00616224</value><product><property>sim/current-view/internal</property><value>0.0758519</value></product></sum><pow><div><max><property>velocities/airspeed-kt</property><value>0</value></max><value>50</value></div><value>3</value></pow></product></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>looped</mode>
@@ -1239,7 +1239,7 @@
 		<hook_open>
 			<name>hook_open</name>
 			<!-- level: fdm/airsound.py, 85 dB(A) in the cockpit, 60.0 at 30 m: a release snapping open: estimate -->
-			<volume><expression><sum><value>0.0118983</value><product><property>sim/current-view/internal</property><value>0.239512</value></product></sum></expression></volume>
+			<volume><expression><sum><value>0.0106387</value><product><property>sim/current-view/internal</property><value>0.241151</value></product></sum></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>once</mode>
@@ -1257,7 +1257,7 @@
 		<nose_hook_cable_release>
 			<name>nose_hook_cable_release</name>
 			<!-- level: fdm/airsound.py, 85 dB(A) in the cockpit, 60.0 at 30 m: a release snapping open: estimate -->
-			<volume><expression><sum><value>0.00921101</value><product><property>sim/current-view/internal</property><value>0.185418</value></product></sum></expression></volume>
+			<volume><expression><sum><value>0.00823591</value><product><property>sim/current-view/internal</property><value>0.186687</value></product></sum></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>once</mode>
@@ -1278,7 +1278,7 @@
 		<belly_hook_cable_release>
 			<name>belly_hook_cable_release</name>
 			<!-- level: fdm/airsound.py, 85 dB(A) in the cockpit, 60.0 at 30 m: a release snapping open: estimate -->
-			<volume><expression><sum><value>0.00921101</value><product><property>sim/current-view/internal</property><value>0.185418</value></product></sum></expression></volume>
+			<volume><expression><sum><value>0.00823591</value><product><property>sim/current-view/internal</property><value>0.186687</value></product></sum></expression></volume>
 			<reference-dist>30</reference-dist>
 			<max-dist>1500</max-dist>
 			<mode>once</mode>
@@ -1303,7 +1303,7 @@
 		<window>
 			<name>window_front_open</name>
 			<!-- level: fdm/airsound.py, 75 dB(A) in the cockpit: a sliding window's catch: estimate -->
-			<volume><expression><product><property>sim/current-view/internal</property><value>0.121285</value></product></expression></volume>
+			<volume><expression><product><property>sim/current-view/internal</property><value>0.121468</value></product></expression></volume>
 			<reference-dist>3</reference-dist>
 			<max-dist>10</max-dist>
 			<mode>once</mode>
@@ -1323,7 +1323,7 @@
 		<window>
 			<name>window_front_close</name>
 			<!-- level: fdm/airsound.py, 75 dB(A) in the cockpit: a sliding window's catch: estimate -->
-			<volume><expression><product><property>sim/current-view/internal</property><value>0.177885</value></product></expression></volume>
+			<volume><expression><product><property>sim/current-view/internal</property><value>0.178154</value></product></expression></volume>
 			<reference-dist>3</reference-dist>
 			<max-dist>10</max-dist>
 			<mode>once</mode>
@@ -1343,7 +1343,7 @@
 		<window>
 			<name>window_front_transit</name>
 			<!-- level: fdm/airsound.py, 60 dB(A) in the cockpit: a sliding window sliding: estimate -->
-			<volume><expression><product><property>sim/current-view/internal</property><value>0.163496</value></product></expression></volume>
+			<volume><expression><product><property>sim/current-view/internal</property><value>0.163743</value></product></expression></volume>
 			<reference-dist>3</reference-dist>
 			<max-dist>10</max-dist>
 			<mode>in-transit</mode>
@@ -1360,7 +1360,7 @@
 		<window>
 			<name>window_rear_open</name>
 			<!-- level: fdm/airsound.py, 75 dB(A) in the cockpit: a sliding window's catch: estimate -->
-			<volume><expression><product><property>sim/current-view/internal</property><value>0.121285</value></product></expression></volume>
+			<volume><expression><product><property>sim/current-view/internal</property><value>0.121468</value></product></expression></volume>
 			<reference-dist>3</reference-dist>
 			<max-dist>10</max-dist>
 			<mode>once</mode>
@@ -1380,7 +1380,7 @@
 		<window>
 			<name>window_rear_close</name>
 			<!-- level: fdm/airsound.py, 75 dB(A) in the cockpit: a sliding window's catch: estimate -->
-			<volume><expression><product><property>sim/current-view/internal</property><value>0.177885</value></product></expression></volume>
+			<volume><expression><product><property>sim/current-view/internal</property><value>0.178154</value></product></expression></volume>
 			<reference-dist>3</reference-dist>
 			<max-dist>10</max-dist>
 			<mode>once</mode>
@@ -1400,7 +1400,7 @@
 		<window>
 			<name>window_rear_transit</name>
 			<!-- level: fdm/airsound.py, 60 dB(A) in the cockpit: a sliding window sliding: estimate -->
-			<volume><expression><product><property>sim/current-view/internal</property><value>0.163496</value></product></expression></volume>
+			<volume><expression><product><property>sim/current-view/internal</property><value>0.163743</value></product></expression></volume>
 			<reference-dist>3</reference-dist>
 			<max-dist>10</max-dist>
 			<mode>in-transit</mode>

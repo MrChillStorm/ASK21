@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-03
+
+Sound
+- Changed: the cockpit's airflow is darker and 1 to 3 dB quieter, 77 dB(A) at 40 kt and 88 at 150 kt: the canopy keeps the hiss's highs out as the mass law says, as recordings in an ASK 21's front cockpit show.
+
 ## 2026-11-02, evening
 
 Flight model
