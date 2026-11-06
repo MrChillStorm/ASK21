@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-06
+
+Sound
+- New: a slip sounds like an airbrake. Up to 50 degrees of sideslip the flow separates off the fuselage and the cockpit's walls and its wake falls on the wing and tail, in the cockpit and outside. In a full slip at 53 kt the cockpit is 8 dB(A) louder, and much more in the lows. These levels are estimates: no recording of a full slip has tested them yet.
+- New: the canopy's wind comes from both sides of the cockpit, and in a slip the leeward side grows louder.
+- New: the fixed wheels' noise outside, and the low roar measured in the cockpit.
+- Changed: below 40 kt the airflow fades as the computed sound does: an 8 kt wind on the ground is 57 dB(A) in the cockpit, no longer 70.
+- Changed: everything plays about 9 dB quieter in the cockpit and 6 dB outside, to leave room for a full slip: turn your system volume up to match. The cockpit and the outside now share one scale.
+- Changed: only the airflow loops that can be heard run, at most 23 at a time.
+- Removed: the radio's static.
+
 ## 2026-11-03
 
 Sound

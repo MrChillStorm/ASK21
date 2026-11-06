@@ -163,6 +163,14 @@ Usage: fgfs -\-prop:/sim/remote/pilot-callsign="remote pilot callsign" -\-aircra
 			</default>
 		</menubar>
 	</sim>
+	<instrumentation>
+		<comm n="0">
+			<add-noise type="bool">false</add-noise>
+		</comm>
+		<comm n="1">
+			<add-noise type="bool">false</add-noise>
+		</comm>
+	</instrumentation>
 	<nasal>
 		<dual_control_tools>
 			<file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>

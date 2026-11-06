@@ -674,6 +674,9 @@ See AUTHORS.txt for credits
 		</keyboard>
 	</input>
 	<instrumentation>
+		<comm>
+			<add-noise type="bool">false</add-noise>
+		</comm>
 		<airspeed-indicator n="1">
 			<serviceable type="bool">true</serviceable>
 		</airspeed-indicator>

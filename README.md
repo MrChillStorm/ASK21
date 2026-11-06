@@ -163,7 +163,11 @@ The drag robot (ASK21 → Drag Robot) is the AI tug that tows you up.
   tail's own noise, the rumble the airbrakes add, the ailerons' in a
   roll, and the stall, in the cockpit and outside, from 40 to 150 kt.
   Aerobatics too: the stall when pulling up to 5 g, inverted flight and
-  its stall, and the canopy's flow turning in a slip. At altitude the
+  its stall. In a slip, up to 50 degrees, the glider is an airbrake: the
+  flow separates off the fuselage and the cockpit's walls and its wake
+  falls on the wing and tail, and the canopy's wind moves to the leeward
+  side (these levels are estimates: no recording of a full slip has
+  tested them yet). At altitude the
   same indicated airspeed is a faster, thinner flow: each sound's level
   and pitch follow PyWopWop's own physics for that (at 3 km the wing is
   about 3.5 dB louder, everything a little higher).
@@ -249,7 +253,8 @@ python3 flexwing.py --write
   candidate.
 - `FG_ROOT=<FlightGear's data> python3 airsound.py <PyWopWop>/out/ask21`
   writes the sound from PyWopWop's bank (`pywopwop glider-bank ask21`):
-  its loops with their altitude laws, and every other sound's level.
+  its loops with their altitude laws, and every other sound's level
+  (a few minutes: it runs PyWopWop's model for every condition).
 - `fg_*.xml` are the unmodified files of the standard FlightGear model,
   used for the comparison.
 

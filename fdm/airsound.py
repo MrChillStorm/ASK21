@@ -4,21 +4,22 @@
 The airflow is PyWopWop's (https://github.com/MrChillStorm/PyWopWop), a code that computes aircraft noise from the
 physics: its glider bank of the ASK 21 (`pywopwop glider-bank ask21`), seamless loops of the wing and tail's
 self-noise, the canopy's wind, what the airbrakes and the ailerons add and the stall, in the cockpit and outside, at sea
-level from 40 to 150 kt, the stall at 1 to 5 g, inverted flight from 60 to 150 kt and its stall, and the canopy's wind
-in a full-rudder slip, and its FlightGear section, which cross-fades them by the indicated airspeed, the g, the angle
-of attack and the sideslip. At altitude the same indicated
+level from 40 to 150 kt, the stall at 1 to 5 g, inverted flight from 60 to 150 kt and its stall, and slips of 15 to 50
+degrees (the flow separating off the fuselage and the cockpit's walls, its wake), the canopy's wind in its windward and
+leeward halves, left and right of the pilot, and its FlightGear section, which cross-fades them by the indicated
+airspeed, the g, the angle of attack and the sideslip and runs only the loops that sound. At altitude the same indicated
 airspeed is a higher true airspeed in thinner air. PyWopWop's own model (pywopwop.glider.spectra) at the same
 equivalent airspeed at 1 to 5 km gives each loop's change: the frequency shift that best matches its spectrum and the
 level that then matches its A-weighted energy follow sigma^b and sigma^a (sigma: the air's density over sea level's)
 to within 0.7 dB (most within 0.3), and each loop's pitch and volume carry its law. What a shift and a level leave of the spectrum's
 change is small but for the wing and tail's self-noise (about 1.5 dB per third octave at 3 km), which in the cockpit
-lies 40 to 55 dB under the canopy's wind. SimGear clips a volume above 1, so the quieter loops' samples are raised by
-what their law needs up to TOP_M, and the whole aircraft turned down by what a loop's peak can't give. The wing's
+lies 40 to 55 dB under the canopy's wind. SimGear clips a volume above 1, so the loops' samples are raised by what their
+law needs up to TOP_M, and the aircraft's level is set by the loudest flyable loop (scale). The wing's
 separated sound fades in on the angle of attack over PyWopWop's window (its root's separation to its stall), upright
 and inverted, each moved to where the flight model stalls (the campaign's results).
 
-Every other sound plays at the level it makes, on the bank's scale: a full-scale sample is 93.98 - gain dB re 20 uPa
-(the bank's manifest; about 109 dB in the cockpit, 111.5 dB 30 m outside) plus the turn-down, so a file whose
+Every other sound plays at the level it makes, on the same scale: a full-scale sample at volume 1 is about 122 dB re
+20 uPa, in the cockpit and outside alike (that loop's peak), so a file whose
 A-weighted rms (a click's: its loudest 125 ms) is L dB re its full scale plays at volume
 10^((SPL - full scale - L)/20). LEVELS has each sound's
 level in the cockpit (the front seat) and 30 m outside, the law it follows and where the level comes from: measured
@@ -30,9 +31,9 @@ with the pitch rate) are taken out: the airflow is computed now.
         copies the loops the bank's section plays to ASK21_v9/Sounds/pywopwop/, writes the section with the altitude
         laws into Sounds/ask21-sound.xml (between BEGIN and END) and the other sounds' volumes (after LEVEL_TAG)
 
-PyWopWop must be importable (it computes the altitude laws, about half a minute).
+PyWopWop must be importable (it computes the altitude laws, a few minutes on four processors).
 """
-import json, os, re, shutil, sys
+import json, multiprocessing, os, re, shutil, sys
 
 import numpy as np
 import scipy.io.wavfile as wav
@@ -53,14 +54,16 @@ REMOVE = ('low-speed-howl', 'whoosh-positive', 'whoosh-negative')
 RESULTS = os.path.join(HERE, 'results_v9.json')
 H_FIT = (1000.0, 2000.0, 3000.0, 4000.0, 5000.0)
 # SimGear clips a sound's volume at 1, and at altitude a loop's sigma^a is more than 1: each loop has the room for it up
-# to TOP_M, its samples raised as far as its peak allows (to PEAK_DB re full scale), the whole aircraft turned down by
-# what is still missing
+# to TOP_M, its samples raised as far as its peak allows (to PEAK_DB re full scale), the aircraft's level set to fit
 TOP_M = 10000.0
 SIGMA_TOP = (1 - 2.25577e-5 * TOP_M) ** 4.25588            # the ISA's, in the troposphere
 PEAK_DB = -0.5
 SIGMA = '<div><property>/environment/density-slugft3</property><value>0.00237689</value></div>'
 INTERNAL = '<property>sim/current-view/internal</property>'
 KMH = 1 / 1.852                                            # kt per km/h
+# The loudest loops are slips at 50 degrees at speeds the flight manual doesn't allow: full rudder up to VA, a third of it
+# at VNE. A slip sets the aircraft's level only up to VA; past it the loudest stay at volume 1, a few dB under their level
+VA_KT = 180 * KMH
 
 # The tyres: tyre/road noise at the tyre (CPX, ISO 11819-2: 0.2 m from the tyre) on dense asphalt at 80 km/h is about
 # 98 dB(A) (the Dutch TKP 7 reference; SMA surfaces 96.8-100.7 dB), growing about as 30 log10 of the speed (Sandberg and
@@ -143,9 +146,11 @@ def find(path):
 
 
 # ------------------------------------------------------------------------------------------------- the bank's altitude laws
-def altitude_laws(bank):
-    """each loop's law, sigma^a in amplitude and sigma^b in frequency, from PyWopWop's model at the loop's equivalent
-    airspeed at 1-5 km against sea level: {'40kt-cockpit-wind': (a, b, worst level misfit dB), ...}"""
+MODEL = {}
+
+
+def load_model(bank):
+    """PyWopWop's model of the bank's glider (each of altitude_laws' workers loads its own)"""
     try:
         import pywopwop
     except ImportError:                                    # a bank is made in the checkout's out/
@@ -157,57 +162,74 @@ def altitude_laws(bank):
     from pywopwop import glider as G
     from pywopwop.atmosphere import Atmosphere
     from pywopwop.model import Observer, STANDARD_OBSERVERS
-    m = json.load(open(os.path.join(bank, 'manifest.json')))
     g = G.load_glider('ask21')
-    sig_kw = set(G.GliderCondition.__dataclass_fields__)
+    so = STANDARD_OBSERVERS['side']
+    d = json.load(open(os.path.join(bank, 'manifest.json')))['exterior_distance_m']
+    MODEL.update(G=G, Atmosphere=Atmosphere, g=g, sig_kw=set(G.GliderCondition.__dataclass_fields__),
+                 pos={'cockpit': (G.to_body(*g.cockpit['front']), True),
+                      'side': (Observer('side', so.azimuth_deg, so.elevation_deg, d).offset(), False)})
+
+
+def condition_laws(job):
+    """one condition's loops' laws, from the model at its equivalent airspeed at H_FIT against sea level"""
+    name, c = job
+    G, Atmosphere, g, sig_kw, pos = (MODEL[k] for k in ('G', 'Atmosphere', 'g', 'sig_kw', 'pos'))
     B = np.asarray(G.BANDS)
     lB, A = np.log(B), a_weight_db(B)
-    so = STANDARD_OBSERVERS['side']
-    pos = {'cockpit': (G.to_body(*g.cockpit['front']), True),
-           'side': (Observer('side', so.azimuth_deg, so.elevation_deg, m['exterior_distance_m']).offset(), False)}
     rho0 = Atmosphere(0.0).rho
-    # each condition as the bank made it: its airspeed and load factor (negative: inverted); the brakes fully out and full
-    # aileron in a steady roll where it has their layers (each layer is only its own source's); full rudder in a slip
-    conds = {}
-    for f in m['files']:
-        c = conds.setdefault(f['condition'], dict(eas=f['airspeed_kt'], n=f.get('load_factor', 1.0), layers=set()))
-        c['layers'].add(f['source'])
-    slips = {'slip_%gkt' % v for v in m.get('slip_speeds_kt', [])}
 
-    def spectra(name, c, h, L, ins):
+    def spectra(h, L, ins):
         kw = dict(airspeed_kt=c['eas'] / np.sqrt(Atmosphere(h).rho / rho0), altitude_m=h, load_factor=c['n'],
                   brakes=1.0 if 'brakes' in c['layers'] else 0.0, aileron=1.0 if 'ailerons' in c['layers'] else 0.0,
-                  rudder=1.0 if name in slips else 0.0)
+                  sideslip_deg=c['beta'])
         return G.spectra(g, G.GliderCondition(**{k: v for k, v in kw.items() if k in sig_kw}), L, ins)[0]
 
+    s0 = {v: spectra(0.0, L, ins) for v, (L, ins) in pos.items()}
+    rows = {}
+    for h in H_FIT:
+        sig = Atmosphere(h).rho / rho0
+        for v, (L, ins) in pos.items():
+            s1 = spectra(h, L, ins)
+            for layer in s1:
+                d0 = 10 * np.log10(np.maximum(np.asarray(s0[v][layer]), 1e-30) / 4e-10)
+                d1 = 10 * np.log10(np.maximum(np.asarray(s1[layer]), 1e-30) / 4e-10)
+                if d0.max() < -50:
+                    continue
+                sel = (d1 + A) > (d1 + A).max() - 20
+                best = None
+                for P in np.exp(np.linspace(np.log(0.8), np.log(1.6), 241)):
+                    sh = np.interp(lB, lB + np.log(P), d0 - 10 * np.log10(P), left=-200, right=-200)
+                    r = (d1 - sh)[sel]
+                    err = np.sqrt(np.mean((r - r.mean()) ** 2))
+                    if best is None or err < best[0]:
+                        best = (err, P, 10 * np.log10(np.sum(10 ** ((d1 + A) / 10)) / np.sum(10 ** ((sh + A) / 10))))
+                rows.setdefault((v, layer), []).append((sig, best[1], best[2]))
     laws = {}
-    for name, c in conds.items():
-        s0 = {v: spectra(name, c, 0.0, L, ins) for v, (L, ins) in pos.items()}
-        rows = {}
-        for h in H_FIT:
-            sig = Atmosphere(h).rho / rho0
-            for v, (L, ins) in pos.items():
-                s1 = spectra(name, c, h, L, ins)
-                for layer in s1:
-                    d0 = 10 * np.log10(np.maximum(np.asarray(s0[v][layer]), 1e-30) / 4e-10)
-                    d1 = 10 * np.log10(np.maximum(np.asarray(s1[layer]), 1e-30) / 4e-10)
-                    if d0.max() < -50:
-                        continue
-                    sel = (d1 + A) > (d1 + A).max() - 20
-                    best = None
-                    for P in np.exp(np.linspace(np.log(0.8), np.log(1.6), 241)):
-                        sh = np.interp(lB, lB + np.log(P), d0 - 10 * np.log10(P), left=-200, right=-200)
-                        r = (d1 - sh)[sel]
-                        err = np.sqrt(np.mean((r - r.mean()) ** 2))
-                        if best is None or err < best[0]:
-                            best = (err, P, 10 * np.log10(np.sum(10 ** ((d1 + A) / 10)) / np.sum(10 ** ((sh + A) / 10))))
-                    rows.setdefault((v, layer), []).append((sig, best[1], best[2]))
-        for (v, layer), r in rows.items():
-            r = np.array(r)
-            ls = np.log(r[:, 0])
-            b = float(np.sum(ls * np.log(r[:, 1])) / np.sum(ls ** 2))
-            a = float(np.sum(ls * r[:, 2] / 20 * np.log(10)) / np.sum(ls ** 2))
-            laws['%s-%s-%s' % (name, v, layer)] = (a, b, float(np.max(np.abs(r[:, 2] - 20 * a * ls / np.log(10)))))
+    for (v, layer), r in rows.items():
+        r = np.array(r)
+        ls = np.log(r[:, 0])
+        b = float(np.sum(ls * np.log(r[:, 1])) / np.sum(ls ** 2))
+        a = float(np.sum(ls * r[:, 2] / 20 * np.log(10)) / np.sum(ls ** 2))
+        laws['%s-%s-%s' % (name, v, layer)] = (a, b, float(np.max(np.abs(r[:, 2] - 20 * a * ls / np.log(10)))))
+    return laws
+
+
+def altitude_laws(bank):
+    """each loop's law, sigma^a in amplitude and sigma^b in frequency, from PyWopWop's model at the loop's equivalent
+    airspeed at 1-5 km against sea level: {'40kt-cockpit-windward': (a, b, worst level misfit dB), ...}"""
+    load_model(bank)
+    m = json.load(open(os.path.join(bank, 'manifest.json')))
+    # each condition as the bank made it: its airspeed and load factor (negative: inverted); the brakes fully out and full
+    # aileron in a steady roll where it has their layers (each layer is only its own source's); a slip at its angle
+    conds = {}
+    for f in m['files']:
+        c = conds.setdefault(f['condition'], dict(eas=f['airspeed_kt'], n=f.get('load_factor', 1.0),
+                                                  beta=f.get('sideslip_deg'), layers=set()))
+        c['layers'].add(f['source'])
+    laws = {}
+    with multiprocessing.Pool(4, initializer=load_model, initargs=(bank,)) as pool:
+        for r in pool.imap_unordered(condition_laws, conds.items()):
+            laws.update(r)
     return laws
 
 
@@ -224,24 +246,33 @@ def stall_shift(bank):
     return out
 
 
-def headroom(bank, laws, names):
-    """the gain on each loop's samples (dB) and the aircraft's level turned down (dB), so that no loop's volume passes
-    1 below TOP_M"""
-    fm = {'%s-%s-%s' % (f['condition'], f['observer'], f['source']): f['file']
-          for f in json.load(open(os.path.join(bank, 'manifest.json')))['files']}
-    need, room = {}, {}
-    for n in names:
-        need[n] = max(0.0, 20 * laws[n][0] * np.log10(SIGMA_TOP))
-        y = wav.read(os.path.join(bank, fm[n]))[1]
-        room[n] = PEAK_DB - 20 * np.log10(np.abs(y.astype(float)).max() / 32768)
-    down = max(0.0, max(need[n] - room[n] for n in names))
-    return {n: max(0.0, need[n] - down) for n in names}, down
+def law_key(name):
+    """an entry's loop: the cockpit's wind plays left and right"""
+    return re.sub(r'-(left|right)$', '', name)
 
 
-def bank_section(bank, laws, shifts, gain, down):
+def scale(bank, laws, names):
+    """the level of a full-scale sample at volume 1 (dB re 20 uPa, the same in the cockpit and outside, so that they keep
+    their difference) and each loop's gain on its samples and its volume at sea level (dB): no flyable loop's volume
+    passes 1, nor below TOP_M any but a slip's (a slip at altitude keeps what room its loop has)"""
+    m = json.load(open(os.path.join(bank, 'manifest.json')))
+    fm = {'%s-%s-%s' % (f['condition'], f['observer'], f['source']): f for f in m['files']}
+    bank_fs = {k: 20 * np.log10(1.0 / 10 ** (g / 20) / 2e-5) for k, g in m['gain_db'].items()}
+    keys = sorted({law_key(n) for n in names})
+    fs = {n: bank_fs['cockpit' if '-cockpit-' in n else 'exterior'] for n in keys}
+    need = {n: max(0.0, 20 * laws[n][0] * np.log10(SIGMA_TOP)) for n in keys}
+    peak = {n: 20 * np.log10(np.abs(wav.read(os.path.join(bank, fm[n]['file']))[1].astype(float)).max() / 32768) for n in keys}
+    slip = {n: 'sideslip_deg' in fm[n] for n in keys}
+    top = max(fs[n] + peak[n] + (0.0 if slip[n] else need[n]) - PEAK_DB for n in keys
+              if not slip[n] or fm[n]['airspeed_kt'] <= VA_KT)
+    gain = {n: min(max(fs[n] - top + need[n], 0.0), PEAK_DB - peak[n]) for n in keys}
+    return top, gain, {n: fs[n] - gain[n] - top for n in keys}
+
+
+def bank_section(bank, laws, shifts, volume):
     """the bank's FlightGear entries, each loop's volume times sigma^a and its pitch sigma^b, the angle of attack's
-    fades moved by the shifts (deg): the upright stall's (rising with alpha), the inverted's (falling); the volume less
-    by the loop's gain and the aircraft's turn-down (dB). Returns the section and its (name, file)s"""
+    fades moved by the shifts (deg): the upright stall's (rising with alpha), the inverted's (falling); the volume at
+    the loop's (dB). Returns the section and its (loop, file)s"""
     x = open(os.path.join(bank, 'pywopwop-glider.xml'), encoding='utf-8').read()
     body = x[x.index('<fx>') + len('<fx>'):x.index('</fx>')].strip('\n')
 
@@ -254,10 +285,9 @@ def bank_section(bank, laws, shifts, gain, down):
     out, files = [], []
     for m in re.finditer(r'(\t\t<([\w-]+)>\n.*?\n\t\t</\2>)', body, re.S):
         e = m.group(1)
-        name = re.search(r'<name>pww-(.+?)</name>', e).group(1)
+        name = law_key(re.search(r'<name>pww-(.+?)</name>', e).group(1))
         a, b, _ = laws[name]
-        db = gain[name] + down
-        k = '' if db == 0 else '<value>%.6g</value>' % 10 ** (-db / 20)
+        k = '<value>%.6g</value>' % 10 ** (volume[name] / 20)
         e = re.sub(r'<volume><expression>(.*?)</expression></volume>',
                    lambda v: '<volume><expression><product>%s<pow>%s<value>%.4f</value></pow>%s</product></expression></volume>'
                    % (v.group(1), SIGMA, a, k), e, count=1)
@@ -265,7 +295,7 @@ def bank_section(bank, laws, shifts, gain, down):
                       % (SIGMA, b), 1)
         out.append(e)
         files.append((name, re.search(r'<path>Sounds/%s/([^<]+)</path>' % SUBDIR, e).group(1)))
-    return '\n'.join(out), files
+    return '\n'.join(out), sorted(set(files))
 
 
 # ------------------------------------------------------------------------------------------------- the other sounds
@@ -326,8 +356,8 @@ def other_sounds(t, full, bank):
         for n_i, name in enumerate(names):
             path = re.search(r'<name>%s</name>.*?<path>([^<]+)</path>' % re.escape(name), t, re.S).group(1)
             lf = file_level(find(path), click)
-            k_in = 10 ** ((l_in - full['cockpit'] - lf) / 20)
-            k_out = None if l_out is None else 10 ** ((l_out - full['exterior'] - lf) / 20)
+            k_in = 10 ** ((l_in - full - lf) / 20)
+            k_out = None if l_out is None else 10 ** ((l_out - full - lf) / 20)
             for k in (k_in, k_out):
                 if k is not None and k > 1:
                     sys.exit('%s would need a volume of %.2f: a louder file needed' % (name, k))
@@ -340,21 +370,21 @@ def other_sounds(t, full, bank):
                           '%.0f dB(A) in the cockpit%s: %s' % (l_in, '' if l_out is None else ', %.1f at 30 m' % l_out, note))
             rep.append('%-26s %5.1f dB re FS  cockpit %5.1f dB(A) k %.4f%s' % (
                 name, lf, l_in, k_in, '' if k_out is None else '   outside %5.1f k %.4f' % (l_out, k_out)))
-    # the wind through an open sliding window: the canopy's own level (the bank's cockpit wind) plus WINDOW_DB, against
+    # the wind through an open sliding window: the canopy's own level (the bank's cockpit mix) plus WINDOW_DB, against
     # the airspeed, times how far the window is open (Systems/sound.xml)
     m = json.load(open(os.path.join(bank, 'manifest.json')))
     wind = sorted((f['airspeed_kt'], f['dba']) for f in m['files']
-                  if f['observer'] == 'cockpit' and f['source'] == 'wind' and f['condition'] != 'stall')
+                  if f['observer'] == 'cockpit' and f['source'] == 'mix' and f['condition'] == '%gkt' % f['airspeed_kt'])
     v = np.array([w[0] for w in wind]); L = np.array([w[1] for w in wind])
     slope = np.polyfit(np.log10(v), L, 1)[0]
     for name, prop in WINDOWS:
         path = re.search(r'<name>%s</name>.*?<path>([^<]+)</path>' % re.escape(name), t, re.S).group(1)
         lf = file_level(find(path))
-        kv = [(0.0, 0.0), (20.0, 10 ** ((L[0] + slope * np.log10(20.0 / v[0]) + WINDOW_DB - full['cockpit'] - lf) / 20))]
-        kv += [(vi, 10 ** ((li + WINDOW_DB - full['cockpit'] - lf) / 20)) for vi, li in zip(v, L)]
+        kv = [(0.0, 0.0), (20.0, 10 ** ((L[0] + slope * np.log10(20.0 / v[0]) + WINDOW_DB - full - lf) / 20))]
+        kv += [(vi, 10 ** ((li + WINDOW_DB - full - lf) / 20)) for vi, li in zip(v, L)]
         # the file can't be louder than its full scale: fully open the level holds up to where the volume reaches 1
         # (a window is opened at low speed: on the ground, thermalling)
-        cap = 10 ** ((full['cockpit'] + lf - WINDOW_DB - L[0]) / slope) * v[0]
+        cap = 10 ** ((full + lf - WINDOW_DB - L[0]) / slope) * v[0]
         kv = [(vi, min(k, 1.0)) for vi, k in kv]
         tab =('<table><property>/velocities/airspeed-kt</property>%s</table>'
                % ''.join('<entry><ind>%g</ind><dep>%.6g</dep></entry>' % e for e in kv))
@@ -373,16 +403,16 @@ def install(bank):
     m = json.load(open(os.path.join(bank, 'manifest.json')))
     laws = altitude_laws(bank)
     names = re.findall(r'<name>pww-(.+?)</name>', open(os.path.join(bank, 'pywopwop-glider.xml'), encoding='utf-8').read())
-    gain, down = headroom(bank, laws, names)
-    full = {k: 20 * np.log10(1.0 / 10 ** (g / 20) / 2e-5) + down for k, g in m['gain_db'].items()}
-    print('full scale: cockpit %.2f dB, outside (30 m) %.2f dB re 20 uPa (the bank\'s turned down %.2f dB; loops raised '
-          'up to %.1f dB: the room for their altitude laws to %.0f km)'
-          % (full['cockpit'], full['exterior'], down, max(gain.values()), TOP_M / 1000))
+    full, gain, volume = scale(bank, laws, names)
+    over = {n: v for n, v in volume.items() if v > 0}
+    print('full scale: %.2f dB re 20 uPa (loops raised up to %.1f dB: the room for their altitude laws to %.0f km; %d past '
+          'VA stay at volume 1, up to %.1f dB under their level)'
+          % (full, max(gain.values()), TOP_M / 1000, len(over), max(over.values(), default=0.0)))
     shifts = stall_shift(bank)
     for k, (s, a_fdm, a_bank) in shifts.items():
         print('%s stall: the flight model\'s at %.2f deg, the bank\'s at %.2f: its angle of attack fades moved %+.2f deg'
               % (k, a_fdm, a_bank, s))
-    body, loops = bank_section(bank, laws, shifts, gain, down)
+    body, loops = bank_section(bank, laws, shifts, volume)
     out = os.path.join(SOUNDS, SUBDIR)
     if os.path.isdir(out):
         shutil.rmtree(out)
@@ -407,11 +437,12 @@ def install(bank):
     t, rep = other_sounds(t, full, bank)
     open(SOUND_FILE, 'w', encoding='utf-8').write(t)
     mb = sum(os.path.getsize(os.path.join(out, fn)) for fn in files) / 2 ** 20
-    print('%d loops (%.0f MB) in %s; %d airflow sounds and %d others in %s' % (len(files), mb, out, len(files), len(rep), SOUND_FILE))
+    print('%d loops (%.0f MB) in %s; %d airflow sounds and %d others in %s' % (len(files), mb, out, body.count('<name>'), len(rep), SOUND_FILE))
+    print('at most %(cockpit)d loops at once in the cockpit, %(exterior)d outside (SimGear has 128 sources)' % m['max_sources'])
     print('altitude laws (amplitude sigma^a, pitch sigma^b; worst level misfit 0-5 km):')
-    for k in sorted(laws, key=lambda k: (k.split('-')[1], k.split('-')[2], float(k.split('-')[0][:-2]) if k[0].isdigit() else 0)):
+    for k in sorted(gain, key=lambda k: (k.split('-')[1], k.split('-')[2], float(k.split('-')[0][:-2]) if k[0].isdigit() else 0)):
         a, b, e = laws[k]
-        print('  %-24s a %+.3f  b %+.3f  (%.2f dB)' % (k, a, b, e))
+        print('  %-34s a %+.3f  b %+.3f  (%.2f dB)' % (k, a, b, e))
     print('the other sounds:')
     for r in rep:
         print('  ' + r)
